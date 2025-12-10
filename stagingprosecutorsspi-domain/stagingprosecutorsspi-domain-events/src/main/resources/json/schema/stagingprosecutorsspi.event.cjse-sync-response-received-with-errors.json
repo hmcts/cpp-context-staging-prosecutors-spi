@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/cjse-sync-response-received-with-errors.json",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string"
+    },
+    "syncResponse": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/sync-response.json"
+    }
+  },
+  "required": [
+    "cjseMessage",
+    "requestId"
+  ],
+  "additionalProperties": false
+}

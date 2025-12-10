@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RouteData xmlns:cjseEntity="http://schemas.cjse.gov.uk/common/businessentities"
+           xmlns="http://schemas.cjse.gov.uk/common/operations" VersionNumber="1.0"
+           RequestResponse="Request">
+    <RequestFromSystem VersionNumber="1.0">
+        <CorrelationID>CORRELATION_ID</CorrelationID>
+        <SystemID literalvalue="String">C00CommonPlatform</SystemID>
+        <OrganizationalUnitID literalvalue="String">0000000</OrganizationalUnitID>
+        <DataController literalvalue="String">richard.hanley</DataController>
+        <User literalvalue="String">richard.hanley</User>
+        <SourceID literalvalue="String">00501PoliceCaseSystem</SourceID>
+        <DestinationID literalvalue="String">B00LIBRA</DestinationID>
+        <TestOperation>true</TestOperation>
+    </RequestFromSystem>
+               <DataStream VersionNumber="1.0">
+                <cjseEntity:System literalvalue="String">00501PoliceCaseSystem</cjseEntity:System>
+                <cjseEntity:DataStreamType literalvalue="String">SPINewCase</cjseEntity:DataStreamType>
+                <cjseEntity:SystemDataStreamID>21_05_2018_103408_000000306578</cjseEntity:SystemDataStreamID>
+                <cjseEntity:Name>SPI New Case</cjseEntity:Name>
+                <cjseEntity:Reference>21_05_2018_103408_000000306578</cjseEntity:Reference>
+                <cjseEntity:ReferenceType>SPINewCase</cjseEntity:ReferenceType>
+                <cjseEntity:Dated>2013-12-01</cjseEntity:Dated>
+                <cjseEntity:Timed>10:34:13.357Z</cjseEntity:Timed>
+                <cjseEntity:ContentType>text/plain</cjseEntity:ContentType>
+                    <cjseEntity:DataStreamContent>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+                                                  &lt;NewCaseMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; Flow=&quot;NewCasesFromThePolice&quot; Interface=&quot;LibraStandardProsecutorPolice&quot; SchemaVersion=&quot;0.6g&quot; xmlns=&quot;http://www.dca.gov.uk/xmlschemas/libra&quot;&gt;
+                                                      &lt;Case&gt;
+                                                          &lt;PTIURN&gt;URN_NUMBER&lt;/PTIURN&gt;
+                                                          &lt;OriginatingOrganisation&gt;116HQ00&lt;/OriginatingOrganisation&gt;
+                                                          &lt;CaseInitiation&gt;J&lt;/CaseInitiation&gt;
+                                                          &lt;CPSorganisation&gt;A16AC00&lt;/CPSorganisation&gt;
+                                                          &lt;InitialHearing&gt;
+                                                              &lt;CourtHearingLocation&gt;B16GE00&lt;/CourtHearingLocation&gt;
+                                                              &lt;DateOfHearing&gt;2004-12-09&lt;/DateOfHearing&gt;
+                                                              &lt;TimeOfHearing&gt;09:00:00.0000000-00:00&lt;/TimeOfHearing&gt;
+                                                          &lt;/InitialHearing&gt;
+                                                          &lt;VehicleOperatorLicenceNumber&gt;VehicleOp&lt;/VehicleOperatorLicenceNumber&gt;
+                                                          &lt;OtherPartyOfficerInCase&gt;
+                                                              &lt;OfficerName&gt;
+                                                                  &lt;PersonTitle&gt;Baron&lt;/PersonTitle&gt;
+                                                                  &lt;PersonGivenName1&gt;Vega&lt;/PersonGivenName1&gt;
+                                                                  &lt;PersonGivenName2&gt;Non&lt;/PersonGivenName2&gt;
+                                                                  &lt;PersonFamilyName&gt;OIC&lt;/PersonFamilyName&gt;
+                                                              &lt;/OfficerName&gt;
+                                                              &lt;PoliceOfficerRank&gt;Constable&lt;/PoliceOfficerRank&gt;
+                                                              &lt;PoliceWorkerReferenceNumber&gt;1234&lt;/PoliceWorkerReferenceNumber&gt;
+                                                              &lt;PoliceWorkerLocationCode&gt;116BH00&lt;/PoliceWorkerLocationCode&gt;
+                                                              &lt;StructuredAddress&gt;
+                                                                  &lt;SAON xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;          101&lt;/SAON&gt;
+                                                                  &lt;PAON xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;          56Police House&lt;/PAON&gt;
+                                                                  &lt;StreetDescription xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;Letsby Avenue&lt;/StreetDescription&gt;
+                                                                  &lt;AdministrativeArea xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;Avon&lt;/AdministrativeArea&gt;
+                                                                  &lt;PostCode xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;A0 0AA&lt;/PostCode&gt;
+                                                              &lt;/StructuredAddress&gt;
+                                                              &lt;TelephoneDetails&gt;
+                                                                  &lt;TelephoneNumberBusiness&gt;0117911911&lt;/TelephoneNumberBusiness&gt;
+                                                              &lt;/TelephoneDetails&gt;
+                                                              &lt;FAXnumber&gt;0117911911&lt;/FAXnumber&gt;
+                                                              &lt;EmailDetails&gt;
+                                                                  &lt;EmailAddress1&gt;vegaoic@test.dom&lt;/EmailAddress1&gt;
+                                                              &lt;/EmailDetails&gt;
+                                                          &lt;/OtherPartyOfficerInCase&gt;
+                                                          &lt;Defendant&gt;
+                                                              &lt;ProsecutorReference&gt;0416BH0000000090558N&lt;/ProsecutorReference&gt;
+                                                              &lt;PoliceIndividualDefendant&gt;
+                                                                  &lt;PersonDefendant&gt;
+                                                                      &lt;BasePersonDetails&gt;
+                                                                          &lt;PersonName&gt;
+                                                                              &lt;PersonTitle&gt;Baron&lt;/PersonTitle&gt;
+                                                                              &lt;PersonGivenName1&gt;john&lt;/PersonGivenName1&gt;
+                                                                              &lt;PersonGivenName2&gt;PersonGivenName20A&lt;/PersonGivenName2&gt;
+                                                                              &lt;PersonFamilyName&gt;RAMBO&lt;/PersonFamilyName&gt;
+                                                                          &lt;/PersonName&gt;
+                                                                          &lt;TelephoneDetails/&gt;
+                                                                          &lt;EmailDetails&gt;
+                                                                              &lt;EmailAddress1&gt;Dvishnu@gmail.com&lt;/EmailAddress1&gt;
+                                                                              &lt;EmailAddress2&gt;Dilja@gmail.com&lt;/EmailAddress2&gt;
+                                                                          &lt;/EmailDetails&gt;
+                                                                          &lt;Birthdate&gt;1974-05-03&lt;/Birthdate&gt;
+                                                                          &lt;Gender&gt;1&lt;/Gender&gt;
+                                                                      &lt;/BasePersonDetails&gt;
+                                                                      &lt;BailConditions/&gt;
+                                                                  &lt;/PersonDefendant&gt;
+                                                                  &lt;Address&gt;
+                                                                      &lt;PAON xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;          89&lt;/PAON&gt;
+                                                                      &lt;StreetDescription xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;Palace Walk&lt;/StreetDescription&gt;
+                                                                      &lt;AdministrativeArea xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;Humberside&lt;/AdministrativeArea&gt;
+                                                                      &lt;PostCode xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;A0 0AA&lt;/PostCode&gt;
+                                                                  &lt;/Address&gt;
+                                                                  &lt;PersonEthnicity&gt;
+                                                                      &lt;ObservedEthnicity&gt;9&lt;/ObservedEthnicity&gt;
+                                                                      &lt;SelfDefinedEthnicity&gt;W1&lt;/SelfDefinedEthnicity&gt;
+                                                                  &lt;/PersonEthnicity&gt;
+                                                                  &lt;Occupation&gt;Office&lt;/Occupation&gt;
+                                                                  &lt;CustodyStatus&gt;U&lt;/CustodyStatus&gt;
+                                                                  &lt;LanguageOptions&gt;
+                                                                      &lt;DocumentationLanguage&gt;E&lt;/DocumentationLanguage&gt;
+                                                                      &lt;HearingLanguage&gt;E&lt;/HearingLanguage&gt;
+                                                                  &lt;/LanguageOptions&gt;
+                                                                  &lt;DriverInformation&gt;
+                                                                      &lt;DriverLicenceIssue&gt;0&lt;/DriverLicenceIssue&gt;
+                                                                  &lt;/DriverInformation&gt;
+                                                              &lt;/PoliceIndividualDefendant&gt;
+                                                              &lt;Offence&gt;
+                                                                  &lt;BaseOffenceDetails&gt;
+                                                                      &lt;OffenceSequenceNumber&gt;1&lt;/OffenceSequenceNumber&gt;
+                                                                      &lt;OffenceCode&gt;FI68323&lt;/OffenceCode&gt;
+                                                                      &lt;OffenceWording&gt;OfWord&lt;/OffenceWording&gt;
+                                                                      &lt;OffenceTiming&gt;
+                                                                          &lt;OffenceDateCode&gt;1&lt;/OffenceDateCode&gt;
+                                                                          &lt;OffenceStart&gt;
+                                                                              &lt;OffenceDateStartDate&gt;2004-12-09&lt;/OffenceDateStartDate&gt;
+                                                                              &lt;OffenceStartTime&gt;09:00:00.0000000-00:00&lt;/OffenceStartTime&gt;
+                                                                          &lt;/OffenceStart&gt;
+                                                                          &lt;OffenceEnd/&gt;
+                                                                      &lt;/OffenceTiming&gt;
+                                                                      &lt;ChargeDate&gt;2004-12-09&lt;/ChargeDate&gt;
+                                                                      &lt;LocationOfOffence&gt;East Yorkshire&lt;/LocationOfOffence&gt;
+                                                                  &lt;/BaseOffenceDetails&gt;
+                                                                  &lt;ProsecutionFacts&gt;ProsecutionFacts0&lt;/ProsecutionFacts&gt;
+                                                              &lt;/Offence&gt;
+                                                          &lt;/Defendant&gt;
+
+                                                      &lt;/Case&gt;
+                                                  &lt;/NewCaseMessage&gt;
+
+</cjseEntity:DataStreamContent>
+    </DataStream>
+    <Routes VersionNumber="1.0">
+        <Route VersionNumber="1.0">
+            <RouteID>001</RouteID>
+            <RouteSourceSystem literalvalue="String">00501PoliceCaseSystem</RouteSourceSystem>
+            <RouteDestinationSystem literalvalue="String">B00LIBRA</RouteDestinationSystem>
+            <Descriptor>String</Descriptor>
+        </Route>
+    </Routes>
+</RouteData>

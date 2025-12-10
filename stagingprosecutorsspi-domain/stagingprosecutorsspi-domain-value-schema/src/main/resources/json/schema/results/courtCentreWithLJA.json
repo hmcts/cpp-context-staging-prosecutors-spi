@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/courtCentreWithLJA.json",
+  "type": "object",
+  "properties": {
+    "courtCentre": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/courtCentre.json"
+    },
+    "courtHearingLocation": {
+      "type": "string"
+    },
+    "psaCode": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "courtCentre",
+    "courtHearingLocation",
+    "psaCode"
+  ],
+  "additionalProperties": false
+}

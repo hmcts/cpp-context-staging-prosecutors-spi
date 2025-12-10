@@ -1,0 +1,195 @@
+{
+  "caseDetails": {
+    "caseId": "e09930ed-81ef-4e57-ad1b-81df1496bbc6",
+    "caseMarkers": [
+      {
+        "markerTypeCode": "DV"
+
+      },
+      {
+        "markerTypeCode": "VI"
+
+      }
+    ],
+    "cpsOrganisation": "CPSorganis",
+    "initiationCode": "S",
+    "dateReceived": "generated dynamically",
+    "originatingOrganisation": "Originatin",
+    "policeSystemId" : "00501PoliceCaseSystem",
+    "otherPartyOfficerInCase": {
+      "personalInformation": {
+        "address": {
+          "address1": "     ",
+          "address2": " StreetDescription0",
+          "address3": "Locality0",
+          "address4": "Town0",
+          "address5": "PostTown0",
+          "postcode": "A0 0AA"
+        },
+        "contactDetails": {
+          "mobile": "07998021889",
+          "primaryEmail": "vishnu@gmail.com",
+          "secondaryEmail": "ilja@gmail.com",
+          "work": "000111222"
+        },
+        "firstName": "PersonGivenName10",
+        "lastName": "PersonFamilyName0",
+        "title": "PersonTitle0"
+      },
+      "policeOfficerRank": "PoliceOfficerRank0"
+    },
+    "prosecutor": {
+      "informant": "Informant0",
+      "prosecutingAuthority": "Originatin"
+    },
+    "prosecutorCaseReference": "[URN_NUMBER]",
+    "summonsCode": "S"
+  },
+  "channel": "SPI",
+  "defendants": [
+    {
+      "asn": "ProsecutorReference0",
+      "croNumber": "CROnumber0",
+      "custodyStatus": "C",
+      "documentationLanguage": "W",
+      "hearingLanguage": "E",
+      "id": "df2412fd-05ab-410e-a35c-3874f2fd80f1",
+      "individual": {
+        "bailConditions": "Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should buy coffee every day for commissioner Vijay. Defendants Saz and Antonio should. 2500 characters",
+        "driverLicenceCode": "D",
+        "driverNumber": "ABCDE0,0010BCFAA",
+        "offenderCode": "Off",
+        "parentGuardianInformation": {
+          "dateOfBirth": "2009-09-09",
+          "gender": "MALE",
+          "observedEthnicity": "6",
+          "personalInformation": {
+            "address": {
+              "address1": "     ",
+              "address2": " StreetDescriptionG",
+              "address3": "Locality2G",
+              "address4": "Town2G",
+              "address5": "PostTownG",
+              "postcode": "A0 0AG"
+            },
+            "contactDetails": {
+              "home": "19998021888",
+              "mobile": "19998021889",
+              "primaryEmail": "Gvishnu@gmail.com",
+              "secondaryEmail": "Gilja@gmail.com"
+            },
+            "firstName": "GPersonGivenName11",
+            "givenName2": "GPersonGivenName21",
+            "givenName3": "GPersonGivenName31",
+            "lastName": "GPersonFamilyName2",
+            "title": "GPersonTitle1"
+          },
+          "selfDefinedEthnicity": "A1"
+        },
+        "perceivedBirthYear": "2006",
+        "personalInformation": {
+          "address": {
+            "address1": "     ",
+            "address2": " StreetDescription1",
+            "address3": "Locality1",
+            "address4": "Town2",
+            "address5": "PostTown1",
+            "postcode": "A0 0AA"
+          },
+          "contactDetails": {
+            "home": "09998021888",
+            "mobile": "09998021889",
+            "primaryEmail": "Dvishnu@gmail.com",
+            "secondaryEmail": "Dilja@gmail.com",
+            "work": "0917894278022"
+          },
+          "firstName": "PersonGivenName10A",
+          "givenName2": "PersonGivenName20A",
+          "givenName3": "PersonGivenName30A",
+          "lastName": "PersonFamilyName0A",
+          "observedEthnicity": 4,
+          "occupation": "Occupation0",
+          "occupationCode": 50,
+          "title": "PersonTitle0A"
+        },
+        "selfDefinedInformation": {
+          "dateOfBirth": "2008-08-08",
+          "ethnicity": "A1",
+          "gender": "MALE"
+
+        }
+      },
+      "individualAliases": [
+        {
+          "firstName": "PersonGivenName11",
+          "givenName2": "PersonGivenName21",
+          "givenName3": "PersonGivenName31",
+          "lastName": "PersonFamilyName2",
+          "title": "PersonTitle1"
+        }
+      ],
+      "initialHearing": {
+        "courtHearingLocation": "CourtHeari",
+        "dateOfHearing": "2006-05-04",
+        "timeOfHearing": "09:01:01.001"
+      },
+      "languageRequirement": "LanguageNeeds0",
+      "offences": [
+        {
+          "alcoholRelatedOffence": {
+            "alcoholLevelAmount": 500,
+            "alcoholLevelMethod": "A"
+          },
+          "arrestDate": "2006-05-04",
+          "chargeDate": "2006-05-04",
+          "offenceCode": "OffenceC",
+          "offenceCommittedDate": "2006-05-04",
+          "offenceCommittedEndDate": "2005-05-05",
+          "offenceDateCode": 1,
+          "offenceId": "89c59bf9-2594-46b7-93b3-341023db3242",
+          "offenceLocation": "LocationOfOffence0",
+          "offenceSequenceNumber": 500,
+          "offenceWording": "OfWord",
+          "otherPartyVictim": [
+            {
+              "birthDate": "2001-01-01",
+              "gender": 0,
+              "observedEthnicity": 8,
+              "personalInformation": {
+                "address": {
+                  "address1": "     ",
+                  "address2": " StreetDescriptionO",
+                  "address3": "Locality2O",
+                  "address4": "Town2O",
+                  "address5": "PostTownO",
+                  "postcode": "A0 0AO"
+                },
+                "contactDetails": {
+                  "home": "29998021888",
+                  "mobile": "29998021889",
+                  "primaryEmail": "Ovishnu@gmail.com",
+                  "secondaryEmail": "Oilja@gmail.com"
+                },
+                "firstName": "OPersonGivenName11",
+                "lastName": "OPersonFamilyName2",
+                "observedEthnicity": 8,
+                "title": "OPersonTitle1"
+              },
+              "selfDefinedEthnicity": "A1"
+            }
+          ],
+          "statementOfFacts": "ProsecutionFacts0",
+          "vehicleRelatedOffence": {
+            "vehicleCode": "a",
+            "vehicleRegistrationMark": "TE4654"
+          }
+        }
+      ],
+      "pncIdentifier": "37c59bf9-2594-46b7-93b3-341023db3281",
+      "postingDate": "2006-05-04",
+      "prosecutorDefendantReference": "ProsecutorReference0",
+      "specificRequirements": "SpecialNeeds0"
+    }
+  ],
+  "externalId": "[OI_ID]"
+}

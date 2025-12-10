@@ -1,0 +1,23 @@
+<databaseChangeLog xmlns = "http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation = "http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+<changeSet id="1.2" author="Staging-Prosecutors" logicalFilePath="liquibase/staging-prosecutors-view-store-db-changelog.xml">
+    <createTable tableName="SPI_OUT_MESSAGE">
+        <column name="id" type="UUID">
+            <constraints nullable="false" primaryKey="true" primaryKeyName="pk_spi_out_message" />
+        </column>
+
+        <column name="case_urn" type="VARCHAR(20)"/>
+        <column name="timestamp" type="DATETIME"/>
+        <column name="defendant_reference" type="VARCHAR(50)"/>
+        <column name="payload" type="TEXT"/>
+    </createTable>
+    <createIndex indexName="case_urn_idx" tableName="SPI_OUT_MESSAGE">
+        <column name="case_urn"/>
+    </createIndex>
+    <createIndex indexName="defendant_reference_idx" tableName="SPI_OUT_MESSAGE">
+        <column name="defendant_reference"/>
+    </createIndex>
+</changeSet>
+</databaseChangeLog>

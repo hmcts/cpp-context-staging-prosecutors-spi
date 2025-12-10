@@ -1,0 +1,10 @@
+{
+  "errorDetail": [
+    {
+      "errorDescription": "PreviouslySent",
+      "errorType": "FatalError",
+      "errorCode": 302,
+      "errorResponse": "errorResponse"
+    }
+  ]
+}

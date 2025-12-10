@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/command/handler/receive-prosecution-case.json",
+  "type": "object",
+  "properties": {
+    "policeCase": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeCase.json"
+    },
+    "oiId": {
+      "$ref": "http://justice.gov.uk/domain/core/common/definitions.json#/definitions/uuid"
+    }
+  },
+  "additionalProperties": true
+}

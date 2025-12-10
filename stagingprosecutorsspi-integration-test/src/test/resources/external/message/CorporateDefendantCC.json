@@ -1,0 +1,50 @@
+{
+  "defendants": [ {
+    "id": "xxx",
+    "offence":[ {
+      "baseOffenceDetails": {
+        "chargeDate":"2006-05-30",
+        "offenceCode":"FI68323",
+        "offenceDateCode":1,
+        "offenceDateStartDate":"2004-12-09",
+        "offenceSequenceNumber":500,
+        "offenceWording":"Has a violent past and fear that he will commit further offences and\n    interfere with witnesse"
+      },"otherPartyVictim":[]
+    }],
+    "policeCorporateDefendant": {
+      "address":{
+        "locality":"Locality2O","paon":"          56Police House",
+        "streetDescription":"StreetDescription",
+        "uniqueStreetReferenceNumber":"50000008"
+      },
+      "alias":["Alias0"],
+      "crOnumber":"CROnumber1",
+      "emailAddress1":"'@'",
+      "emailAddress2":"'@'",
+      "organisationName":"OrganisationName0",
+      "pnCidentifier":"",
+      "telephoneNumberBusiness":" "
+    },
+    "prosecutorReference":"TFL"
+  }],
+  "caseDetails":{
+    "caseInitiationCode":"C",
+    "initialHearing": {
+      "courtHearingLocation":"CourtHeari",
+      "dateOfHearing":"2019-02-09",
+      "timeOfHearing":"09:01:01.001"
+    },
+    "originatingOrganisation":"116HQ00",
+    "policeSystemId" : "00501PoliceCaseSystem",
+    "ptiurn":"URN_NUMBER"
+  },
+  "otherPartyOfficerInCase": {
+    "officerName": {
+      "personFamilyName":"Gellart"
+    },
+    "policeOfficerRank":"PoliceOfficerRank0",
+    "policeWorkerLocationCode":"PoliceWork",
+    "policeWorkerReferenceNumber":"PoliceWorkerRef",
+    "telephoneNumberBusiness": "0123456789"
+  }
+}

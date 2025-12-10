@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test" id="m1556315801545" name="">
+  <process id="timer_flow" name="timer_flow" isExecutable="true" isClosed="false" processType="None">
+    <startEvent id="_2" name="StartEvent"></startEvent>
+    <intermediateCatchEvent id="_4" name="wait_for_time">
+      <timerEventDefinition>
+        <timeDuration>${SPI_RETRY_TIMER_VALUE}</timeDuration>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <serviceTask id="_5" name="processTimerFinished" activiti:delegateExpression="${processTimerFinished}"></serviceTask>
+    <sequenceFlow id="SequenceFlow_13sllb0" sourceRef="_2" targetRef="_4"></sequenceFlow>
+    <sequenceFlow id="SequenceFlow_055k3h9" sourceRef="_4" targetRef="_5"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_timer_flow">
+    <bpmndi:BPMNPlane bpmnElement="timer_flow" id="BPMNPlane_timer_flow">
+      <bpmndi:BPMNShape bpmnElement="_2" id="BPMNShape__2">
+        <omgdc:Bounds height="35.0" width="35.0" x="166.0" y="112.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" id="BPMNShape__4">
+        <omgdc:Bounds height="35.0" width="35.0" x="555.0" y="112.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5" id="BPMNShape__5">
+        <omgdc:Bounds height="55.0" width="85.0" x="785.0" y="105.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_13sllb0" id="BPMNEdge_SequenceFlow_13sllb0">
+        <omgdi:waypoint x="201.0" y="129.0"></omgdi:waypoint>
+        <omgdi:waypoint x="555.0" y="129.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_055k3h9" id="BPMNEdge_SequenceFlow_055k3h9">
+        <omgdi:waypoint x="590.0" y="129.0"></omgdi:waypoint>
+        <omgdi:waypoint x="680.0" y="128.0"></omgdi:waypoint>
+        <omgdi:waypoint x="680.0" y="118.0"></omgdi:waypoint>
+        <omgdi:waypoint x="785.0" y="132.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

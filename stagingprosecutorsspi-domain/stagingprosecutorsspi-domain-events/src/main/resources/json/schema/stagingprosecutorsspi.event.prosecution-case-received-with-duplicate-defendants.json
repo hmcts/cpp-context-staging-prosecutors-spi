@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-case-received-with-duplicate-defendants.json",
+  "type": "object",
+  "properties": {
+    "defendants": {
+      "type": "array",
+      "items": {
+        "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeDefendant.json"
+      }
+    }
+  },
+  "required": [
+    "defendants"
+  ],
+  "additionalProperties": false
+}

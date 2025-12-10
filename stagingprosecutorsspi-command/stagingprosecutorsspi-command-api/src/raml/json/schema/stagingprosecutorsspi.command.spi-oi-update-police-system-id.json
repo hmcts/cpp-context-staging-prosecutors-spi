@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/command/spi-oi-update-police-system-id.json",
+  "type": "object",
+  "properties": {
+    "policeSystemId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "policeSystemId"
+  ]
+}

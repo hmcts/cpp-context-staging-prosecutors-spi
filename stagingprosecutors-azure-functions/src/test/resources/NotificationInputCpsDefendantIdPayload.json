@@ -1,0 +1,31 @@
+{
+  "businessEventType": "defence-requested-to-notify-cps-of-material",
+  "subjectBusinessObjectId": "381979f5-e9b4-4d9a-a027-4edf5a5f21af",
+  "subjectDetails": {
+    "fileName": "file.docx",
+    "material": "0904635f-1292-4e91-964a-625c1ef02a4d",
+    "materialContentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "materialName": "material123",
+    "materialType": "Expert Reports",
+    "courtApplicationSubject": {
+      "courtApplicationId": "3458354335"
+    },
+    "prosecutionCaseSubject": {
+      "caseUrn": "37GD4629421",
+      "defendantSubject": {
+        "prosecutorDefendantId": "REF1",
+        "cpsDefendantId": "DEF-ID-1",
+        "cpsPersonDefendantDetails": {
+          "forename": "Will",
+          "surname": "Smith",
+          "dateOfBirth": "01-01-1971"
+        },
+        "cpsOrganisationDefendantDetails": {
+          "organisationName": "Hollywood",
+          "cpsDefendantId": "ORG-DEF-ID-1"
+        }
+      },
+      "prosecutingAuthority": "0450000"
+    }
+  }
+}

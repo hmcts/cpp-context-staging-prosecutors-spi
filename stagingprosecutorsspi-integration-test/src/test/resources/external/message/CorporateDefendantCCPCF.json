@@ -1,0 +1,64 @@
+{
+  "caseDetails": {
+    "caseId": "9fda8501-6f2d-488c-8a1f-635dd1bb10e2",
+    "caseMarkers": [],
+    "initiationCode": "C",
+    "dateReceived": "generated dynamically",
+    "originatingOrganisation": "116HQ00",
+    "policeSystemId" : "00501PoliceCaseSystem",
+    "otherPartyOfficerInCase": {
+      "personalInformation": {
+        "contactDetails": {
+          "work": "0123456789"
+        },
+        "lastName": "Gellart"
+      },
+      "policeOfficerRank": "PoliceOfficerRank0"
+    },
+    "prosecutor": {
+      "prosecutingAuthority": "116HQ00"
+    },
+    "prosecutorCaseReference": "[URN_NUMBER]"
+  },
+  "channel": "SPI",
+  "defendants": [
+    {
+      "address": {
+        "address1": "56Police House",
+        "address2": "StreetDescription",
+        "address3": "Locality2O"
+      },
+      "aliasForCorporate": [
+        "Alias0"
+      ],
+      "asn": "TFL",
+      "croNumber": "CROnumber1",
+      "emailAddress1": "'@'",
+      "emailAddress2": "'@'",
+      "id": "59f28b57-4ba6-4002-bca3-37817673114e",
+      "initialHearing": {
+        "courtHearingLocation": "CourtHeari",
+        "dateOfHearing": "2019-02-09",
+        "timeOfHearing": "09:01:01.001"
+      },
+      "offences": [
+        {
+          "chargeDate": "2006-05-30",
+          "offenceCode": "FI68323",
+          "offenceCommittedDate": "2004-12-09",
+          "offenceDateCode": 1,
+          "offenceId": "7ecb4999-dbba-47a3-8ab2-3b10a7660310",
+          "offenceSequenceNumber": 500,
+          "offenceWording": "Has a violent past and fear that he will commit further offences and\n    interfere with witnesse",
+          "otherPartyVictim": []
+        }
+      ],
+      "organisationName": "OrganisationName0",
+      "pncIdentifier": "",
+      "postingDate": "2006-05-30",
+      "prosecutorDefendantReference": "TFL",
+      "telephoneNumberBusiness": " "
+    }
+  ],
+  "externalId": "[OI_ID]"
+}

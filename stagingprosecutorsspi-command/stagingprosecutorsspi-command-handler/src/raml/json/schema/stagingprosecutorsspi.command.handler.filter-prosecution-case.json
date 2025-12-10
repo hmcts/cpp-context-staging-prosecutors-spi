@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/command/handler/filter-prosecution-case.json",
+  "type": "object",
+  "properties": {
+    "ptiUrn": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

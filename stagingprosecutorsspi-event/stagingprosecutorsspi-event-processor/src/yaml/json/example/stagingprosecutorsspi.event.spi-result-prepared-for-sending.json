@@ -1,0 +1,45 @@
+{
+  "payload": "Arche team to implement converter. Please replace JsonObject with POJO",
+  "ptiUrn": "25B19844671",
+  "spiResultId": "88770d3c-965e-4b18-9f9e-55fa8c52d1dd",
+  "routeDataRequestType": {
+    "versionNumber": "1.0",
+    "requestFromSystem": {
+      "versionNumber": "1.0",
+      "correlationID": "88770d3c-965e-4b18-9f9e-55fa8c52d1dd",
+      "destinationID": {
+        "value": "C00CommonPlatform"
+      }
+    },
+    "dataStream": {
+      "versionNumber": "1.0",
+      "system": {
+        "value": "C00CommonPlatform"
+      },
+      "dataStreamType": {
+        "value": "SPIResults"
+      },
+      "systemDataStreamID": {
+        "value": "88770d3c-965e-4b18-9f9e-55fa8c52d1dd"
+      },
+      "contentType": "text/xml",
+      "dataStreamContent": "Arche team to implement converter. Please replace JsonObject with POJO"
+    },
+    "routes": {
+      "route": [
+        {
+          "routeID": "1",
+          "routeSourceSystem": {
+            "value": "C00CommonPlatform"
+          },
+          "routeDestinationSystem": {
+            "value": "NOT_IMPLEMENTED"
+          },
+          "versionNumber": "1.0"
+        }
+      ],
+      "versionNumber": "1.0"
+    }
+  },
+  "messageId": "2d1a1262-21ce-4519-8e51-7e97623bb38e"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/individualDefendant.json",
+  "type": "object",
+  "properties": {
+    "person": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/individual.json"
+    },
+    "presentAtHearing": {
+      "type": "string"
+    },
+    "bailConditions": {
+      "type": "string"
+    },
+    "bailStatus": {
+      "$ref": "http://justice.gov.uk/core/courts/bailStatus.json"
+    },
+    "reasonForBailConditionsOrCustody": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "person"
+  ]
+}

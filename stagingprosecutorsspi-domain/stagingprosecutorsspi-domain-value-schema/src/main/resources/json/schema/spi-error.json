@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-error.json",
+  "type": "object",
+  "properties": {
+    "errorCode": {
+      "type": "integer",
+      "description": "Error code"
+    },
+    "errorResponse": {
+      "type": "string",
+      "description": "Response text of the error"
+    },
+    "errorDescription": {
+      "type": "string",
+      "description": "Description of the error"
+    },
+    "errorType": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "errorCode",
+    "errorDescription"
+  ],
+  "additionalProperties": false
+}

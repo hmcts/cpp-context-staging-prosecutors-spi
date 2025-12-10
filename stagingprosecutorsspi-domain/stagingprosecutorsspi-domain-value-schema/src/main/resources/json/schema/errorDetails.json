@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/error-details.json",
+  "properties": {
+    "errorDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-error.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,119 @@
+<!--
+    IMPORTANT:
+    - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
+    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
+    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
+    - To add a policy, place the cursor at the desired insertion point and select a policy from the sidebar.
+    - To remove a policy, delete the corresponding policy statement from the policy document.
+    - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.
+    - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.
+    - Policies are applied in the order of their appearance, from the top down.
+    - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
+-->
+<policies>
+    <inbound>
+        <base />
+        <check-header name="Authorization" failed-check-httpcode="401" failed-check-error-message="Not authorized" ignore-case="false" />
+        <set-variable name="sharedSecretEncoded" value="@(context.Request.Headers["Authorization"].First().Split(' ')[1])" />
+        <set-variable name="sharedSecret" value="@{
+            byte[] decodedSecretByteArray = Convert.FromBase64String(context.Variables.GetValueOrDefault<string>("sharedSecretEncoded"));
+            return System.Text.Encoding.UTF8.GetString(decodedSecretByteArray);
+        }" />
+        <send-request mode="new" response-variable-name="secretResponse" timeout="20" ignore-error="true">
+            <set-url>@{return "{{vault-url}}" + context.Variables.GetValueOrDefault<string>("sharedSecret") + "/?api-version=7.0"; }</set-url>
+            <set-method>GET</set-method>
+            <authentication-managed-identity resource="https://vault.azure.net" />
+        </send-request>
+        <set-variable name="secret" value="@{
+           var secret = ((IResponse)context.Variables["secretResponse"]).Body.As<JObject>();
+           return secret["value"].ToString();
+       }" />
+        <set-header name="CJSCPPUID" exists-action="override">
+            <value>@(context.Variables.GetValueOrDefault<string>("secret"))</value>
+        </set-header>
+        <rewrite-uri template="@{
+        return "stagingprosecutors-command-api/command/api/rest/stagingprosecutors/v1/prosecutions/cps-xml/materials";
+    }" />
+        <!-- Retrieve the urn from the reequest body and set it in a variable 'ptiurn' -->
+        <set-variable name="ptiurn" value="@{
+            string inBody = context.Request.Body.As<String>(preserveContent: true).ToString();
+                if(inBody.Contains("<URN>")){
+                    int startIndex = inBody.IndexOf("<URN>");
+                    int endIndex = inBody.IndexOf("</URN>")+6;
+                    int length = endIndex-startIndex;
+                    inBody = inBody.Substring(startIndex,length);
+                }else{
+                    inBody="";
+                }
+            return inBody;
+       }" />
+       <!-- Check if case is filtered or ejected
+            Performance tuned to send only urn in the request instead of huge payload -->
+        <send-request mode="copy" response-variable-name="isCaseEjectedOrFilitered" timeout="30" ignore-error="false">
+            <set-url>{{cps-filter-eject-case-function-url}}</set-url>
+            <set-method>POST</set-method>
+            <set-header name="Content-Type" exists-action="override">
+                <value>application/octet-stream</value>
+            </set-header>
+            <set-body>@{ return context.Variables.GetValueOrDefault<string>("ptiurn");}</set-body>
+        </send-request>
+        <choose>
+            <!-- Check case filtered -->
+            <when condition="@(((string)((IResponse)context.Variables["isCaseEjectedOrFilitered"]).Body.As<String>(preserveContent: true).ToString()).Contains("True") == true)">
+                <return-response>
+                    <set-status code="202" />
+                </return-response>
+            </when>
+            <otherwise>
+                <!-- Call get prosecutor
+                                      Performance tuned to send only urn in the request instead of huge payload
+                                 -->
+                <retry condition="@(((string)((IResponse)context.Variables["prosecutorForPTIUrn"]).Body.As<String>(preserveContent: true).ToString()).Contains("error") == true)" count="5" interval="2" delta="1" max-interval="32" first-fast-retry="true">
+                    <send-request mode="copy" response-variable-name="prosecutorForPTIUrn" timeout="30" ignore-error="false">
+                        <set-url>{{cps-get-prosecutor-for-ptiurn-function-url}}</set-url>
+                        <set-method>POST</set-method>
+                        <set-header name="Content-Type" exists-action="override">
+                            <value>application/octet-stream</value>
+                        </set-header>
+                        <set-body>@{ return context.Variables.GetValueOrDefault<string>("ptiurn");}</set-body>
+                    </send-request>
+                </retry>
+                <choose>
+                    <when condition="@(((string)((IResponse)context.Variables["prosecutorForPTIUrn"]).Body.As<String>(preserveContent: true).ToString()).Contains("False") == true || ((string)((IResponse)context.Variables["prosecutorForPTIUrn"]).Body.As<String>(preserveContent: true).ToString()).Contains("error") == true)  ">
+                        <!-- Prosecutor NOT Found-->
+                        <return-response>
+                            <set-status code="202" />
+                        </return-response>
+                    </when>
+                    <otherwise>
+                        <!-- Prosecutor found in refdata -->
+                        <send-request mode="copy" response-variable-name="prosecutorLive" timeout="30" ignore-error="false">
+                            <set-url>@($"{{check-prosecutor-is-live-function-url}}&oucode={((string)((IResponse)context.Variables["prosecutorForPTIUrn"]).Body.As<JObject>(preserveContent: true)["oucode"])}")</set-url>
+                            <set-method>GET</set-method>
+                        </send-request>
+                        <choose>
+                            <when condition="@(((string)((IResponse)context.Variables["prosecutorLive"]).Body.As<String>(preserveContent: true).ToString()).Contains("True") == true)">
+                                <!-- Prosecutor is live  -->
+                                <set-backend-service base-url="{{staging-prosecutors-base-url}}" />
+                            </when>
+                            <otherwise>
+                                <return-response>
+                                    <set-status code="202" />
+                                </return-response>
+                            </otherwise>
+                        </choose>
+                    </otherwise>
+                </choose>
+            </otherwise>
+        </choose>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

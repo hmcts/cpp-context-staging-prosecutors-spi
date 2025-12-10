@@ -1,0 +1,53 @@
+#%RAML 0.8
+title: Staging Prosecutor Query view
+baseUri: http://localhost:8080/stagingprosecutorsspi-query-view/query/view/rest/stagingprosecutors-spi
+protocols: [ HTTP, HTTPS ]
+
+/cpp-message/{ptiUrn}:
+  uriParameters:
+        ptiUrn:
+          description: urn of case
+          type: string
+  get:
+    description: |
+      Gets the cpp message by ptiUrn
+      ...
+      (mapping):
+        responseType: application/vnd.stagingprosecutorsspi.query.cpp-message-view+json
+        name: stagingprosecutorsspi.query.cpp-message-view
+      ...
+    responses:
+      200:
+        body:
+          application/vnd.stagingprosecutorsspi.query.cpp-message-view+json:
+            example:
+              !include json/example/stagingprosecutorsspi.query.cpp-message.json
+            schema:
+              !include json/schema/stagingprosecutorsspi.query.cpp-message.json
+
+/spi-out-message:
+  get:
+    description: |
+      Gets the SPI OUT message for the combination of case and defendant.
+      ...
+      (mapping):
+        responseType: application/vnd.stagingprosecutorsspi.query.spi-out-message-view+json
+        name: stagingprosecutorsspi.query.spi-out-message-view
+      ...
+    queryParameters:
+        caseUrn:
+            description: URN of the case
+            type: string
+            required: true
+        defendantProsecutorReference:
+            description: Reference supplied by prosecutor for defendant
+            type: string
+            required: true
+    responses:
+      200:
+        body:
+          application/vnd.stagingprosecutorsspi.query.spi-out-message-view+json:
+            example:
+              !include json/example/stagingprosecutorsspi.query.spi-out-message-view.json
+            schema:
+              !include json/schema/stagingprosecutorsspi.query.spi-out-message-view.json

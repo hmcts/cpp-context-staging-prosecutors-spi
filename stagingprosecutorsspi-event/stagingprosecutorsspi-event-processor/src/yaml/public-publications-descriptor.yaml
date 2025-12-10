@@ -1,0 +1,11 @@
+subscriptions_descriptor:
+  spec_version: 1.0.0
+  service: stagingprosecutorsspi
+  service_component: EVENT_PROCESSOR
+  subscriptions:
+    - name: public event processor subscription
+      events:
+        - name: public.stagingprosecutorsspi.event.prosecution-case-filtered
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/public.stagingprosecutorsspi.event.prosecution-case-filtered.json
+
+      event_source_name: public.event.source

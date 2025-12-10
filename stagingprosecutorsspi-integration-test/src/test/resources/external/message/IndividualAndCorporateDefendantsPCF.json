@@ -1,0 +1,58 @@
+{
+  "caseDetails": {
+    "caseId": "8374f975-9fe9-4231-9bfd-446a3d6a12bc",
+    "initiationCode": "J",
+    "originatingOrganisation": "116HQ00",
+    "otherPartyOfficerInCase": {
+      "personalInformation": {
+        "contactDetails": {},
+        "lastName": "Gellart"
+      },
+      "policeOfficerRank": "PoliceOfficerRank0"
+    },
+    "prosecutor": {
+      "prosecutingAuthority": "116HQ00"
+    },
+    "prosecutorCaseReference": "[URN_NUMBER]"
+  },
+  "defendants": [
+    {
+      "asn": "TFL",
+      "documentationLanguage": "E",
+      "hearingLanguage": "E",
+      "id": "38e750c5-8ed1-425b-8195-bf4147946a23",
+      "individual": {
+        "personalInformation": {
+          "address": {
+            "address1": "56Police House",
+            "address2": "StreetDescription",
+            "address3": "Locality2O"
+          },
+          "contactDetails": {},
+          "lastName": "Ormsby"
+        },
+        "selfDefinedInformation": {
+          "gender": "MALE"
+        }
+      },
+      "initialHearing": {
+        "courtHearingLocation": "CourtHeari",
+        "dateOfHearing": "2019-02-09",
+        "timeOfHearing": "09:01:01.001"
+      },
+      "offences": [
+        {
+          "offenceCode": "FI68323",
+          "offenceCommittedDate": "2004-12-09",
+          "offenceDateCode": 1,
+          "offenceId": "f6fca672-8eb7-4949-9944-e2bc72d6276e",
+          "offenceSequenceNumber": 500,
+          "offenceWording": "Has a violent past and fear that he will commit further offences and\n            interfere with witnesse",
+          "otherPartyVictim": []
+        }
+      ]
+    }
+  ],
+  "externalId": "[OI_ID]",
+  "channel": "SPI"
+}

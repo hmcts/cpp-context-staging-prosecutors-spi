@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Jai Dudhia (CJIT) -->
+<schema targetNamespace="http://schemas.cjse.gov.uk/endpoint/types/" xmlns:tns1="http://schemas.cjse.gov.uk/endpoint/types/" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<simpleType name="SystemIdentifier">
+		<annotation>
+			<documentation>Identifier of the systems - source and destinations</documentation>
+		</annotation>
+		<restriction base="string"/>
+	</simpleType>
+	<simpleType name="ExecMode">
+		<annotation>
+			<documentation>Invocation mode - synchronous, asynchronous and routing only</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="ASYNCH"/>
+			<enumeration value="SYNCH"/>
+			<enumeration value="ROUTE"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ResponseCode">
+		<annotation>
+			<documentation>Standard response codes</documentation>
+		</annotation>
+		<restriction base="int"/>
+	</simpleType>
+	<simpleType name="CJSEMessage">
+		<annotation>
+			<documentation>The text of the message</documentation>
+		</annotation>
+		<restriction base="string"/>
+	</simpleType>
+	<complexType name="RetrieveFilter">
+		<annotation>
+			<documentation>The time range filter for retrieve</documentation>
+		</annotation>
+		<sequence>
+			<element name="TimeFrom" type="dateTime"/>
+			<element name="TimeTo" type="dateTime" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="RequestBase" abstract="true">
+		<annotation>
+			<documentation>The required part of any request</documentation>
+		</annotation>
+		<sequence>
+			<element name="RequestID">
+				<simpleType>
+					<restriction base="string">
+						<pattern value="\S+"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SourceID" type="tns1:SystemIdentifier"/>
+		</sequence>
+	</complexType>
+	<complexType name="ResponseBase" abstract="true">
+		<annotation>
+			<documentation>The standard part of any response</documentation>
+		</annotation>
+		<sequence>
+			<element name="RequestID">
+				<simpleType>
+					<restriction base="string">
+						<pattern value="\S+"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ResponseCode" type="tns1:ResponseCode"/>
+			<element name="ResponseText" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="SubmitRequest">
+		<annotation>
+			<documentation>The submit request</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="tns1:RequestBase">
+				<sequence>
+					<element name="DestinationID" type="tns1:SystemIdentifier" maxOccurs="unbounded"/>
+					<element name="ExecMode" type="tns1:ExecMode"/>
+					<element name="Timestamp" type="dateTime"/>
+					<element name="Message" type="tns1:CJSEMessage"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="SubmitResponse">
+		<annotation>
+			<documentation>The submit response</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="tns1:ResponseBase"/>
+		</complexContent>
+	</complexType>
+	<element name="SubmitRequestMes" type="tns1:SubmitRequest"/>
+	<element name="SubmitResponseMes" type="tns1:SubmitResponse"/>
+</schema>

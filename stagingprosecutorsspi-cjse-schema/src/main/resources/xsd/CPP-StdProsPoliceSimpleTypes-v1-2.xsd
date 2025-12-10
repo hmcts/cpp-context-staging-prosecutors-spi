@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.dca.gov.uk/xmlschemas/libra" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.dca.gov.uk/xmlschemas/libra" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.2" id="DCA-Libra-StdProsPoliceSimpleTypes">
+	<xsd:annotation>
+		<xsd:appinfo xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Accessibility>Individuals will have no access to this resource; it just defines data transfer between end systems</Accessibility>
+				<Coverage.spatial>The magistrates' courts of England and Wales, and their Interchange Partner for a particular interface</Coverage.spatial>
+				<Creator>The Libra Project</Creator>
+				<Date>
+					<Version>2005-11-04</Version>
+				</Date>
+				<Description>This resource is one of the schema documents comprising a particular version of the Interface XML Schema. It appears in the Interface XML Schema Configuration Set. Parties to the interface can load/reload a particular version of the Interface XML Schema Configuration Set to the location of their choice, for core assessment by schema validation software. By this mechanism, configuration management of the Interface XML Schema is attained</Description>
+				<Identifier>DCA-Libra-StdProsPoliceSimpleTypes-v1-2</Identifier>
+				<Language>Eng</Language>
+				<Publisher>Department for Constitutional Affairs, Clive House, 70 Petty France, London SW1H 9HD</Publisher>
+				<Rights> Unclassified 
+  					<Copyright>Crown copyright 2005</Copyright>
+				</Rights>
+				<Source>Libra/Interfaces/00029 Interface Specification document - Version 4.0</Source>
+				<Status>Version 1.2 based on previous versions refined by external review</Status>
+				<Subject>Base level schema for simple data types common to messages on the Libra standard business application interface: Court ~ Standard Prosecutor (Police)												<Category>Government department</Category>
+				</Subject>
+				<Title>Magistrates' court ~ Standard Prosecutor (Police) interface; in-house defined simple types, in alphabetical order</Title>
+				<Type>XML Schema</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation> Simple type definitions- in alphabetical order</xsd:documentation>
+	</xsd:annotation>
+	<xsd:simpleType name="AlcoholLevelAmountType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AlcoholLevelMethodType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ArrestSummonsOffenceNumberType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BailConditionsType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2500"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BailStatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CaseMarkerType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CounterpartIssueType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CourtCodeType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:pattern value="[0-9]{4}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CROnumberType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="12"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustodyStatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateQualifierCodeType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:pattern value="[1-6]{1}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DriverLicenceCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DriverLicenceIssueType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DurationUnitType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DurationValueType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DXaddressType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="80"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FinalDisposalIndicatorType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FindingType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="InformantType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="92"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="InitiationCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LanguageType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LanguageNeedsType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="150"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocationOfOffenceType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="80"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ModeOfTrialType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="99"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NextHearingReasonType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="80"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ObservedEthnicityType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OccupationCodeType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:pattern value="[0-9]{0,5}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OccupationType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="54"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OffenceBailStatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OffenceCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OffenceWordingType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2500"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OffenderCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OrganisationLocationCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PenaltyPointsType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="99"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonNationalityType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonOrganisationPNCidentifierType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9A-Za-z'\.\-_]{0,13}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PleaType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="88"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PoliceOfficerRankType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="35"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PoliceWorkerReferenceNumberType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PresentAtHearingType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ProsecutorReferenceType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PTIURNtype">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="11"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ReasonForBailOrCustodyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2500"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ResultCodeType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="9999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ResultQualifierCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ResultTextType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2500"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SelfDefinedEthnicityType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z][A-Z0-9]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SpecialNeedsType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="80"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatementOfFactsType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SummonsCodePoliceType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="VehicleCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="VehicleOperatorLicenceNumberType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="VehicleRegistrationMarkType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="11"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

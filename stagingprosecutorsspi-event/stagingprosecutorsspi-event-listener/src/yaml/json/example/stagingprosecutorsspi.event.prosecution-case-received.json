@@ -1,0 +1,193 @@
+{
+  "caseId": "3631bfcd-28db-469b-a7e7-279684572e9e",
+  "oiId": "ae679a3e-28af-4884-b52a-c356a0415b9f",
+  "policeCase": {
+    "caseDetails": {
+      "caseInitiationCode": "S",
+      "caseMarker": "CaseMarker",
+      "cpSorganisation": "CPSorganis",
+      "informant": "Informant0",
+      "initialHearing": {
+        "courtHearingLocation": "CourtHeari",
+        "dateOfHearing": "2006-05-04",
+        "timeOfHearing": "09:01:01.001"
+      },
+      "originatingOrganisation": "Originatin",
+      "ptiurn": "377U5000811",
+      "summonsCode": "S",
+      "vehicleOperatorLicenceNumber": "VehicleOp"
+    },
+    "defendants": [{
+      "id": "5b8aa940-6fcf-43ab-bce0-e28513fe5bf2",
+      "offence": [{
+        "baseOffenceDetails": {
+          "alcoholLevelAmount": 500,
+          "alcoholLevelMethod": "A",
+          "arrestDate": "2006-05-04",
+          "chargeDate": "2006-05-04",
+          "locationOfOffence": "LocationOfOffence0",
+          "offenceCode": "OffenceC",
+          "offenceDateCode": 1,
+          "offenceDateStartDate": "2006-05-04",
+          "offenceEndDate": "2005-05-05",
+          "offenceEndTime": "10:00:00.000",
+          "offenceSequenceNumber": 500,
+          "offenceStartTime": "09:00:00.000",
+          "offenceWording": "OfWord",
+          "vehicleCode": "a",
+          "vehicleRegistrationMark": "TE4654"
+        },
+        "otherPartyVictim": [{
+          "address": {
+            "administrativeArea": "AdministrativeArea4O",
+            "locality": "Locality2O",
+            "paon": "     ",
+            "postTown": "PostTownO",
+            "postcode": "A0 0AO",
+            "saon": "     ",
+            "streetDescription": "StreetDescriptionO",
+            "town": "Town2O",
+            "uniquePropertyReferenceNumber": "52",
+            "uniqueStreetReferenceNumber": "50000008"
+          },
+          "birthDate": "2001-01-01",
+          "emailAddress1": "Ovishnu@gmail.com",
+          "emailAddress2": "Oilja@gmail.com",
+          "gender": 0,
+          "observedEthnicity": 8,
+          "personFamilyName": "OPersonFamilyName2",
+          "personGivenName1": "OPersonGivenName11",
+          "personGivenName2": "OPersonGivenName21",
+          "personGivenName3": "OPersonGivenName31",
+          "personTitle": "OPersonTitle1",
+          "selfDefinedEthnicity": "B,",
+          "telephoneNumberBusiness": "2917894278022",
+          "telephoneNumberHome": "29998021888",
+          "telephoneNumberMobile": "29998021889"
+        }],
+        "prosecutionFacts": "ProsecutionFacts0"
+      }],
+      "policeIndividualDefendant": {
+        "address": {
+          "administrativeArea": "AdministrativeArea4",
+          "locality": "Locality1",
+          "paon": "     ",
+          "postTown": "PostTown1",
+          "postcode": "A0 0AA",
+          "saon": "     ",
+          "streetDescription": "StreetDescription1",
+          "town": "Town2",
+          "uniquePropertyReferenceNumber": "50",
+          "uniqueStreetReferenceNumber": "50000000"
+        },
+        "alias": [{
+          "personFamilyName": "PersonFamilyName2",
+          "personGivenName1": "PersonGivenName11",
+          "personGivenName2": "PersonGivenName21",
+          "personGivenName3": "PersonGivenName31",
+          "personTitle": "PersonTitle1"
+        }],
+        "counterpartIssue": "C",
+        "crOnumber": "CROnumber0",
+        "custodyStatus": "C",
+        "documentationLanguage": "W",
+        "driverLicenceCode": "D",
+        "driverLicenceIssue": "Dr",
+        "driverNumber": "ABCDE0,0010BCFAA",
+        "hearingLanguage": "E",
+        "languageNeeds": "LanguageNeeds0",
+        "observedEthnicity": 4,
+        "occupation": "Occupation0",
+        "occupationCode": 50,
+        "offenderCode": "Off",
+        "parentGuardianDetails": {
+          "address": {
+            "administrativeArea": "AdministrativeArea4G",
+            "locality": "Locality2G",
+            "paon": "     ",
+            "postTown": "PostTownG",
+            "postcode": "A0 0AG",
+            "saon": "     ",
+            "streetDescription": "StreetDescriptionG",
+            "town": "Town2G",
+            "uniquePropertyReferenceNumber": "51",
+            "uniqueStreetReferenceNumber": "50000009"
+          },
+          "basePersonDetails": {
+            "birthDate": "2009-09-09",
+            "emailAddress1": "Gvishnu@gmail.com",
+            "emailAddress2": "Gilja@gmail.com",
+            "gender": 1,
+            "personName": {
+              "personFamilyName": "GPersonFamilyName2",
+              "personGivenName1": "GPersonGivenName11",
+              "personGivenName2": "GPersonGivenName21",
+              "personGivenName3": "GPersonGivenName31",
+              "personTitle": "GPersonTitle1"
+            },
+            "telephoneNumberBusiness": "1917894278022",
+            "telephoneNumberHome": "19998021888",
+            "telephoneNumberMobile": "19998021889"
+          },
+          "observedEthnicity": 6,
+          "selfDefinedEthnicity": "B,"
+        },
+        "perceivedBirthYear": "2006",
+        "personDefendant": {
+          "bailConditions": "BailConditions0",
+          "basePersonDetails": {
+            "birthDate": "2008-08-08",
+            "emailAddress1": "Dvishnu@gmail.com",
+            "emailAddress2": "Dilja@gmail.com",
+            "gender": 1,
+            "personName": {
+              "personFamilyName": "PersonFamilyName0A",
+              "personGivenName1": "PersonGivenName10A",
+              "personGivenName2": "PersonGivenName20A",
+              "personGivenName3": "PersonGivenName30A",
+              "personTitle": "PersonTitle0A"
+            },
+            "telephoneNumberBusiness": "0917894278022",
+            "telephoneNumberHome": "09998021888",
+            "telephoneNumberMobile": "09998021889"
+          },
+          "personStatedNationality": "Per",
+          "pnCidentifier": "PNCidentifier"
+        },
+        "selfDefinedEthnicity": "A,",
+        "specialNeeds": "SpecialNeeds0"
+      },
+      "prosecutorReference": "ProsecutorReference0"
+    }],
+    "otherPartyOfficerInCase": {
+      "dxaddress": "DXaddress0",
+      "emailAddress1": "vishnu@gmail.com",
+      "emailAddress2": "ilja@gmail.com",
+      "faxNumber": "0117894278022",
+      "officerName": {
+        "personFamilyName": "PersonFamilyName0",
+        "personGivenName1": "PersonGivenName10",
+        "personGivenName2": "PersonGivenName20",
+        "personGivenName3": "PersonGivenName30",
+        "personTitle": "PersonTitle0"
+      },
+      "policeOfficerRank": "PoliceOfficerRank0",
+      "policeWorkerLocationCode": "PoliceWork",
+      "policeWorkerReferenceNumber": "PoliceWorkerRef",
+      "structuredAddress": {
+        "administrativeArea": "AdministrativeArea0",
+        "locality": "Locality0",
+        "paon": "     ",
+        "postTown": "PostTown0",
+        "postcode": "A0 0AA",
+        "saon": "     ",
+        "streetDescription": "StreetDescription0",
+        "town": "Town0",
+        "uniquePropertyReferenceNumber": "50",
+        "uniqueStreetReferenceNumber": "50000000"
+      },
+      "telephoneNumberBusiness": "000111222",
+      "telephoneNumberMobile": "07998021889"
+    }
+  }
+}

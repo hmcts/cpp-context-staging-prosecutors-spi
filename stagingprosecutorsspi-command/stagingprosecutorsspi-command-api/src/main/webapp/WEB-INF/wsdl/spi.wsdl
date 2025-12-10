@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Version 0.01, 02/02/2004 -->
+<!-- Version 0.02, 12/02/2004 - Addition of tns1 prefix in schema definition to comply with Assertion WS2122 of  WS-I Basic Profile -->
+<!-- Version 0.03, 13/02/2004 - Addition of elementFormDefault & attributeFormDefault as qualified to ensure all sub-elements in schema are in correct namespace -->
+<!-- Version 1.1, 05/11/2004 - restriction on spaces in requestIDs as per CREXr1-010 AS PER SPEC VERSION 1.2-->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://schemas.cjse.gov.uk/endpoint/wsdl/" xmlns:tns1="http://schemas.cjse.gov.uk/endpoint/types/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://schemas.cjse.gov.uk/endpoint/wsdl/">
+    <types>
+        <schema targetNamespace="http://schemas.cjse.gov.uk/endpoint/types/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns1="http://schemas.cjse.gov.uk/endpoint/types/" elementFormDefault="qualified" attributeFormDefault="qualified">
+            <simpleType name="SystemIdentifier">
+                <annotation>
+                    <documentation>Identifier of the systems - source and destinations</documentation>
+                </annotation>
+                <restriction base="string"/>
+            </simpleType>
+            <simpleType name="ExecMode">
+                <annotation>
+                    <documentation>Invocation mode - synchronous, asynchronous and routing only</documentation>
+                </annotation>
+                <restriction base="string">
+                    <enumeration value="ASYNCH"/>
+                    <enumeration value="SYNCH"/>
+                    <enumeration value="ROUTE"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="ResponseCode">
+                <annotation>
+                    <documentation>Standard response codes</documentation>
+                </annotation>
+                <restriction base="int"/>
+            </simpleType>
+            <simpleType name="CJSEMessage">
+                <annotation>
+                    <documentation>The text of the message</documentation>
+                </annotation>
+                <restriction base="string"/>
+            </simpleType>
+            <complexType name="RetrieveFilter">
+                <annotation>
+                    <documentation>The time range filter for retrieve</documentation>
+                </annotation>
+                <sequence>
+                    <element name="TimeFrom" type="dateTime"/>
+                    <element name="TimeTo" type="dateTime" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </complexType>
+            <complexType abstract="true" name="RequestBase">
+                <annotation>
+                    <documentation>The required part of any request</documentation>
+                </annotation>
+                <sequence>
+                    <element name="RequestID">
+                        <simpleType>
+                            <restriction base="string">
+                                <pattern value="\S+"/>
+                            </restriction>
+                        </simpleType>
+                    </element>
+                    <element name="SourceID" type="tns1:SystemIdentifier"/>
+                </sequence>
+            </complexType>
+            <complexType abstract="true" name="ResponseBase">
+                <annotation>
+                    <documentation>The standard part of any response</documentation>
+                </annotation>
+                <sequence>
+                    <element name="RequestID">
+                        <simpleType>
+                            <restriction base="string">
+                                <pattern value="\S+"/>
+                            </restriction>
+                        </simpleType>
+                    </element>
+                    <element name="ResponseCode" type="tns1:ResponseCode"/>
+                    <element name="ResponseText" type="string" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </complexType>
+            <complexType name="SubmitRequest">
+                <annotation>
+                    <documentation>The submit request</documentation>
+                </annotation>
+                <complexContent>
+                    <extension base="tns1:RequestBase">
+                        <sequence>
+                            <element name="DestinationID" type="tns1:SystemIdentifier" maxOccurs="unbounded"/>
+                            <element name="ExecMode" type="tns1:ExecMode"/>
+                            <element name="Timestamp" type="dateTime"/>
+                            <element name="Message" type="tns1:CJSEMessage"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <complexType name="SubmitResponse">
+                <annotation>
+                    <documentation>The submit response</documentation>
+                </annotation>
+                <complexContent>
+                    <extension base="tns1:ResponseBase"/>
+                </complexContent>
+            </complexType>
+            <complexType name="RetrieveRequest">
+                <annotation>
+                    <documentation>The retrieve request</documentation>
+                </annotation>
+                <complexContent>
+                    <extension base="tns1:RequestBase">
+                        <sequence>
+                            <element name="Filter" type="tns1:RetrieveFilter" minOccurs="0" maxOccurs="1"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <complexType name="RetrieveResponse">
+                <annotation>
+                    <documentation>The retrieve response</documentation>
+                </annotation>
+                <complexContent>
+                    <extension base="tns1:ResponseBase">
+                        <sequence>
+                            <element name="TimeLast" type="dateTime"/>
+                            <element name="Message" type="tns1:CJSEMessage" minOccurs="0" maxOccurs="unbounded"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <element name="SubmitRequestMes" type="tns1:SubmitRequest"/>
+            <element name="SubmitResponseMes" type="tns1:SubmitResponse"/>
+            <element name="RetrieveRequestMes" type="tns1:RetrieveRequest"/>
+            <element name="RetrieveResponseMes" type="tns1:RetrieveResponse"/>
+        </schema>
+    </types>
+    <message name="submitRequest">
+        <part name="SubmitRequest" element="tns1:SubmitRequestMes"/>
+    </message>
+    <message name="submitResponse">
+        <part name="SubmitResponse" element="tns1:SubmitResponseMes"/>
+    </message>
+    <message name="retrieveRequest">
+        <part name="RetrieveRequest" element="tns1:RetrieveRequestMes"/>
+    </message>
+    <message name="retrieveResponse">
+        <part name="RetrieveResponse" element="tns1:RetrieveResponseMes"/>
+    </message>
+    <portType name="CJSEPort">
+        <operation name="submit" parameterOrder="SubmitRequest">
+            <input name="submitRequest" message="impl:submitRequest"/>
+            <output name="submitResponse" message="impl:submitResponse"/>
+        </operation>
+        <operation name="retrieve" parameterOrder="RetrieveRequest">
+            <input name="retrieveRequest" message="impl:retrieveRequest"/>
+            <output name="retrieveResponse" message="impl:retrieveResponse"/>
+        </operation>
+    </portType>
+    <binding name="CJSEBinding" type="impl:CJSEPort">
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="submit">
+            <wsdlsoap:operation soapAction="http://schemas.cjse.gov.uk/endpoint/wsdl/submit"/>
+            <input>
+                <wsdlsoap:body use="literal"/>
+            </input>
+            <output>
+                <wsdlsoap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="retrieve">
+            <wsdlsoap:operation soapAction="http://schemas.cjse.gov.uk/endpoint/wsdl/retrieve"/>
+            <input>
+                <wsdlsoap:body use="literal"/>
+            </input>
+            <output>
+                <wsdlsoap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CJSEService">
+        <port name="Delivery" binding="impl:CJSEBinding">
+            <wsdlsoap:address location="http://replace_url:port/stagingprosecutorsspi-service/CJSEService"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeCase.json",
+  "type": "object",
+  "description": "Prosecution Case File Details",
+  "properties": {
+    "caseDetails": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/case-details.json"
+    },
+    "defendants": {
+      "type": "array",
+      "items": {
+        "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeDefendant.json"
+      }
+    },
+    "otherPartyOfficerInCase": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeOfficerInCase.json"
+    }
+  },
+  "required": [
+    "caseDetails",
+    "defendants"
+  ],
+  "additionalProperties": false
+}

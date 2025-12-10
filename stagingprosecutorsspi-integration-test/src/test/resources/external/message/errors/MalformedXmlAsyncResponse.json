@@ -1,0 +1,9 @@
+{
+  "sourceID": "B00LIBRA",
+  "requestID": "REQUEST_ID",
+  "execMode": "ASYNCH",
+  "destinationID": [
+    "Z00CJSE"
+  ],
+  "message": "&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;RouteDataResp VersionNumber=&quot;1.0&quot; xmlns=&quot;http://schemas.cjse.gov.uk/common/operations&quot; xmlns:ns2=&quot;http://schemas.cjse.gov.uk/common/businessentities&quot; xmlns:ns3=&quot;http://schemas.cjse.gov.uk/common/businesstypes&quot;&gt;&lt;ResponseToSystem VersionNumber=&quot;1.0&quot;&gt;&lt;CorrelationID&gt;CORRELATION_ID&lt;/CorrelationID&gt;&lt;SystemID literalvalue=&quot;String&quot;&gt;C00CommonPlatform&lt;/SystemID&gt;&lt;OrganizationalUnitID literalvalue=&quot;String&quot;&gt;0000000&lt;/OrganizationalUnitID&gt;&lt;DataController literalvalue=&quot;String&quot;&gt;richard.hanley&lt;/DataController&gt;&lt;User literalvalue=&quot;String&quot;&gt;richard.hanley&lt;/User&gt;&lt;SourceID literalvalue=&quot;String&quot;&gt;00501PoliceCaseSystem&lt;/SourceID&gt;&lt;DestinationID literalvalue=&quot;String&quot;&gt;C00CommonPlatform&lt;/DestinationID&gt;&lt;TestOperation&gt;true&lt;/TestOperation&gt;&lt;/ResponseToSystem&gt;&lt;OperationStatus&gt;&lt;StatusClass&gt;FatalError&lt;/StatusClass&gt;&lt;Code&gt;1310&lt;/Code&gt;&lt;Description&gt;UnusableDataStream&lt;/Description&gt;&lt;ResponseContext&gt;javax.xml.bind.UnmarshalException\n - with linked exception:\n[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.]\n\tat javax.xml.bind.helpers.AbstractUnmars&lt;/ResponseContext&gt;&lt;RouteId&gt;001&lt;/RouteId&gt;&lt;/OperationStatus&gt;&lt;/RouteDataResp&gt;\n"
+}

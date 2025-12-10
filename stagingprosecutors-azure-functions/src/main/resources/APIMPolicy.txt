@@ -1,0 +1,116 @@
+<policies>
+    <inbound>
+        <base />
+        <send-request mode="new" response-variable-name="secretResponse" timeout="20" ignore-error="false">
+            <set-url>{{{{changeme-endpoint}}}}/v1/authenticate</set-url>
+            <set-method>GET</set-method>
+            <authentication-managed-identity resource="https://vault.azure.net" />
+        </send-request>
+        <set-variable name="secret" value="@{
+            var secret = ((IResponse)context.Variables["secretResponse"]).Body.As<JObject>();
+            return secret["value"].ToString();
+        }" />
+        <!-- Call CJSE META DATA Function and extract required attributes -->
+        <send-request mode="copy" response-variable-name="cjseDATA" timeout="30" ignore-error="false">
+            <set-url>{{cjsemetadata-function-url}}</set-url>
+            <set-method>POST</set-method>
+            <set-header name="Content-Type" exists-action="override">
+                <value>application/octet-stream</value>
+            </set-header>
+            <set-body>@(context.Request.Body.As<String>(preserveContent: true).ToString())</set-body>
+        </send-request>
+        <choose>
+            <when condition="@(((string)((IResponse)context.Variables["cjseDATA"]).Body.As<String>(preserveContent: true).ToString()).Contains("isAsyncResponse") == true)">
+                    <!-- It is a Async response from the CJSE  -->
+                <set-backend-service base-url="{{stagging-prosecutors-base-url}}" />
+                <rewrite-uri template="{{stagging-prosecutors-rewrite-url}}" copy-unmatched-params="true" />
+                <set-header name="CJSCPPUID" exists-action="override">
+                <value>@((string)context.Variables["secret"])</value>
+                </set-header>
+                <set-body>@(context.Request.Body.As<String>(preserveContent: true).ToString())</set-body>
+
+             </when>
+            <when condition="@(((string)((IResponse)context.Variables["cjseDATA"]).Body.As<String>(preserveContent: true).ToString()).Contains("mdiFailure") == false)">
+                <!-- Call Apply Filter rules function -->
+                <send-request mode="copy" response-variable-name="applyFilterStatus" timeout="30" ignore-error="false">
+                    <set-url>@($"{{applyfilter-function-url}}&CaseReference={((string)((IResponse)context.Variables["cjseDATA"]).Body.As<JObject>(preserveContent: true)["cjseMetaData"]["caseReference"])}&InitiationCode={((string)((IResponse)context.Variables["cjseDATA"]).Body.As<JObject>(preserveContent: true)["cjseMetaData"]["caseInitiationCode"])}&ProsecutorCode={((string)((IResponse)context.Variables["cjseDATA"]).Body.As<JObject>(preserveContent: true)["cjseMetaData"]["prosecutorOUCode"])}&CourtCentreCode={((string)((IResponse)context.Variables["cjseDATA"]).Body.As<JObject>(preserveContent: true)["cjseMetaData"]["courtCenterOUCode"])}&DateOfHearing={((string)((IResponse)context.Variables["cjseDATA"]).Body.As<JObject>(preserveContent: true)["cjseMetaData"]["dateOfHearing"])}&TimeOfHearing={((string)((IResponse)context.Variables["cjseDATA"]).Body.As<JObject>(preserveContent: true)["cjseMetaData"]["timeOfHearing"])}&SummonsCode={((string)((IResponse)context.Variables["cjseDATA"]).Body.As<JObject>(preserveContent: true)["cjseMetaData"]["summons"])}")</set-url>
+                    <set-method>GET</set-method>
+                </send-request>
+                <choose>
+                    <when condition="@((string)((IResponse)context.Variables["applyFilterStatus"]).Body.As<String>().ToString() == "True")">
+                        <!-- Case Filtered or Ejected and required to be relayed to Libra -->
+                        <!-- Call Relay to Libra -->
+                        <send-request mode="copy" response-variable-name="replayCaseReq" timeout="30" ignore-error="false">
+                            <set-url>{{relaytolibra-function-url}}</set-url>
+                            <set-method>POST</set-method>
+                            <set-body>@(context.Request.Body.As<String>(preserveContent: true).ToString())</set-body>
+                        </send-request>
+                        <choose>
+                            <when condition="@(((IResponse)context.Variables["replayCaseReq"]).StatusCode == 200)">
+                                <!-- Route it to Libra -->
+                                <set-backend-service base-url="{{route-to-cjse-base-url}}" />
+                                <rewrite-uri template="{{route-to-cjse-rewrite-url}}" copy-unmatched-params="true" />
+                                <set-body>@((string)((IResponse)context.Variables["replayCaseReq"]).Body.As<String>(preserveContent: true).ToString())</set-body>
+                            </when>
+                            <otherwise>
+                                <!-- Route it to stagging prosecutors (with Mdi Error) -->
+                                <set-backend-service base-url="{{stagging-prosecutors-base-url}}" />
+                                <rewrite-uri template="{{stagging-prosecutors-rewrite-url}}" copy-unmatched-params="true" />
+                                <set-header name="CJSCPPUID" exists-action="override">
+                                    <value>@((string)context.Variables["secret"])</value>
+                                </set-header>
+                                <set-body>@(context.Request.Body.As<String>(preserveContent: true).ToString())</set-body>
+                            </otherwise>
+                        </choose>
+                    </when>
+                    <otherwise>
+                        <!-- Case Not Filtered Nor Ejected and required to be sent to stagging prosecutors -->
+                        <!-- Submit request -->
+                        <set-backend-service base-url="{{stagging-prosecutors-base-url}}" />
+                        <rewrite-uri template="{{stagging-prosecutors-rewrite-url}}" copy-unmatched-params="true" />
+                        <set-header name="CJSCPPUID" exists-action="override">
+                            <value>@((string)context.Variables["secret"])</value>
+                        </set-header>
+                        <set-body>@(context.Request.Body.As<String>(preserveContent: true).ToString())</set-body>
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                <!-- CJSE META DATA EMPTY REDIRECT IT BACK TO RELAY CASE FUNCTION -->
+                <send-request mode="copy" response-variable-name="replayCaseRes" timeout="30" ignore-error="false">
+                    <set-url>{{relaytolibra-function-url}}</set-url>
+                    <set-method>POST</set-method>
+                    <set-body>@(context.Request.Body.As<string>(preserveContent: true).ToString())</set-body>
+                </send-request>
+                <choose>
+                    <when condition="@(((IResponse)context.Variables["replayCaseRes"]).StatusCode == 200)">
+                        <!-- Route it to Libra -->
+                        <set-backend-service base-url="{{route-to-cjse-base-url}}" />
+                        <rewrite-uri template="{{route-to-cjse-rewrite-url}}" copy-unmatched-params="true" />
+                        <set-body>@((string)((IResponse)context.Variables["replayCaseRes"]).Body.As<String>(preserveContent: true).ToString())</set-body>
+                    </when>
+                    <otherwise>
+                        <!-- Route it to stagging prosecutors  -->
+                        <set-backend-service base-url="{{stagging-prosecutors-base-url}}" />
+                        <rewrite-uri template="{{stagging-prosecutors-rewrite-url}}" copy-unmatched-params="true" />
+                        <set-header name="CJSCPPUID" exists-action="override">
+                            <value>@((string)context.Variables["secret"])</value>
+                        </set-header>
+                        <set-body>@(context.Request.Body.As<String>(preserveContent: true).ToString())</set-body>
+                    </otherwise>
+                </choose>
+            </otherwise>
+        </choose>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <on-error>
+        <base />
+        <!-- On error Submit request for odi/mdi validations -->
+        <set-backend-service base-url="@($"{{stagging-prosecutors-base-url}} {{stagging-prosecutors-rewrite-url}}")" />
+    </on-error>
+    <outbound>
+        <base />
+    </outbound>
+</policies>

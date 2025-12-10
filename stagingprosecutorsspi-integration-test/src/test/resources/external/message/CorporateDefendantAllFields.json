@@ -1,0 +1,129 @@
+{
+  "defendants": [
+    {
+      "id": "xxx",
+      "offence": [
+        {
+          "prosecutionFacts": "ProsecutionFacts0",
+          "otherPartyVictim": [
+            {
+              "personTitle": "OPersonTitle1",
+              "address": {
+                "uniquePropertyReferenceNumber": "52",
+                "paon": "     ",
+                "town": "Town2O",
+                "streetDescription": "StreetDescriptionO",
+                "uniqueStreetReferenceNumber": "50000008",
+                "locality": "Locality2O",
+                "postcode": "A0 0AO",
+                "saon": "     ",
+                "administrativeArea": "AdministrativeArea4O",
+                "postTown": "PostTownO"
+              },
+              "gender": 0,
+              "telephoneNumberBusiness": "2917894278022",
+              "emailAddress1": "Ovishnu@gmail.com",
+              "emailAddress2": "Oilja@gmail.com",
+              "personGivenName3": "OPersonGivenName31",
+              "birthDate": "2001-01-01",
+              "telephoneNumberHome": "29998021888",
+              "personGivenName2": "OPersonGivenName21",
+              "observedEthnicity": 8,
+              "personGivenName1": "OPersonGivenName11",
+              "telephoneNumberMobile": "29998021889",
+              "personFamilyName": "OPersonFamilyName2",
+              "selfDefinedEthnicity": "B1"
+            }
+          ],
+          "baseOffenceDetails": {
+            "offenceWording": "On 09/12/2004 at East Yorkshire had in your possession a firearm with intent by means thereof to cause anonymous person to believe that unlawful violence would be used against him or another.",
+            "offenceEndTime": "10:00:00.000",
+            "vehicleCode": "a",
+            "offenceSequenceNumber": 500,
+            "offenceEndDate": "2005-05-05",
+            "vehicleRegistrationMark": "TE4654",
+            "offenceDateCode": 1,
+            "alcoholLevelMethod": "A",
+            "locationOfOffence": "LocationOfOffence0",
+            "offenceCode": "OffenceC",
+            "alcoholLevelAmount": 500,
+            "offenceStartTime": "09:00:00.000",
+            "arrestDate": "2006-05-04",
+            "offenceDateStartDate": "2006-05-04",
+            "chargeDate": "2006-05-04"
+          }
+        }
+      ],
+      "prosecutorReference": "ProsecutorReference0",
+      "policeCorporateDefendant": {
+        "organisationName": "OrganisationName0",
+        "address": {
+          "uniquePropertyReferenceNumber": "50",
+          "paon": "     ",
+          "town": "Town6",
+          "streetDescription": "StreetDescription3",
+          "uniqueStreetReferenceNumber": "50000000",
+          "locality": "Locality3",
+          "postcode": "A0 0AA",
+          "saon": "     ",
+          "administrativeArea": "AdministrativeArea10",
+          "postTown": "PostTown2"
+        },
+        "pnCidentifier": "ABCD",
+        "telephoneNumberBusiness": "09876567576",
+        "emailAddress1": "B@gmail.com",
+        "alias": [
+          "Alias0"
+        ],
+        "crOnumber": "CROnumber1",
+        "emailAddress2": "c@gmail.com"
+      }
+    }
+  ],
+  "caseDetails": {
+    "cpSorganisation": "CPSorganis",
+    "summonsCode": "S",
+    "originatingOrganisation": "Originatin",
+    "initialHearing": {
+      "timeOfHearing": "09:01:01.001",
+      "courtHearingLocation": "CourtHeari",
+      "dateOfHearing": "2006-05-04"
+    },
+    "caseInitiationCode": "S",
+    "caseMarker": "CaseMarker",
+    "vehicleOperatorLicenceNumber": "VehicleOp",
+    "ptiurn": "URN_NUMBER",
+    "informant": "Informant0",
+    "policeSystemId" : "00501PoliceCaseSystem"
+  },
+  "otherPartyOfficerInCase": {
+    "dxaddress": "DXaddress0",
+    "policeWorkerLocationCode": "PoliceWork",
+    "structuredAddress": {
+      "uniquePropertyReferenceNumber": "50",
+      "paon": "     ",
+      "town": "Town0",
+      "streetDescription": "StreetDescription0",
+      "uniqueStreetReferenceNumber": "50000000",
+      "locality": "Locality0",
+      "postcode": "A0 0AA",
+      "saon": "     ",
+      "administrativeArea": "AdministrativeArea0",
+      "postTown": "PostTown0"
+    },
+    "policeOfficerRank": "PoliceOfficerRank0",
+    "telephoneNumberBusiness": "0117894278022",
+    "emailAddress1": "vishnu@gmail.com",
+    "officerName": {
+      "personTitle": "PersonTitle0",
+      "personGivenName2": "PersonGivenName20",
+      "personGivenName1": "PersonGivenName10",
+      "personGivenName3": "PersonGivenName30",
+      "personFamilyName": "PersonFamilyName0"
+    },
+    "telephoneNumberMobile": "07998021889",
+    "faxNumber": "0117894278022",
+    "emailAddress2": "ilja@gmail.com",
+    "policeWorkerReferenceNumber": "PoliceWorkerRef"
+  }
+}

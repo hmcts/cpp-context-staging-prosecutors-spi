@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://schemas.cjse.gov.uk/endpoint/types/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <SubmitResponseMes xmlns="http://schemas.cjse.gov.uk/endpoint/types/">
+         <ResponseCode>202</ResponseCode>
+      </SubmitResponseMes>
+   </soapenv:Body>
+</soapenv:Envelope>

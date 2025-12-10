@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://justice.gov.uk/stagingprosecutors/query/stagingprosecutorsspi.query.cpp-message",
+  "type": "object",
+  "properties": {
+    "cppMessages": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "oiId": {
+              "type": "string"
+            },
+            "correlationId": {
+              "type": "string"
+            },
+            "policeSystemId": {
+              "type": "string"
+            },
+            "ptiUrn": {
+              "type": "string"
+            },
+            "caseId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "oiId"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "cppMessages"
+  ]
+}

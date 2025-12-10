@@ -1,0 +1,13 @@
+{
+  "cppMessages": [
+    {
+      "oiId": "OI_ID",
+      "correlationId": "correlation id",
+      "policeSystemId": "police system id",
+      "ptiUrn": "pti urn",
+      "caseId": "CASE_ID",
+      "dataController": "data controller",
+      "organizationUnitID": "Org unit"
+    }
+  ]
+}

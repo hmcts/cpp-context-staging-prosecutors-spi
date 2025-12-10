@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/cjse-message.json",
+  "type": "object",
+  "description": "CJSE message",
+  "properties": {
+    "requestId": {
+      "type": "string"
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "destinationID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "execMode": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "mdiError": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-error.json"
+    }
+  },
+  "required": [
+    "destinationID",
+    "timestamp",
+    "message"
+  ],
+  "additionalProperties": true
+}

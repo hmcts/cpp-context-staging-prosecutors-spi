@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	
+CJS Exchange: Business Level Interface - Operational Messages - ExISSR1 Operations ONLY - CUT TO SUPPORT ExISSR1 Operational Specification 0.10
+	Version 0.14	  14-06-2004
+	Author: Lawson Davies
+	
+	Updated:					Comment
+	20-April-2004				Initial Creation to support version 0.2 of ExISS R1 OPerational Interface Spec (X009b)
+	25-April-2004				In line with comments on version 0.2 of ExISS R1 OPerational Interface Spec (X009b)
+	03-May-2004				Reworking to support DCA requirements
+	17-May-2004				Version to support version 0.10 of ExISS R1 OPerational Interface Spec (X009b)
+	
+								includes Reworking of RouteDataResponseType
+								to support a Fix for Vivista to avoid a .NET bug 
+								(see http://www.kbalterzcom/Feedback_328349.aspx  and 
+								Article Q328349 in the Microsoft Knowledgebase)
+								plus removal of enumations for SystemIdentifierType and DataStreamContentType as previously expected
+	27-May-2004				Version to support version 0.11 of ExISS R1 Operational Interface Spec (X009b)
+								all version attributes set to fixed value 1.0 in anticipation of sign off of spec 
+	02-June-2004				Jai Dudhia :
+								Changed (BusinessEntity Element) 'ContentType' to 'cjseType:DataStreamContentType' as opposed to
+								cjseType:DataStreamPayloadContentType.
+								Removed restriction (BusinessType Element) on 'DataStreamPayloadContentType' from (4-20) to just string type.
+	07-June-2004				Lawson Davies :
+								Reversed previous change, but allowed DataStreamContent in DataStream to be an unbounded, whitespace preserved string.	
+	14-June-2004				Lawson Davies:
+								one instance of the literalvalue attribute (on SystemID) had stayed as required instead of switching to optional.
+	17-June-2004				Lawson Davies
+								version signed off - unchanged from previous 0.14
+	
+	NOTE: a future version will include an update to use CJIT Data Standards schemas (once these have been signed off) 	
+	-->
+<xsd:schema targetNamespace="http://schemas.cjse.gov.uk/common/businesstypes" xmlns:cjseType="http://schemas.cjse.gov.uk/common/businesstypes" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:personal="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.3" id="cjseBusinessTypes">
+
+
+	<!--Simple Types reused in CJSE Operations and Entities-->
+	<xsd:simpleType name="DateType">
+		<xsd:annotation>
+			<xsd:documentation>a date</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:date"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="TimeType">
+		<xsd:annotation>
+			<xsd:documentation>a time</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateTimeType">
+		<xsd:annotation>
+			<xsd:documentation> a data time combination</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:dateTime"/>
+	</xsd:simpleType>
+	<!-- Common CJSE Business Types -->
+	<xsd:simpleType name="DataControllerType">
+		<xsd:annotation>
+			<xsd:documentation>Data Protection Act Data Controller for some CJ Data</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DataStreamContentType">
+		<xsd:annotation>
+			<xsd:documentation>type representing the allowed flows of data that can be transferred via the ExISS R1 CJSE</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="6"/>
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DataStreamPayloadContentType">
+		<xsd:annotation>
+			<xsd:documentation>data format (e.g. xml etc.) for datastream payloads</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="4"/>
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OrganisationalUnitIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>a CJ OrganisationationalUnit Identifier type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="7"/>
+			<xsd:maxLength value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SystemDataStreamIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>a type used for Identifiers of DataStreams</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SystemIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>a type used for System identifiers</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="preserve"/>
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SystemUserType">
+		<xsd:annotation>
+			<xsd:documentation>a type used for User types</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UrgencyIndicator">
+		<xsd:annotation>
+			<xsd:documentation>a type used to indicate urgency for a routing operation</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="6"/>
+			<xsd:minLength value="3"/>
+			<xsd:enumeration value="High"/>
+			<xsd:enumeration value="Medium"/>
+			<xsd:enumeration value="Low"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--End of Simple Types reused in CJSE Operations and Entities-->
+	<!--Complex Types reused in CJSE Operations and Entities-->
+	<xsd:complexType name="CodeType">
+		<xsd:annotation>
+			<xsd:documentation>a type used for codes so they can carry literal values too</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="code">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1"/>
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="literalvalue" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:whiteSpace value="preserve"/>
+					<xsd:maxLength value="60"/>
+					<xsd:minLength value="1"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="DataStreamReferenceIDType">
+		<xsd:annotation>
+			<xsd:documentation>The Type of Reference being used</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- DisclosureListType contains 3 lists of OrganisationalUnit Identifiers for applying security restrictions -->
+	<xsd:complexType name="DisclosureListStructure">
+		<xsd:annotation>
+			<xsd:documentation>a list used to record certain access rights against data</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="isAvailable" type="cjseType:OrganisationalUnitIDListStructure"/>
+			<xsd:element name="isAuthorised" type="cjseType:OrganisationalUnitIDListStructure"/>
+			<xsd:element name="mayChangePermissions" type="cjseType:OrganisationalUnitIDListStructure"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrganisationalUnitIDListStructure">
+		<xsd:annotation>
+			<xsd:documentation>a structure used for lists of OrganisationalUnit Identifiers</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="OrganisationUnitID" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="cjseType:OrganisationalUnitIdentifierType">
+							<xsd:attribute name="literalvalue" use="optional">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:whiteSpace value="preserve"/>
+										<xsd:minLength value="1"/>
+										<xsd:maxLength value="50"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SystemIDListStructure">
+		<xsd:annotation>
+			<xsd:documentation>a structure used for lists of System Identifiers</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SystemID" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="cjseType:SystemIdentifierType">
+							<xsd:attribute name="literalvalue" use="optional">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:whiteSpace value="preserve"/>
+										<xsd:minLength value="1"/>
+										<xsd:maxLength value="50"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--End of Complex Types reused in CJSE Operations and Entities-->
+</xsd:schema>

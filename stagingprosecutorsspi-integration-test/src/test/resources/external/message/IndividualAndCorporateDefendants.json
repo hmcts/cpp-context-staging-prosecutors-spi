@@ -1,0 +1,54 @@
+{
+  "defendants": [ {
+    "id": "xxx",
+    "offence":[ {
+      "baseOffenceDetails": {
+        "offenceCode":"FI68323",
+        "offenceDateCode":1,
+        "offenceDateStartDate":"2004-12-09",
+        "offenceSequenceNumber":500,
+        "offenceWording":"Has a violent past and fear that he will commit further offences and\n            interfere with witnesse"
+      },
+      "otherPartyVictim":[]
+    }],
+    "policeIndividualDefendant":{
+      "address": {
+        "locality":"Locality2O",
+        "paon":"          56Police House",
+        "streetDescription":"StreetDescription",
+        "uniqueStreetReferenceNumber":"50000008"
+      },
+      "alias":[],
+      "documentationLanguage":"E",
+      "hearingLanguage":"E",
+      "personDefendant": {
+        "basePersonDetails": {
+          "gender":1,
+          "personName": {
+            "personFamilyName":"Ormsby"
+          }
+        }
+      }
+    },
+    "prosecutorReference":"TFL"
+  }],
+  "caseDetails": {
+    "caseInitiationCode":"J",
+    "initialHearing": {
+      "courtHearingLocation":"CourtHeari",
+      "dateOfHearing":"2019-02-09",
+      "timeOfHearing":"09:01:01.001"
+    },
+    "originatingOrganisation":"116HQ00",
+    "policeSystemId" : "00501PoliceCaseSystem",
+    "ptiurn":"URN_NUMBER"
+  },
+  "otherPartyOfficerInCase": {
+    "officerName": {
+      "personFamilyName":"Gellart"
+    },
+    "policeOfficerRank":"PoliceOfficerRank0",
+    "policeWorkerLocationCode":"PoliceWork",
+    "policeWorkerReferenceNumber":"PoliceWorkerRef"
+  }
+}
