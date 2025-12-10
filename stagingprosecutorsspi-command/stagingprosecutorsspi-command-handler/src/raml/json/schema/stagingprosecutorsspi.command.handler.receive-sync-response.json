@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/json/schemas/receive-sync-response.json",
+  "type": "object",
+  "properties": {
+    "syncResponse": {
+       "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/sync-response.json"
+     }
+  },
+  "required": [
+    "syncResponse"
+  ]
+}

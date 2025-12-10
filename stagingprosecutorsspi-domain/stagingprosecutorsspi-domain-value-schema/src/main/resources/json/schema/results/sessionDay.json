@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/sessionDay.json",
+  "type": "object",
+  "properties": {
+    "sittingDay": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "listingSequence": {
+      "type": "integer"
+    },
+    "listedDurationMinutes": {
+      "description": "The listed duration in minutes",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "sittingDay",
+    "listedDurationMinutes"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RouteData xmlns="http://schemas.cjse.gov.uk/common/operations"
+           xmlns:cjseEntity="http://schemas.cjse.gov.uk/common/businessentities"
+           VersionNumber="1.0" RequestResponse="Request">
+    <RequestFromSystem VersionNumber="1.0">
+        <CorrelationID>20041940-3b6b-43ca-a8e1-d054052dee1b</CorrelationID>
+        <SystemID literalvalue="CJSE">Z00CJASE</SystemID>
+        <OrganizationalUnitID literalvalue="CJIT CJSE">Z000000</OrganizationalUnitID>
+        <DataController literalvalue="String">lee.flaxington</DataController>
+        <User literalvalue="String">lee.flaxington</User>
+        <SourceID literalvalue="
+String">00301PoliceCaseSystem
+        </SourceID>
+        <DestinationID literalvalue="String">Z00CJSE</DestinationID>
+        <TestOperation>1</TestOperation>
+    </RequestFromSystem>
+    <DataStream VersionNumber="1.0">
+        <cjseEntity:System literalvalue="String">00301PoliceCaseSystem
+        </cjseEntity:System>
+        <cjseEntity:DataStreamType literalvalue="String">SPINewCase</cjseEntity:DataStreamType>
+        <cjseEntity:SystemDataStreamID>06_02_2019_142719_000000 309381
+        </cjseEntity:SystemDataStreamID>
+        <cjseEntity:Name>SPI New Case</cjseEntity:Name>
+        <cjseEntity:Reference>06_02_2019_142719_000000309381</cjseEntity:Reference>
+        <cjseEntity:ReferenceType>SPINewCase
+        </cjseEntity:ReferenceType>
+        <cjseEntity:Dated>2013-12-01</cjseEntity:Dated>
+        <cjseEntity:Timed>14:27:21.657Z</cjseEntity:Timed>
+        <cjseEntity:ContentType>text/plain</cjseEntity:ContentType>
+        <cjseEntity:DataStreamContent
+        >&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+            &lt;DC:NewCaseMessage xmlns:DC="http://www.dca.gov.uk/xmlschemas/libra" Flow="NewCasesFromThePolice"
+            Interface="LibraStandardProsecutorPolice" SchemaVersion="0.6g"&gt;
+            &lt;DC:Case&gt;
+            &lt;DC:PTIURN&gt;71GD6069622&lt;/DC:PTIURN&gt;
+            &lt;DC:OriginatingOrganisation&gt;053NP&lt;/DC:OriginatingOrganisation&gt;
+            &lt;DC:CaseInitiation&gt;C&lt;/DC:CaseInitiation&gt;
+
+            &lt;DC:Informant&gt;06&lt;/DC:Informant&gt;
+            &lt;DC:CPSorganisation&gt;A30AB00&lt;/DC:CPSorganisation&gt;
+            &lt;DC:InitialHearing&gt;
+            &lt;DC:CourtHearingLocation&gt;B01LY01&lt;/DC:CourtHearingLocation&gt;
+            &lt;DC:DateOfHearing&gt;2022-03-06&lt;/DC:DateOfHearing&gt;
+            &lt;DC:TimeOfHearing&gt;10:29:17&lt;/DC:TimeOfHearing&gt;
+            &lt;/DC:InitialHearing&gt;
+            &lt;DC:OtherPartyOfficerInCase&gt;
+            &lt;DC:OfficerName&gt;
+            &lt;DC:PersonGivenName1&gt;Vikesh&lt;/DC:PersonGivenName1&gt;
+            &lt;DC:PersonFamilyName&gt;Sondhi&lt;/DC:PersonFamilyName&gt;
+            &lt;/DC:OfficerName&gt;
+            &lt;DC:PoliceOfficerRank&gt;PC&lt;/DC:PoliceOfficerRank&gt;
+            &lt;DC:PoliceWorkerReferenceNumber&gt;53508&lt;/DC:PoliceWorkerReferenceNumber&gt;
+            &lt;DC:PoliceWorkerLocationCode&gt;EE06&lt;/DC:PoliceWorkerLocationCode&gt;
+            &lt;DC:StructuredAddress&gt;
+            &lt;bsa:SAON xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt; Longsight Station&lt;/bsa:SAON&gt;
+            &lt;bsa:PAON xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt; Greater Manchester Constabulary&lt;/bsa:PAON&gt;
+            &lt;bsa:StreetDescription xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;Grindlow Street&lt;/bsa:StreetDescription&gt;
+            &lt;bsa:Locality xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;Longsight&lt;/bsa:Locality&gt;
+            &lt;bsa:Town xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;Greater Manchester&lt;/bsa:Town&gt;
+            &lt;bsa:PostCode xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;M13 0LL&lt;/bsa:PostCode&gt;
+            &lt;/DC:StructuredAddress&gt;
+            &lt;DC:TelephoneDetails&gt;
+            &lt;DC:TelephoneNumberBusiness&gt;0161 856 4232&lt;/DC:TelephoneNumberBusiness&gt;
+            &lt;/DC:TelephoneDetails&gt;
+            &lt;/DC:OtherPartyOfficerInCase&gt;
+
+
+            &lt;DC:Defendant&gt;
+            &lt;DC:ProsecutorReference&gt;REF1&lt;/DC:ProsecutorReference&gt;
+            &lt;DC:PoliceIndividualDefendant&gt;
+            &lt;DC:PersonDefendant&gt;
+            &lt;DC:BasePersonDetails&gt;
+            &lt;DC:PersonName&gt;
+            &lt;DC:PersonTitle&gt;MR&lt;/DC:PersonTitle&gt;
+            &lt;DC:PersonGivenName1&gt;Robert&lt;/DC:PersonGivenName1&gt;
+            &lt;DC:PersonFamilyName&gt;Smith&lt;/DC:PersonFamilyName&gt;
+            &lt;/DC:PersonName&gt;
+            &lt;DC:TelephoneDetails&gt;
+            &lt;DC:TelephoneNumberHome&gt;015324443756&lt;/DC:TelephoneNumberHome&gt;
+            &lt;/DC:TelephoneDetails&gt;
+            &lt;DC:Birthdate&gt;1998-08-16&lt;/DC:Birthdate&gt;
+            &lt;DC:Gender&gt;1&lt;/DC:Gender&gt;
+            &lt;/DC:BasePersonDetails&gt;
+            &lt;DC:PersonStatedNationality&gt;BRA&lt;/DC:PersonStatedNationality&gt;
+            &lt;/DC:PersonDefendant&gt;
+            &lt;DC:Address&gt;
+            &lt;bsa:PAON xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt; 336 &lt;/bsa:PAON&gt;
+            &lt;bsa:StreetDescription xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;MALLERTON WAY&lt;/bsa:StreetDescription&gt;
+            &lt;bsa:Town xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;DUNSTABLE&lt;/bsa:Town&gt;
+            &lt;bsa:PostCode xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;LN5 5TT&lt;/bsa:PostCode&gt;
+            &lt;/DC:Address&gt;
+            &lt;DC:PersonEthnicity&gt;
+            &lt;DC:ObservedEthnicity&gt;1&lt;/DC:ObservedEthnicity&gt;
+            &lt;DC:SelfDefinedEthnicity&gt;W1&lt;/DC:SelfDefinedEthnicity&gt;
+            &lt;/DC:PersonEthnicity&gt;
+            &lt;DC:OccupationCode&gt;02201&lt;/DC:OccupationCode&gt;
+            &lt;DC:Occupation&gt;Accountant&lt;/DC:Occupation&gt;
+            &lt;DC:CustodyStatus&gt;C&lt;/DC:CustodyStatus&gt;
+            &lt;DC:LanguageOptions&gt;
+            &lt;DC:DocumentationLanguage&gt;E&lt;/DC:DocumentationLanguage&gt;
+            &lt;DC:HearingLanguage&gt;E&lt;/DC:HearingLanguage&gt;
+            &lt;/DC:LanguageOptions&gt;
+            &lt;/DC:PoliceIndividualDefendant&gt;
+
+            &lt;DC:Offence&gt;
+            &lt;DC:BaseOffenceDetails&gt;
+            &lt;DC:OffenceSequenceNumber&gt;001&lt;/DC:OffenceSequenceNumber&gt;
+            &lt;DC:OffenceCode&gt;CA03012&lt;/DC:OffenceCode&gt;
+            &lt;DC:OffenceWording&gt;On TEST at TEST used or threatened unlawful violence towards another and your
+            conduct was such as would cause a person of reasonable firmness present at the sce
+            ne to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&lt;/DC:OffenceWording&gt;
+            &lt;DC:OffenceTiming&gt;
+            &lt;DC:OffenceDateCode&gt;1&lt;/DC:OffenceDateCode&gt;
+            &lt;DC:OffenceStart&gt;
+            &lt;DC:OffenceDateStartDate&gt;2017-12-12&lt;/DC:OffenceDateStartDate&gt;
+            &lt;DC:OffenceStartTime&gt;10:15:00&lt;/DC:OffenceStartTime&gt;
+            &lt;/DC:OffenceStart&gt;
+            &lt;DC:OffenceEnd/&gt;
+            &lt;/DC:OffenceTiming&gt;
+            &lt;DC:ChargeDate&gt;2017-12-12&lt;/DC:ChargeDate&gt;
+            &lt;DC:ArrestDate&gt;2017-12-12&lt;/DC:ArrestDate&gt;
+            &lt;DC:LocationOfOffence&gt;TWST&lt;/DC:LocationOfOffence&gt;
+            &lt;/DC:BaseOffenceDetails&gt;
+            &lt;/DC:Offence&gt;
+
+            &lt;DC:Offence&gt;
+            &lt;DC:BaseOffenceDetails&gt;
+            &lt;DC:OffenceSequenceNumber&gt;002&lt;/DC:OffenceSequenceNumber&gt;
+            &lt;DC:OffenceCode&gt;CA03012&lt;/DC:OffenceCode&gt;
+            &lt;DC:OffenceWording&gt;On TEST at TEST used or threatened unlawful violence towards another and your
+            conduct was such as would cause a person of reasonable firmness present at the sce
+            ne to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&lt;/DC:OffenceWording&gt;
+            &lt;DC:OffenceTiming&gt;
+            &lt;DC:OffenceDateCode&gt;1&lt;/DC:OffenceDateCode&gt;
+            &lt;DC:OffenceStart&gt;
+            &lt;DC:OffenceDateStartDate&gt;2017-12-12&lt;/DC:OffenceDateStartDate&gt;
+            &lt;DC:OffenceStartTime&gt;10:15:00&lt;/DC:OffenceStartTime&gt;
+            &lt;/DC:OffenceStart&gt;
+            &lt;DC:OffenceEnd/&gt;
+            &lt;/DC:OffenceTiming&gt;
+            &lt;DC:ChargeDate&gt;2016-12-12&lt;/DC:ChargeDate&gt;
+            &lt;DC:ArrestDate&gt;2016-12-12&lt;/DC:ArrestDate&gt;
+            &lt;DC:LocationOfOffence&gt;TWST&lt;/DC:LocationOfOffence&gt;
+            &lt;/DC:BaseOffenceDetails&gt;
+            &lt;/DC:Offence&gt;
+            &lt;/DC:Defendant&gt;
+
+
+            &lt;DC:Defendant&gt;
+            &lt;DC:ProsecutorReference&gt;REF2&lt;/DC:ProsecutorReference&gt;
+            &lt;DC:PoliceIndividualDefendant&gt;
+            &lt;DC:PersonDefendant&gt;
+            &lt;DC:BasePersonDetails&gt;
+            &lt;DC:PersonName&gt;
+            &lt;DC:PersonTitle&gt;MR&lt;/DC:PersonTitle&gt;
+            &lt;DC:PersonGivenName1&gt;John&lt;/DC:PersonGivenName1&gt;
+            &lt;DC:PersonFamilyName&gt;Smith&lt;/DC:PersonFamilyName&gt;
+            &lt;/DC:PersonName&gt;
+            &lt;DC:TelephoneDetails&gt;
+            &lt;DC:TelephoneNumberHome&gt;015324443756&lt;/DC:TelephoneNumberHome&gt;
+            &lt;/DC:TelephoneDetails&gt;
+            &lt;DC:Birthdate&gt;1992-06-26&lt;/DC:Birthdate&gt;
+            &lt;DC:Gender&gt;1&lt;/DC:Gender&gt;
+            &lt;/DC:BasePersonDetails&gt;
+            &lt;DC:PersonStatedNationality&gt;BRA&lt;/DC:PersonStatedNationality&gt;
+            &lt;/DC:PersonDefendant&gt;
+            &lt;DC:Address&gt;
+            &lt;bsa:PAON xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt; 336 &lt;/bsa:PAON&gt;
+            &lt;bsa:StreetDescription xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;MALLERTON WAY&lt;/bsa:StreetDescription&gt;
+            &lt;bsa:Town xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;DUNSTABLE&lt;/bsa:Town&gt;
+            &lt;bsa:PostCode xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666"&gt;LN5 5TT&lt;/bsa:PostCode&gt;
+            &lt;/DC:Address&gt;
+            &lt;DC:PersonEthnicity&gt;
+            &lt;DC:ObservedEthnicity&gt;1&lt;/DC:ObservedEthnicity&gt;
+            &lt;DC:SelfDefinedEthnicity&gt;W1&lt;/DC:SelfDefinedEthnicity&gt;
+            &lt;/DC:PersonEthnicity&gt;
+            &lt;DC:OccupationCode&gt;02201&lt;/DC:OccupationCode&gt;
+            &lt;DC:Occupation&gt;Accountant&lt;/DC:Occupation&gt;
+            &lt;DC:CustodyStatus&gt;C&lt;/DC:CustodyStatus&gt;
+            &lt;DC:LanguageOptions&gt;
+            &lt;DC:DocumentationLanguage&gt;E&lt;/DC:DocumentationLanguage&gt;
+            &lt;DC:HearingLanguage&gt;E&lt;/DC:HearingLanguage&gt;
+            &lt;/DC:LanguageOptions&gt;
+            &lt;/DC:PoliceIndividualDefendant&gt;
+
+            &lt;DC:Offence&gt;
+            &lt;DC:BaseOffenceDetails&gt;
+            &lt;DC:OffenceSequenceNumber&gt;001&lt;/DC:OffenceSequenceNumber&gt;
+            &lt;DC:OffenceCode&gt;CA03012&lt;/DC:OffenceCode&gt;
+            &lt;DC:OffenceWording&gt;On TEST at TEST used or threatened unlawful violence towards another and your
+            conduct was such as would cause a person of reasonable firmness present at the sce
+            ne to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&lt;/DC:OffenceWording&gt;
+            &lt;DC:OffenceTiming&gt;
+            &lt;DC:OffenceDateCode&gt;1&lt;/DC:OffenceDateCode&gt;
+            &lt;DC:OffenceStart&gt;
+            &lt;DC:OffenceDateStartDate&gt;2017-12-12&lt;/DC:OffenceDateStartDate&gt;
+            &lt;DC:OffenceStartTime&gt;10:15:00&lt;/DC:OffenceStartTime&gt;
+            &lt;/DC:OffenceStart&gt;
+            &lt;DC:OffenceEnd/&gt;
+            &lt;/DC:OffenceTiming&gt;
+            &lt;DC:ChargeDate&gt;2017-12-12&lt;/DC:ChargeDate&gt;
+            &lt;DC:ArrestDate&gt;2017-12-12&lt;/DC:ArrestDate&gt;
+            &lt;DC:LocationOfOffence&gt;TWST&lt;/DC:LocationOfOffence&gt;
+            &lt;/DC:BaseOffenceDetails&gt;
+            &lt;/DC:Offence&gt;
+
+            &lt;DC:Offence&gt;
+            &lt;DC:BaseOffenceDetails&gt;
+            &lt;DC:OffenceSequenceNumber&gt;002&lt;/DC:OffenceSequenceNumber&gt;
+            &lt;DC:OffenceCode&gt;CA03012&lt;/DC:OffenceCode&gt;
+            &lt;DC:OffenceWording&gt;On TEST at TEST used or threatened unlawful violence towards another and your
+            conduct was such as would cause a person of reasonable firmness present at the sce
+            ne to fear for his personal safety. Contrary to section 3(1) and (7) of the Public Order Act 1986.&lt;/DC:OffenceWording&gt;
+            &lt;DC:OffenceTiming&gt;
+            &lt;DC:OffenceDateCode&gt;1&lt;/DC:OffenceDateCode&gt;
+            &lt;DC:OffenceStart&gt;
+            &lt;DC:OffenceDateStartDate&gt;2017-12-12&lt;/DC:OffenceDateStartDate&gt;
+            &lt;DC:OffenceStartTime&gt;10:15:00&lt;/DC:OffenceStartTime&gt;
+            &lt;/DC:OffenceStart&gt;
+            &lt;DC:OffenceEnd/&gt;
+            &lt;/DC:OffenceTiming&gt;
+            &lt;DC:ChargeDate&gt;2016-12-12&lt;/DC:ChargeDate&gt;
+            &lt;DC:ArrestDate&gt;2016-12-12&lt;/DC:ArrestDate&gt;
+            &lt;DC:LocationOfOffence&gt;TWST&lt;/DC:LocationOfOffence&gt;
+            &lt;/DC:BaseOffenceDetails&gt;
+            &lt;/DC:Offence&gt;
+            &lt;/DC:Defendant&gt;
+
+
+            &lt;/DC:Case&gt;
+            &lt;/DC:NewCaseMessage&gt;
+
+
+        </cjseEntity:DataStreamContent>
+    </DataStream>
+    <Routes VersionNumber="1.0">
+        <Route VersionNumber="1.0">
+            <RouteID>001</RouteID>
+            <RouteSourceSystem literalvalue="String">00501PoliceCaseSystem
+            </RouteSourceSystem>
+            <RouteDestinationSystem literalvalue="String">B00LIBRA</RouteDestinationSystem>
+            <Descriptor>String</Descriptor>
+        </Route>
+    </Routes>
+</RouteData>

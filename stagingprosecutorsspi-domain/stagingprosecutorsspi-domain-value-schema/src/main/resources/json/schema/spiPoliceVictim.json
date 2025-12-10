@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeVictim.json",
+  "type": "object",
+  "properties": {
+    "personTitle": {
+      "type": "string",
+      "description": "Title by which a person is addressed"
+    },
+    "personGivenName1": {
+      "type": "string"
+    },
+    "personGivenName2": {
+      "type": "string"
+    },
+    "personGivenName3": {
+      "type": "string"
+    },
+    "personFamilyName": {
+      "type": "string"
+    },
+    "address": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/address.json"
+    },
+    "telephoneNumberBusiness": {
+      "type": "string"
+    },
+    "telephoneNumberHome": {
+      "type": "string"
+    },
+    "telephoneNumberMobile": {
+      "type": "string"
+    },
+    "emailAddress1": {
+      "type": "string"
+    },
+    "emailAddress2": {
+      "type": "string"
+    },
+    "birthDate": {
+      "type": "string",
+      "$ref": "http://justice.gov.uk/core/courts/courtsDefinitions.json#/definitions/datePattern"
+    },
+    "gender": {
+      "type": "integer"
+    },
+    "observedEthnicity": {
+      "type": "integer"
+    },
+    "selfDefinedEthnicity": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "address"
+  ],
+  "additionalProperties": false
+}

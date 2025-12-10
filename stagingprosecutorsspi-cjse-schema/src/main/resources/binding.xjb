@@ -1,0 +1,27 @@
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               version="2.0">
+
+    <jaxb:bindings node="/xsd:schema" schemaLocation="xsd/CPP-StdProsPoliceComplexTypes-v1-2.xsd">
+        <jaxb:bindings node="//xsd:element[@name='ResultAmountSterling']">
+            <jaxb:property>
+                <jaxb:baseType>
+                    <jaxb:javaType name="java.math.BigDecimal"
+                                   parseMethod="uk.gov.moj.cpp.staging.soap.schema.BigDecimalFormatter.parseBigDecimal"
+                                   printMethod="uk.gov.moj.cpp.staging.soap.schema.BigDecimalFormatter.printBigDecimal"/>
+                </jaxb:baseType>
+            </jaxb:property>
+        </jaxb:bindings>
+    </jaxb:bindings>
+        <jaxb:bindings node="/xsd:schema" schemaLocation="xsd/CPP-StdProsPoliceComplexTypes-v1-2.xsd">
+            <jaxb:bindings node="//xsd:element[@name='OffenceSequenceNumber']">
+                <jaxb:property>
+                    <jaxb:baseType>
+                        <jaxb:javaType name="java.lang.Integer"
+                                       parseMethod="uk.gov.moj.cpp.staging.soap.schema.OffenceSequenceNumberFormatter.parseInt"
+                                       printMethod="uk.gov.moj.cpp.staging.soap.schema.OffenceSequenceNumberFormatter.printInt"/>
+                    </jaxb:baseType>
+                </jaxb:property>
+            </jaxb:bindings>
+        </jaxb:bindings>
+</jaxb:bindings>

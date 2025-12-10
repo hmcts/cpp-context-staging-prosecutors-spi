@@ -1,0 +1,11 @@
+CourtCentre,CourtRoom,ProsecutorCode,InitiationCode,SummonsCode,Urn,DateOfHearing,TimeOfHearing,IsLive
+B45MH,02,203,C,,,,,Yes
+B99MH,,203,C,,,,,Yes
+B456X,,303,J,,,,,No
+B452X,,523,C,,,15/03/2020,,Yes
+B453X,,523,C,,,15/03/2020,10:30,Yes
+B454X,,523,S,C,,,,Yes
+B455X,,523,C,,TVL12345,,,Yes
+B953X,,523,C,,,15/03/2020,10:30,Yes
+B99MH,,A45AA00,C,,,,,Yes
+B01LY,,C23AA00,C,,,,,Yes

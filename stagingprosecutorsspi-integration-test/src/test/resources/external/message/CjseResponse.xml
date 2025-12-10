@@ -1,0 +1,9 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <SubmitResponseMes xmlns="http://schemas.cjse.gov.uk/endpoint/types/">
+            <RequestID>609bd904-2a1b-11e9-8daf-7f0000010000</RequestID>
+            <ResponseCode>1</ResponseCode>
+            <ResponseText>Success</ResponseText>
+        </SubmitResponseMes>
+    </soap:Body>
+</soap:Envelope>

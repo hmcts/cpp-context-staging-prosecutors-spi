@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<DC:NewCaseMessage xmlns:DC="http://www.dca.gov.uk/xmlschemas/libra" Flow="NewCasesFromThePolice"
+                   Interface="LibraStandardProsecutorPolice" SchemaVersion="0.6g">
+    <DC:Case>
+        <DC:PTIURN>53CP2215321</DC:PTIURN>
+        <DC:OriginatingOrganisation>001HQ00</DC:OriginatingOrganisation>
+        <DC:CaseInitiation>C</DC:CaseInitiation>
+        <DC:InitialHearing>
+            <DC:CourtHearingLocation>B01CX01</DC:CourtHearingLocation>
+            <DC:DateOfHearing>2020-07-31</DC:DateOfHearing>
+            <DC:TimeOfHearing>10:00:00.000+01:00</DC:TimeOfHearing>
+        </DC:InitialHearing>
+        <DC:OtherPartyOfficerInCase>
+            <DC:OfficerName>
+                <DC:PersonGivenName1>Test</DC:PersonGivenName1>
+                <DC:PersonFamilyName>Nicolai</DC:PersonFamilyName>
+            </DC:OfficerName>
+            <DC:PoliceOfficerRank>Constable</DC:PoliceOfficerRank>
+            <DC:PoliceWorkerReferenceNumber>007007</DC:PoliceWorkerReferenceNumber>
+            <DC:PoliceWorkerLocationCode>DUMMY</DC:PoliceWorkerLocationCode>
+            <DC:EmailDetails>
+                <DC:EmailAddress1>2153@gmail.com</DC:EmailAddress1>
+            </DC:EmailDetails>
+        </DC:OtherPartyOfficerInCase>
+        <DC:Defendant>
+            <DC:ProsecutorReference>007007</DC:ProsecutorReference>
+            <DC:PoliceIndividualDefendant>
+                <DC:PersonDefendant>
+                    <DC:BasePersonDetails>
+                        <DC:PersonName>
+                            <DC:PersonGivenName1>Jomi1</DC:PersonGivenName1>
+                            <DC:PersonFamilyName>Eliseh</DC:PersonFamilyName>
+                        </DC:PersonName>
+                        <DC:Birthdate>2010-01-28</DC:Birthdate>
+                        <DC:Gender>1</DC:Gender>
+                    </DC:BasePersonDetails>
+                </DC:PersonDefendant>
+                <DC:Address>
+                    <bsa:PAON xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666">          56Police House</bsa:PAON>
+                    <bsa:StreetDescription xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666">SHIP STREET
+                    </bsa:StreetDescription>
+                    <bsa:Locality xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666">Surrey
+                    </bsa:Locality>
+                    <bsa:Town xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666">FRODSHAM
+                    </bsa:Town>
+                    <bsa:AdministrativeArea xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666">CHESHIRE WEST AND CHESTER</bsa:AdministrativeArea>
+                    <bsa:PostCode xmlns:bsa="http://www.govtalk.gov.uk/people/bs7666">WA6 7NZ</bsa:PostCode>
+                </DC:Address>
+                <DC:PersonEthnicity>
+                    <DC:ObservedEthnicity>0</DC:ObservedEthnicity>
+                    <DC:SelfDefinedEthnicity>A1</DC:SelfDefinedEthnicity>
+                </DC:PersonEthnicity>
+                <DC:CustodyStatus>U</DC:CustodyStatus>
+                <DC:LanguageOptions>
+                    <DC:DocumentationLanguage>E</DC:DocumentationLanguage>
+                    <DC:HearingLanguage>E</DC:HearingLanguage>
+                </DC:LanguageOptions>
+            </DC:PoliceIndividualDefendant>
+            <DC:Offence>
+                <DC:BaseOffenceDetails>
+                    <DC:OffenceSequenceNumber>999</DC:OffenceSequenceNumber>
+                    <DC:OffenceCode>MD71530</DC:OffenceCode>
+                    <DC:OffenceWording>Testing offence wording</DC:OffenceWording>
+                    <DC:OffenceTiming>
+                        <DC:OffenceDateCode>1</DC:OffenceDateCode>
+                        <DC:OffenceStart>
+                            <DC:OffenceDateStartDate>2019-08-16</DC:OffenceDateStartDate>
+                        </DC:OffenceStart>
+                    </DC:OffenceTiming>
+                    <DC:ChargeDate>2019-08-16</DC:ChargeDate>
+                    <DC:ArrestDate>2019-08-16</DC:ArrestDate>
+                    <DC:LocationOfOffence>Testing offence location</DC:LocationOfOffence>
+                </DC:BaseOffenceDetails>
+            </DC:Offence>
+        </DC:Defendant>
+    </DC:Case>
+</DC:NewCaseMessage>

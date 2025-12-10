@@ -1,0 +1,136 @@
+{
+  "caseId": "cccc1111-1e20-4c21-916a-81a6c90239e5",
+  "courtCentreWithLJA": {
+    "courtHearingLocation": "courtHL-1",
+    "psaCode": 1010,
+    "courtCentre": {
+      "address": {
+        "address1": "address1",
+        "address2": "address2",
+        "address3": "address3",
+        "address4": "address4",
+        "postcode": "W1T 1JY"
+      },
+      "id": "7abb6e4e-3ff2-4419-8d48-3c0e9662726c",
+      "name": "courtName",
+      "roomId": "df2ce598-9f69-4857-aa91-d990a5dcb4a8",
+      "roomName": "roomName",
+      "welshName": "welshName",
+      "welshRoomName": "welshRoomName"
+    }
+  },
+  "defendant": {
+    "attendanceDays": [
+      {
+        "day": "2019-01-02",
+        "attendanceType": "NOT_PRESENT"
+      }
+    ],
+    "defendantId": "dddd2222-1e20-4c21-916a-81a6c90239e5",
+    "individualDefendant": {
+      "person": {
+        "firstName": "John",
+        "gender": "NOT_KNOWN",
+        "lastName": "Smith",
+        "title": "Baroness",
+        "address": {
+          "address1": "address1",
+          "address2": "address2",
+          "address3": "address3",
+          "address4": "address4",
+          "postcode": "W1T 1JY"
+        }
+      },
+      "presentAtHearing": "T",
+      "reasonForBailConditionsOrCustody": "DEFAULT_VALUE"
+    },
+    "offences": [
+      {
+        "arrestDate": "2019-04-25",
+        "chargeDate": "2019-04-25",
+        "convictingCourt": 3120,
+        "convictionDate": "2019-04-25",
+        "endDate": "2019-04-25",
+        "finalDisposal": "Y",
+        "id": "c74c79db-aeec-45ce-833b-b572ee636469",
+        "modeOfTrial": "12",
+        "allocationDecision": {
+          "originatingHearingId": "8aaecac5-222b-402d-9047-84803679edac",
+          "offenceId": "7aaecac5-222b-402d-9047-84803679edac",
+          "motReasonId": "fd637140-7c86-3c2a-acc2-3ef84d01f795",
+          "motReasonDescription": "Summary-only offence",
+          "motReasonCode": "10",
+          "allocationDecisionDate": "2019-05-01",
+          "courtIndicatedSentence": {
+            "courtIndicatedSentenceDescription": "Sentenced",
+            "courtIndicatedSentenceTypeId": "4aaecac5-222b-402d-9047-84803679edac"
+          },
+          "sequenceNumber": 20
+        },
+        "judicialResults": [
+          {
+            "alwaysPublished": false,
+            "category": "FINAL",
+            "cjsCode": "999",
+            "d20": false,
+            "excludedFromResults": false,
+            "isAdjournmentResult": false,
+            "isAvailableForCourtExtract": false,
+            "isConvictedResult": false,
+            "isFinancialResult": true,
+            "judicialResultId": "9aa3c34c-0c2d-46ae-bce9-702727883d35",
+            "judicialResultTypeId": "b54afd74-0563-47a0-8093-199bf2a1360b",
+            "judicialResultPrompts": [
+              {
+                "courtExtract": "court extract",
+                "isFinancialImposition": true,
+                "label": "a label",
+                "promptReference": "AOBD",
+                "value": "10.00",
+                "judicialResultPromptTypeId": "c5421c5b-1987-4a2a-a2f9-962ca72f5402"
+              }
+            ],
+            "label": "label",
+            "lifeDuration": false,
+            "orderedDate": "2019-11-13",
+            "orderedHearingId": "87a1490f-2a1e-4cce-8619-ca0ba693be2e",
+            "publishedAsAPrompt": false,
+            "qualifier": "rq",
+            "rank": 0,
+            "resultText": "resultText",
+            "terminatesOffenceProceedings": false,
+            "urgent": false,
+            "welshLabel": "label",
+            "rollUpPrompts": false,
+            "publishedForNows": false
+          }
+        ],
+        "offenceCode": "offenceC",
+        "offenceDateCode": 1,
+        "offenceSequenceNumber": 65,
+        "startDate": "2019-04-25",
+        "wording": "offenceWording"
+      }
+    ],
+    "prosecutorReference": "DEFAULT_VALUE"
+  },
+  "id": "6ca907d1-b0ac-4efa-b7bc-ddd110e56179",
+  "sessionDays": [
+    {
+      "listedDurationMinutes": 100,
+      "listingSequence": 10,
+      "sittingDay": "2018-06-04T12:01:01.000Z"
+    },
+    {
+      "listedDurationMinutes": 100,
+      "listingSequence": 10,
+      "sittingDay": "2018-04-03T12:01:01.000Z"
+    },
+    {
+      "listedDurationMinutes": 100,
+      "listingSequence": 10,
+      "sittingDay": "2018-02-02T12:03:10.000Z"
+    }
+  ],
+  "urn": "URN_DEFAULT_VALUE"
+}

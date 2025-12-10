@@ -1,0 +1,27 @@
+package uk.gov.moj.cpp.staging.command.api.accesscontrol;
+
+import uk.gov.moj.cpp.accesscontrol.drools.Outcome;
+import uk.gov.moj.cpp.accesscontrol.drools.Action;
+
+import uk.gov.moj.cpp.staging.prosecutors.accesscontrol.RuleConstants
+
+
+global uk.gov.moj.cpp.accesscontrol.common.providers.UserAndGroupProvider userAndGroupProvider;
+
+rule "Command - Rule for submitting a prosecution case file"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "stagingprosecutorsspi.command.spi-prosecution-case");
+    eval(userAndGroupProvider.isMemberOfAnyOfTheSuppliedGroups($action, RuleConstants.getCJSEGroups()))
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - Rule for prosecution case filtered"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "stagingprosecutorsspi.command.spi.filter-prosecution-case");
+    eval(userAndGroupProvider.isMemberOfAnyOfTheSuppliedGroups($action, RuleConstants.getCJSEGroups()))
+  then
+    $outcome.setSuccess(true);
+end

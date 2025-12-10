@@ -1,0 +1,22 @@
+{
+  "cjsItSystemCodes": [
+    {
+      "id": "4aaecac5-222b-402d-9047-84803679edac",
+      "seqNum": 10,
+      "systemCode": "00101PoliceCaseSystem",
+      "systemCodeDescription": "Police : London – Metropolitan",
+      "spiInFlag": false,
+      "validFrom": "2019-04-01"
+    },
+    {
+      "id": "5aaecac5-222b-402d-9047-84803679edac",
+      "seqNum": 20,
+      "systemCode": "00501PoliceCaseSystem",
+      "systemCodeDescription": "Police : Cumbria",
+      "spiInFlag": true,
+      "validFrom": "2019-04-01"
+    }
+  ]
+}
+
+

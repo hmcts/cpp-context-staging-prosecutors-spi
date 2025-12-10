@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NewCaseMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                Flow="NewCasesFromThePolice" Interface="LibraStandardProsecutorPolice"
+                SchemaVersion="0.6g" xmlns="http://www.dca.gov.uk/xmlschemas/libra">
+    <Case>
+        <PTIURN>URN_NUMBER</PTIURN>
+        <OriginatingOrganisation>116HQ00</OriginatingOrganisation>
+        <CaseInitiation>C</CaseInitiation>
+        <CPSorganisation>A16AC00</CPSorganisation>
+        <InitialHearing>
+            <CourtHearingLocation>B16GE00</CourtHearingLocation>
+            <DateOfHearing>2004-12-09</DateOfHearing>
+            <TimeOfHearing>09:00:00.0000000-00:00</TimeOfHearing>
+        </InitialHearing>
+        <VehicleOperatorLicenceNumber>VehicleOp</VehicleOperatorLicenceNumber>
+        <OtherPartyOfficerInCase>
+
+            <OfficerName>
+                <PersonTitle>Mr</PersonTitle>
+                <PersonGivenName1>Vega</PersonGivenName1>
+                <PersonGivenName2>Non</PersonGivenName2>
+                <PersonFamilyName>OIC</PersonFamilyName>
+            </OfficerName>
+            <PoliceOfficerRank>Constable</PoliceOfficerRank>
+            <PoliceWorkerReferenceNumber>1234</PoliceWorkerReferenceNumber>
+            <PoliceWorkerLocationCode>116BH00</PoliceWorkerLocationCode>
+            <StructuredAddress>
+                <SAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          101</SAON>
+                <PAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          56Police House</PAON>
+                <StreetDescription xmlns="http://www.govtalk.gov.uk/people/bs7666">Letsby
+                    Avenue</StreetDescription>
+                <AdministrativeArea xmlns="http://www.govtalk.gov.uk/people/bs7666">Avon</AdministrativeArea>
+                <PostCode xmlns="http://www.govtalk.gov.uk/people/bs7666">A0 0AA</PostCode>
+            </StructuredAddress>
+            <TelephoneDetails>
+                <TelephoneNumberBusiness>0117911911</TelephoneNumberBusiness>
+            </TelephoneDetails>
+            <FAXnumber>0117911911</FAXnumber>
+            <EmailDetails>
+                <EmailAddress1>vegaoic@test.dom</EmailAddress1>
+            </EmailDetails>
+        </OtherPartyOfficerInCase>
+        <Defendant>
+            <ProsecutorReference>0416BH0000000090557N</ProsecutorReference>
+            <PoliceIndividualDefendant>
+                <PersonDefendant>
+                    <BasePersonDetails>
+                        <PersonName>
+                            <PersonTitle>Mr</PersonTitle>
+                            <PersonGivenName1>john</PersonGivenName1>
+                            <PersonGivenName2>PersonGivenName20A</PersonGivenName2>
+                            <PersonFamilyName>RAMBO</PersonFamilyName>
+                        </PersonName>
+                        <TelephoneDetails/>
+                        <EmailDetails>
+                            <EmailAddress1>Dvishnu@gmail.com</EmailAddress1>
+                            <EmailAddress2>Dilja@gmail.com</EmailAddress2>
+                        </EmailDetails>
+                        <Birthdate>1974-05-03</Birthdate>
+                        <Gender>1</Gender>
+                    </BasePersonDetails>
+                    <BailConditions/>
+                </PersonDefendant>
+                <Address>
+                    <PAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          89</PAON>
+                    <StreetDescription xmlns="http://www.govtalk.gov.uk/people/bs7666">Palace
+                        Walk</StreetDescription>
+                    <AdministrativeArea xmlns="http://www.govtalk.gov.uk/people/bs7666">Humberside</AdministrativeArea>
+                    <PostCode xmlns="http://www.govtalk.gov.uk/people/bs7666">A0 0AA</PostCode>
+                </Address>
+                <PersonEthnicity>
+                    <ObservedEthnicity>9</ObservedEthnicity>
+                    <SelfDefinedEthnicity>W1</SelfDefinedEthnicity>
+                </PersonEthnicity>
+                <Occupation>Office</Occupation>
+                <CustodyStatus>U</CustodyStatus>
+                <LanguageOptions>
+                    <DocumentationLanguage>E</DocumentationLanguage>
+                    <HearingLanguage>E</HearingLanguage>
+                </LanguageOptions>
+                <DriverInformation>
+                    <DriverLicenceIssue>0</DriverLicenceIssue>
+                </DriverInformation>
+            </PoliceIndividualDefendant>
+            <Offence>
+                <BaseOffenceDetails>
+                    <OffenceSequenceNumber>1</OffenceSequenceNumber>
+                    <OffenceCode>FI68323</OffenceCode>
+                    <OffenceWording>OfWord</OffenceWording>
+                    <OffenceTiming>
+                        <OffenceDateCode>1</OffenceDateCode>
+                        <OffenceStart>
+                            <OffenceDateStartDate>2004-12-09</OffenceDateStartDate>
+                            <OffenceStartTime>09:00:00.0000000-00:00</OffenceStartTime>
+                        </OffenceStart>
+                        <OffenceEnd/>
+                    </OffenceTiming>
+                    <ChargeDate>2004-12-09</ChargeDate>
+                    <LocationOfOffence>East Yorkshire</LocationOfOffence>
+                </BaseOffenceDetails>
+                <ProsecutionFacts>ProsecutionFacts0</ProsecutionFacts>
+            </Offence>
+        </Defendant>
+    </Case>
+</NewCaseMessage>

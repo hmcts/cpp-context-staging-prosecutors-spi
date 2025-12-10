@@ -1,0 +1,122 @@
+{
+  "caseDetails": {
+    "caseInitiationCode": "C",
+    "caseMarker": null,
+    "cpSorganisation": null,
+    "informant": null,
+    "initialHearing": {
+      "courtHearingLocation": "B01CX01",
+      "dateOfHearing": "2020-07-31",
+      "timeOfHearing": "09:00:00.000"
+    },
+    "originatingOrganisation": "001HQ00",
+    "policeSystemId": null,
+    "ptiurn": "53CP2215321",
+    "summonsCode": null,
+    "vehicleOperatorLicenceNumber": null
+  },
+  "defendants": [
+    {
+      "id": "450b31ca-d2e3-48af-9d43-08c61ab3f8f6",
+      "offence": [
+        {
+          "baseOffenceDetails": {
+            "alcoholLevelAmount": null,
+            "alcoholLevelMethod": null,
+            "arrestDate": "2019-08-16",
+            "chargeDate": "2019-08-16",
+            "locationOfOffence": "Testing offence location",
+            "offenceCode": "MD71530",
+            "offenceDateCode": 1,
+            "offenceDateStartDate": "2019-08-16",
+            "offenceEndDate": null,
+            "offenceEndTime": null,
+            "offenceSequenceNumber": 999,
+            "offenceStartTime": null,
+            "offenceWording": "Testing offence wording",
+            "vehicleCode": null,
+            "vehicleRegistrationMark": null
+          },
+          "otherPartyVictim": [],
+          "prosecutionFacts": null
+        }
+      ],
+      "policeCorporateDefendant": null,
+      "policeIndividualDefendant": {
+        "address": {
+          "administrativeArea": "CHESHIRE WEST AND CHESTER",
+          "locality": "Surrey\n                    ",
+          "paon": "          56Police House",
+          "postTown": null,
+          "postcode": "WA6 7NZ",
+          "saon": null,
+          "streetDescription": "SHIP STREET\n                    ",
+          "town": "FRODSHAM\n                    ",
+          "uniquePropertyReferenceNumber": null,
+          "uniqueStreetReferenceNumber": null
+        },
+        "alias": [],
+        "counterpartIssue": null,
+        "crOnumber": null,
+        "custodyStatus": "U",
+        "documentationLanguage": "E",
+        "driverLicenceCode": null,
+        "driverLicenceIssue": null,
+        "driverNumber": null,
+        "hearingLanguage": "E",
+        "languageNeeds": null,
+        "observedEthnicity": 0,
+        "occupation": null,
+        "occupationCode": null,
+        "offenderCode": null,
+        "parentGuardianDetails": null,
+        "perceivedBirthYear": null,
+        "personDefendant": {
+          "bailConditions": null,
+          "basePersonDetails": {
+            "birthDate": "2010-01-28",
+            "emailAddress1": null,
+            "emailAddress2": null,
+            "gender": 1,
+            "personName": {
+              "personFamilyName": "Eliseh",
+              "personGivenName1": "Jomi1",
+              "personGivenName2": null,
+              "personGivenName3": null,
+              "personTitle": null
+            },
+            "telephoneNumberBusiness": null,
+            "telephoneNumberHome": null,
+            "telephoneNumberMobile": null
+          },
+          "personStatedNationality": null,
+          "pnCidentifier": null
+        },
+        "pnCidentifier": null,
+        "selfDefinedEthnicity": "A1",
+        "specialNeeds": null
+      },
+      "prosecutorReference": "007007"
+    }
+  ],
+  "otherPartyOfficerInCase": {
+    "dxaddress": null,
+    "emailAddress1": "2153@gmail.com",
+    "emailAddress2": null,
+    "faxNumber": null,
+    "officerName": {
+      "personFamilyName": "Nicolai",
+      "personGivenName1": "Test",
+      "personGivenName2": null,
+      "personGivenName3": null,
+      "personTitle": null
+    },
+    "policeOfficerRank": "Constable",
+    "policeWorkerLocationCode": "DUMMY",
+    "policeWorkerReferenceNumber": "007007",
+    "structuredAddress": null,
+    "telephoneNumberBusiness": null,
+    "telephoneNumberHome": null,
+    "telephoneNumberMobile": null
+  }
+}

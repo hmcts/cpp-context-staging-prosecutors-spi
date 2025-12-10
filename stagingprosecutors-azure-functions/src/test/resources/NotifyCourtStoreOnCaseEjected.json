@@ -1,0 +1,10 @@
+{
+  "id": "a413c83f-ffc4-4b6e-9956-3fc255e2df80",
+  "subject": "CaseEjected",
+  "data": "{\"CaseId\":\"efdb0799-7d0e-48bd-af83-7c50607f7fea\",\"ProsecutorCode\":\"G01FT01AB\",\"InitiationCode\":\"J\",\"CaseReference\":\"2f76e743\"}",
+  "eventType": "CaseEjected",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "eventTime": "2023-11-21T15:16:02.35Z",
+  "topic": "/subscriptions/e6b5053b-4c38-4475-a835-a025aeb3d8c7/resourceGroups/RG-STE-CASEFILTER/providers/Microsoft.EventGrid/topics/EG-STE-NOTIFYCOURTSTORE"
+}

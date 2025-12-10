@@ -1,0 +1,22 @@
+<databaseChangeLog xmlns = "http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation = "http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+<changeSet id="1.1" author="Staging-Prosecutors" logicalFilePath="liquibase/staging-prosecutors-view-store-db-changelog.xml">
+    <createTable tableName="CPP_MESSAGE">
+        <column name="oi_id" type="UUID">
+            <constraints nullable="false" primaryKey="true" primaryKeyName="pk_cpp_message" />
+        </column>
+
+        <column name="pti_urn" type="VARCHAR(11)"/>
+        <column name="case_id" type="UUID"/>
+        <column name="police_system_id" type="VARCHAR(50)"/>
+        <column name="correlation_id" type="VARCHAR(50)"/>
+        <column name="organization_unit_id" type="VARCHAR(50)"/>
+        <column name="data_controller" type="VARCHAR(50)"/>
+    </createTable>
+    <createIndex indexName="pti_urn_idx" tableName="CPP_MESSAGE">
+        <column name="pti_urn"/>
+    </createIndex>
+</changeSet>
+</databaseChangeLog>

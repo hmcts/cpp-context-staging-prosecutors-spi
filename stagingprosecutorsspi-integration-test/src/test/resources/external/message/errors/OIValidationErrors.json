@@ -1,0 +1,40 @@
+{
+  "errorDetail": [
+    {
+      "errorDescription": "UnknownSystem",
+      "errorType": "FatalError",
+      "errorCode": 301,
+      "errorResponse": "errorResponse"
+    },
+    {
+      "errorDescription": "InvalidCorrelationID",
+      "errorType": "FatalError",
+      "errorCode": 306,
+      "errorResponse": "errorResponse"
+    },
+    {
+      "errorDescription": "InvalidDataController",
+      "errorType": "FatalError",
+      "errorCode": 307,
+      "errorResponse": "errorResponse"
+    },
+    {
+      "errorDescription": "UnknownRouteSourceSystem",
+      "errorType": "FatalError",
+      "errorCode": 1317,
+      "errorResponse": "errorResponse"
+    },
+    {
+      "errorDescription": "UnknownRouteDestinationSystem",
+      "errorType": "FatalError",
+      "errorCode": 1318,
+      "errorResponse": "errorResponse"
+    },
+    {
+      "errorDescription": "DisallowedDataStreamType",
+      "errorType": "FatalError",
+      "errorCode": 1359,
+      "errorResponse": "errorResponse"
+    }
+  ]
+}

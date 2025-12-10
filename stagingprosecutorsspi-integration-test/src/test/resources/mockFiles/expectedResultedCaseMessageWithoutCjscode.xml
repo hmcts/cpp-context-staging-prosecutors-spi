@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><ResultedCaseMessage xmlns="http://www.dca.gov.uk/xmlschemas/libra" Flow="ResultedCasesForThePolice" Interface="LibraStandardProsecutorPolice" SchemaVersion="0.6g" xmlns:ns2="http://www.govtalk.gov.uk/people/bs7666">
+    <Session>
+        <CourtHearing>
+            <Hearing>
+                <CourtHearingLocation>B01LY03</CourtHearingLocation>
+                <DateOfHearing>2021-08-02</DateOfHearing>
+                <TimeOfHearing>17:30:00</TimeOfHearing>
+            </Hearing>
+            <PSAcode>2577</PSAcode>
+        </CourtHearing>
+        <Case>
+            <PTIURN>30NT0208214</PTIURN>
+            <Defendant>
+                <ProsecutorReference>E28GC01123537143</ProsecutorReference>
+                <CourtIndividualDefendant>
+                    <PersonDefendant>
+                        <BasePersonDetails>
+                            <PersonName>
+                                <PersonTitle>Mr</PersonTitle>
+                                <PersonGivenName1>Meagan</PersonGivenName1>
+                                <PersonFamilyName>Wolf</PersonFamilyName>
+                            </PersonName>
+                            <TelephoneDetails>
+                                <TelephoneNumberHome>379-401-9608</TelephoneNumberHome>
+                            </TelephoneDetails>
+                            <Birthdate>2006-10-13</Birthdate>
+                            <Gender>2</Gender>
+                        </BasePersonDetails>
+                        <BailConditions/>
+                    </PersonDefendant>
+                    <BailStatus>C</BailStatus>
+                    <Address>
+                        <SimpleAddress>
+                            <AddressLine1>z</AddressLine1>
+                            <AddressLine2>Yoshiko Turnpike</AddressLine2>
+                            <AddressLine3>North Jabari</AddressLine3>
+                            <AddressLine4>Avon</AddressLine4>
+                            <AddressLine5>DA6 7ND</AddressLine5>
+                        </SimpleAddress>
+                    </Address>
+                    <PresentAtHearing>N</PresentAtHearing>
+                    <ReasonForBailConditionsOrCustody>Nature and seriousness of offence, Previous record and character</ReasonForBailConditionsOrCustody>
+                </CourtIndividualDefendant>
+                <Offence>
+                    <BaseOffenceDetails>
+                        <OffenceSequenceNumber>001</OffenceSequenceNumber>
+                        <OffenceCode>SX03007A</OffenceCode>
+                        <OffenceWording>From 13th November 2018, an aggravated version of this offence applies where the offence is committed against an emergency worker acting in the exercise of his / her functions as such a worker, as per section 1 of the Assaults on emergency Workers (Offences) Act 2018; see offence wording document H19568.</OffenceWording>
+                        <OffenceTiming>
+                            <OffenceDateCode>1</OffenceDateCode>
+                            <OffenceStart>
+                                <OffenceDateStartDate>2019-11-28</OffenceDateStartDate>
+                            </OffenceStart>
+                        </OffenceTiming>
+                        <ChargeDate>2020-12-02</ChargeDate>
+                        <ArrestDate>2020-12-01</ArrestDate>
+                    </BaseOffenceDetails>
+                    <InitiatedDate>2019-11-28</InitiatedDate>
+                    <Plea>3</Plea>
+                    <FinalDisposalIndicator>N</FinalDisposalIndicator>
+                    <Result>
+                        <ResultCode>4560</ResultCode>
+                        <ResultText>Sent to Crown Court for trial in custody
+                            Next hearing in Crown Court Fixed Date:05/08/2021
+                            Hearing type:Plea and Trial Preparation
+                            Estimated duration:1 Hours
+                            Remand Status:Remand in Custody
+                            Courthouse organisation name:Central Criminal Court
+                            Courthouse address line 1:Old Bailey
+                            Courthouse address line 2:London
+                            Courthouse post code:EC4M 7EH
+                            Courthouse email address 1:London.crowncourt@cps.gov.uk
+                            Courthouse email address 2:PECSCentralCriminalCourt@serco.com
+                            Remand basis Before conviction
+                            Bail exception Likely to offend
+                            Bail exception reason Nature and seriousness of offence, Previous record and character
+                            Prison organisation name HMP/YOI Eastwood Park
+                            Prison email address 1 Custody.Eastwoodpark@justice.gov.uk
+                            Prison email address 2 Reception.EastwoodPark@justice.gov.uk
+                            Conveyor / custodian name organisation name Central Criminal Court: PECS
+                            Conveyor / custodian name email address 1 PECSCentralCriminalCourt@serco.com
+                            Sent for trial under Section 51(3) of the Crime and Disorder Act 1998
+                            Bail remand days to count (tagged days) 0
+                            Victim personal statement to be presented to court by prosecutor or other person true
+                            PSR ordered? true
+                            Probation / YOT to be notified organisation name South West and Central Division NPS
+                            Probation / YOT to be notified email address 1 SWSCNPS.Court@justice.gov.uk
+                            Custody time limit expires 30/09/2021
+                            Time spent in custody (in days) 2</ResultText>
+                        <NextHearing>
+                            <NextHearingDetails>
+                                <CourtHearingLocation>C01CE00</CourtHearingLocation>
+                                <DateOfHearing>2021-08-05</DateOfHearing>
+                                <TimeOfHearing>09:00:00</TimeOfHearing>
+                            </NextHearingDetails>
+                            <BailStatusOffence>C</BailStatusOffence>
+                        </NextHearing>
+                    </Result>
+                </Offence>
+            </Defendant>
+        </Case>
+    </Session>
+</ResultedCaseMessage>

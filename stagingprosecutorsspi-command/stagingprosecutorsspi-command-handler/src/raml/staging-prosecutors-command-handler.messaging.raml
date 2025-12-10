@@ -1,0 +1,50 @@
+#%RAML 0.8
+title: Prosecutors Command handler
+version: 1.0
+baseUri: message://command/handler/message/stagingprosecutors-spi
+
+/stagingprosecutorsspi.handler.command:
+    post:
+      description: |
+        Receives a PCDR into the CPP staging context
+
+      body:
+         application/vnd.stagingprosecutorsspi.command.handler.receive-prosecution-case+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.receive-prosecution-case.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.receive-prosecution-case.json
+         application/vnd.stagingprosecutorsspi.command.handler.filter-prosecution-case+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.filter-prosecution-case.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.filter-prosecution-case.json
+         application/vnd.hmcts.cjs.receive-spi-message+json:
+              schema: !include  json/schema/hmcts.cjs.receive-spi-message.json
+              example: !include json/example/hmcts.cjs.receive-spi-message.json
+         application/vnd.hmcts.cjs.resend-message+json:
+              schema: !include  json/schema/hmcts.cjs.resend-message.json
+              example: !include json/example/hmcts.cjs.resend-message.json
+         application/vnd.stagingprosecutorsspi.command.handler.spi-oi-receive+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.spi-oi-receive.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.spi-oi-receive.json
+         application/vnd.stagingprosecutorsspi.command.handler.prepare-cpp-message-for-sending+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.prepare-cpp-message-for-sending.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.prepare-oi-details-for-response.json
+         application/vnd.stagingprosecutorsspi.command.handler.prepare-async-error-response+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.prepare-async-error-response.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.prepare-async-error-response.json
+         application/vnd.stagingprosecutorsspi.command.handler.receive-sync-response+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.receive-sync-response.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.receive-sync-response.json
+         application/vnd.stagingprosecutorsspi.command.handler.spi-oi-receive_response+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.spi-oi-receive.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.spi-oi-receive.json
+         application/vnd.stagingprosecutorsspi.command.handler.send-spi-result+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.send-spi-result.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.send-spi-result.json
+         application/vnd.stagingprosecutorsspi.command.handler.receive-retry-delay-timer-finished+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.receive-retry-delay-timer-finished.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.receive-retry-delay-timer-finished.json
+         application/vnd.stagingprosecutorsspi.command.handler.spi-prosecutioncase-ejected+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.spi-prosecutioncase-ejected.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.spi-prosecutioncase-ejected.json
+         application/vnd.stagingprosecutorsspi.command.handler.spi-oi-update-police-system-id+json:
+              schema: !include  json/schema/stagingprosecutorsspi.command.handler.spi-oi-update-police-system-id.json
+              example: !include json/example/stagingprosecutorsspi.command.handler.spi-oi-update-police-system-id.json

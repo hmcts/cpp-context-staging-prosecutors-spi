@@ -1,0 +1,36 @@
+subscriptions_descriptor:
+  spec_version: 1.0.0
+  service: stagingprosecutorsspi
+  service_component: EVENT_PROCESSOR
+  subscriptions:
+    - name: event processor subscription
+      events:
+        - name: stagingprosecutorsspi.event.prosecution-case-received
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-prosecution-case-received.json
+        - name: stagingprosecutorsspi.event.cjse-request-message-received
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/cjse-request-message-received.json
+        - name: stagingprosecutorsspi.event.spi-oi-request-received
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/oi-case-received.json
+        - name: stagingprosecutorsspi.event.operationalDetails-prepared-for-response
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/oi-for-response.json
+        - name: stagingprosecutorsspi.event.spi-result-prepared-for-sending
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-result-prepared-for-sending.json
+        - name: stagingprosecutorsspi.event.cppmessage-retry-delay-required
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/retry-delay-required.json.json
+        - name: stagingprosecutorsspi.event.cppmessage-prepared-for-sending
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/cppmessage-to-cjse.json
+        - name: stagingprosecutorsspi.event.prosecution-case-filtered
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/prosecution-case-filtered.json
+
+      event_source_name: stagingprosecutorsspi.event.source
+
+    - name: public event subscription
+      events:
+        - name: public.results.police-result-generated
+          schema_uri: http://cpp.moj.gov.uk/results/json/schemas/event/public-police-result-generated.json
+        - name: public.progression.events.case-or-application-ejected
+          schema_uri: http://justice.gov.uk/progression/courts/case-or-application-ejected
+        - name: public.prosecutioncasefile.prosecution-case-unsupported
+          schema_uri: http://moj.gov.uk/cps/prosecutioncasefile/domain/event/public.prosecutioncasefile.prosecution-case-unsupported.json
+
+      event_source_name: public.event.source

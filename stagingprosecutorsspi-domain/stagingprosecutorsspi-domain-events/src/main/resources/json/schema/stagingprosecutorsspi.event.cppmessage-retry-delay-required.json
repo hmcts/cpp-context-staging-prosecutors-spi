@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/retry-delay-required.json",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

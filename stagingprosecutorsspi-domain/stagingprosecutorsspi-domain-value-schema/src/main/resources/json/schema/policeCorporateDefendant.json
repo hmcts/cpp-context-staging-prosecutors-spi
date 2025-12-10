@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeCorporateDefendant.json",
+  "type": "object",
+  "properties": {
+    "organisationName": {
+      "type": "string"
+    },
+    "telephoneNumberBusiness": {
+      "type": "string"
+    },
+    "emailAddress1": {
+      "type": "string"
+    },
+    "emailAddress2": {
+      "type": "string"
+    },
+    "pnCidentifier": {
+      "type": "string"
+    },
+    "address": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/address.json"
+    },
+    "crOnumber": {
+      "type": "string"
+    },
+    "alias": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "organisationName"
+  ],
+  "additionalProperties": false
+}

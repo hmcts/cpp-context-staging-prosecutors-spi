@@ -1,0 +1,102 @@
+{
+  "caseDetails": {
+    "caseId": "3f827e19-c532-4aaa-9a01-cc7334f9a53a",
+    "caseMarkers": [],
+    "cpsOrganisation": "A16AC00",
+    "initiationCode": "J",
+    "originatingOrganisation": "116HQ00",
+    "otherPartyOfficerInCase": {
+      "personalInformation": {
+        "address": {
+          "address1": "101",
+          "address2": "56Police House",
+          "address3": "Letsby Avenue",
+          "address4": "Avon",
+          "postcode": "A0 0AA"
+        },
+        "contactDetails": {
+          "primaryEmail": "vegaoic@test.dom",
+          "work": "0117911911"
+        },
+        "firstName": "Vega",
+        "lastName": "OIC",
+        "title": "Baron"
+      },
+      "policeOfficerRank": "Constable"
+    },
+    "prosecutor": {
+      "prosecutingAuthority": "116HQ00"
+    },
+    "prosecutorCaseReference": "[URN_NUMBER]"
+  },
+  "channel": "SPI",
+  "defendants": [
+    {
+      "asn": "0416BH0000000090557N",
+      "custodyStatus": "U",
+      "documentationLanguage": "E",
+      "hearingLanguage": "E",
+      "id": "a2bc16ee-bc3e-4603-9379-623640f67188",
+      "individual": {
+        "bailConditions": "",
+        "personalInformation": {
+          "address": {
+            "address1": "89",
+            "address2": "Palace Walk",
+            "address3": "Humberside",
+            "postcode": "A0 0AA"
+          },
+          "contactDetails": {
+            "primaryEmail": "Dvishnu@gmail.com",
+            "secondaryEmail": "Dilja@gmail.com"
+          },
+          "firstName": "john",
+          "givenName2": "PersonGivenName20A",
+          "lastName": "RAMBO",
+          "observedEthnicity": 0,
+          "occupation": "Office",
+          "title": "Baron"
+        },
+        "selfDefinedInformation": {
+          "dateOfBirth": "1974-05-03",
+          "ethnicity": "W1",
+          "gender": "MALE"
+        }
+      },
+      "initialHearing": {
+        "courtHearingLocation": "B16GE00",
+        "dateOfHearing": "2004-12-09",
+        "timeOfHearing": "09:00:00.000"
+      },
+      "offences": [
+        {
+          "chargeDate": "2004-12-09",
+          "offenceCode": "FI68323",
+          "offenceCommittedDate": "2004-12-09",
+          "offenceDateCode": 1,
+          "offenceId": "2643cce7-d2c9-4b90-b8e2-91ec182fabf4",
+          "offenceLocation": "East Yorkshire",
+          "offenceSequenceNumber": 1,
+          "offenceWording": "OfWord",
+          "otherPartyVictim": [],
+          "statementOfFacts": "ProsecutionFacts0"
+        },
+        {
+          "chargeDate": "2004-12-10",
+          "offenceCode": "FI68324",
+          "offenceCommittedDate": "2004-12-10",
+          "offenceDateCode": 1,
+          "offenceId": "dac2c998-63ee-4c3d-9a79-c937a7d8fa40",
+          "offenceLocation": "East Yorkshire",
+          "offenceSequenceNumber": 1,
+          "offenceWording": "OfWord",
+          "otherPartyVictim": [],
+          "statementOfFacts": "ProsecutionFacts1"
+        }
+      ],
+      "postingDate": "2004-12-09",
+      "prosecutorDefendantReference": "0416BH0000000090557N"
+    }
+  ],
+  "externalId": "[OI_ID]"
+}

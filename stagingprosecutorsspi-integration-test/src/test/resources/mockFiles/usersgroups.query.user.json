@@ -1,0 +1,36 @@
+{
+	"_metadata": {
+		"id": "62426280-f4d7-45cf-9f94-c618a210f7c1",
+		"name": "usersgroups.get-groups-by-user"
+	},
+	"userId": "1e2f843e-d639-40b3-8611-8015f3a18958",
+	"firstName": "Richard",
+	"lastName": "Chapman",
+	"email": "richard.chapman@acme.com",
+	"groups": [
+		{
+			"groupId": "1e2f843e-d639-40b3-8611-8015f3a18958",
+			"groupName": "System Users"
+		},
+		{
+			"groupId": "5b6f843e-d639-40b3-8611-8015f3a34758",
+			"groupName": "Charging Lawyers"
+		},
+		{
+			"groupId": "c529dac4-1ba8-414e-962d-84af6a4d9ae2",
+			"groupName": "CMS"
+		},
+		{
+			"groupId": "92e07efb-9649-4766-b1f8-419e8f4701cc",
+			"groupName": "IDAM"
+		},
+		{
+			"groupId": "7d47301c-2402-4748-b1fa-e63cd7e9f13a",
+			"groupName": "TFL Users"
+		},
+		{
+			"groupId": "e1ad24cf-5eed-4ad6-bd2c-f8af19d5cc6b",
+			"groupName": "FTPS"
+		}
+	]
+}

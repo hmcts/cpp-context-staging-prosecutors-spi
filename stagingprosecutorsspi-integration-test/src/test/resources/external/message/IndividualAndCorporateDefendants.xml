@@ -1,0 +1,95 @@
+<RouteData xmlns:cjseEntity="http://schemas.cjse.gov.uk/common/businessentities"
+           xmlns="http://schemas.cjse.gov.uk/common/operations" VersionNumber="1.0"
+           RequestResponse="Request">
+    <RequestFromSystem VersionNumber="1.0">
+        <CorrelationID>CORRELATION_ID</CorrelationID>
+        <SystemID literalvalue="CJSE">C00CommonPlatform</SystemID>
+        <OrganizationalUnitID literalvalue="CJIT CJSE">Z000000</OrganizationalUnitID>
+        <DataController literalvalue="String">lee.flaxington</DataController>
+        <User literalvalue="String">lee.flaxington</User>
+        <SourceID literalvalue="String">00501PoliceCaseSystem</SourceID>
+        <DestinationID literalvalue="String">B00LIBRA</DestinationID>
+        <TestOperation>1</TestOperation>
+    </RequestFromSystem>
+    <DataStream VersionNumber="1.0">
+        <cjseEntity:System literalvalue="String">00301PoliceCaseSystem</cjseEntity:System>
+        <cjseEntity:DataStreamType literalvalue="String">SPINewCase</cjseEntity:DataStreamType>
+        <cjseEntity:SystemDataStreamID>06_02_2019_142719_000000309381</cjseEntity:SystemDataStreamID>
+        <cjseEntity:Name>SPI New Case</cjseEntity:Name>
+        <cjseEntity:Reference>06_02_2019_142719_000000309381</cjseEntity:Reference>
+        <cjseEntity:ReferenceType>SPINewCase</cjseEntity:ReferenceType>
+        <cjseEntity:Dated>2013-12-01</cjseEntity:Dated>
+        <cjseEntity:Timed>14:27:21.657Z</cjseEntity:Timed>
+        <cjseEntity:ContentType>text/plain</cjseEntity:ContentType>
+        <cjseEntity:DataStreamContent>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+            &lt;NewCaseMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; Flow=&quot;NewCasesFromThePolice&quot; Interface=&quot;LibraStandardProsecutorPolice&quot; SchemaVersion=&quot;0.6g&quot; xmlns=&quot;http://www.dca.gov.uk/xmlschemas/libra&quot;&gt;
+            &lt;Case&gt;
+            &lt;PTIURN&gt;URN_NUMBER&lt;/PTIURN&gt;
+            &lt;OriginatingOrganisation&gt;116HQ00&lt;/OriginatingOrganisation&gt;
+            &lt;CaseInitiation&gt;J&lt;/CaseInitiation&gt;
+            &lt;InitialHearing&gt;
+            &lt;CourtHearingLocation&gt;CourtHeari&lt;/CourtHearingLocation&gt;
+            &lt;DateOfHearing&gt;2019-02-09&lt;/DateOfHearing&gt;
+            &lt;TimeOfHearing&gt;09:01:01.001&lt;/TimeOfHearing&gt;
+            &lt;/InitialHearing&gt;
+            &lt;OtherPartyOfficerInCase&gt;
+            &lt;OfficerName&gt;
+            &lt;PersonFamilyName&gt;Gellart&lt;/PersonFamilyName&gt;
+            &lt;/OfficerName&gt;
+            &lt;PoliceOfficerRank&gt;PoliceOfficerRank0&lt;/PoliceOfficerRank&gt;
+            &lt;PoliceWorkerReferenceNumber&gt;PoliceWorkerRef&lt;/PoliceWorkerReferenceNumber&gt;
+            &lt;PoliceWorkerLocationCode&gt;PoliceWork&lt;/PoliceWorkerLocationCode&gt;
+            &lt;/OtherPartyOfficerInCase&gt;
+            &lt;Defendant&gt;
+            &lt;ProsecutorReference&gt;TFL&lt;/ProsecutorReference&gt;
+            &lt;PoliceIndividualDefendant&gt;
+            &lt;PersonDefendant&gt;
+            &lt;BasePersonDetails&gt;
+            &lt;PersonName&gt;
+            &lt;PersonFamilyName&gt;Ormsby&lt;/PersonFamilyName&gt;
+            &lt;/PersonName&gt;
+            &lt;Gender&gt;1&lt;/Gender&gt;
+            &lt;/BasePersonDetails&gt;
+            &lt;/PersonDefendant&gt;
+            &lt;Address&gt;
+            &lt;PAON xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;          56Police House&lt;/PAON&gt;
+            &lt;StreetDescription xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;StreetDescription&lt;/StreetDescription&gt;
+            &lt;UniqueStreetReferenceNumber xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;    50000008&lt;/UniqueStreetReferenceNumber&gt;
+            &lt;Locality xmlns=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;&gt;Locality2O&lt;/Locality&gt;
+            &lt;/Address&gt;
+            &lt;LanguageOptions&gt;
+            &lt;DocumentationLanguage&gt;E&lt;/DocumentationLanguage&gt;
+            &lt;HearingLanguage&gt;E&lt;/HearingLanguage&gt;
+            &lt;/LanguageOptions&gt;
+            &lt;DriverInformation&gt;
+            &lt;/DriverInformation&gt;
+            &lt;/PoliceIndividualDefendant&gt;
+            &lt;Offence&gt;
+            &lt;BaseOffenceDetails&gt;
+            &lt;OffenceSequenceNumber&gt;500&lt;/OffenceSequenceNumber&gt;
+            &lt;OffenceCode&gt;FI68323&lt;/OffenceCode&gt;
+            &lt;OffenceWording&gt;Has a violent past and fear that he will commit further offences and
+            interfere with witnesse&lt;/OffenceWording&gt;
+            &lt;OffenceTiming&gt;
+            &lt;OffenceDateCode&gt;1&lt;/OffenceDateCode&gt;
+            &lt;OffenceStart&gt;
+            &lt;OffenceDateStartDate&gt;2004-12-09&lt;/OffenceDateStartDate&gt;
+            &lt;/OffenceStart&gt;
+            &lt;/OffenceTiming&gt;
+
+            &lt;/BaseOffenceDetails&gt;
+            &lt;/Offence&gt;
+            &lt;/Defendant&gt;
+            &lt;/Case&gt;
+            &lt;/NewCaseMessage&gt;
+        </cjseEntity:DataStreamContent>
+    </DataStream>
+    <Routes VersionNumber="1.0">
+        <Route VersionNumber="1.0">
+            <RouteID>001</RouteID>
+            <RouteSourceSystem literalvalue="String">00501PoliceCaseSystem</RouteSourceSystem>
+            <RouteDestinationSystem literalvalue="String">B00LIBRA</RouteDestinationSystem>
+            <Descriptor>String</Descriptor>
+        </Route>
+    </Routes>
+</RouteData>

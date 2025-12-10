@@ -1,0 +1,98 @@
+#%RAML 0.8
+title: Staging Prosecutors Command API
+baseUri: http://localhost:8080/stagingprosecutors-spi-command-api/command/api/rest/stagingprosecutors-spi
+
+/spi:
+  description: |
+      Submit spi prosecution
+  post:
+    description: |
+      ...
+      (mapping):
+          requestType: application/vnd.hmcts.cjs.receive-spi-message+json
+          name: hmcts.cjs.receive-spi-message
+
+      (mapping):
+          requestType: application/vnd.stagingprosecutorsspi.command.spi.receive-prosecution-case+json
+          name: stagingprosecutorsspi.command.spi.receive-prosecution-case
+      ...
+    body:
+      application/vnd.hmcts.cjs.receive-spi-message+json:
+        schema: !include json/schema/hmcts.cjs.receive-spi-message.json
+        example: !include json/example/hmcts.cjs.receive-spi-message.json
+
+      application/vnd.stagingprosecutorsspi.command.spi.receive-prosecution-case+json:
+        schema: !include  json/schema/stagingprosecutorsspi.command.spi.receive-prosecution-case.json
+        example: !include json/example/stagingprosecutorsspi.command.spi.receive-prosecution-case.json
+
+    responses:
+      500:
+        description: Internal Server Error
+      202:
+        description: Accepted
+
+/spi/case/{ptiUrn}:
+  uriParameters:
+    ptiUrn:
+      description: urn
+      type: string
+  description: |
+      Filter Prosecution Case
+  post:
+    description: |
+      ...
+      (mapping):
+          requestType: application/vnd.stagingprosecutorsspi.command.spi.filter-prosecution-case+json
+          name: stagingprosecutorsspi.command.spi.filter-prosecution-case
+      ...
+    body:
+      application/vnd.stagingprosecutorsspi.command.spi.filter-prosecution-case+json:
+        schema: !include json/schema/stagingprosecutorsspi.command.spi.filter-prosecution-case.json
+        example: !include json/example/stagingprosecutorsspi.command.spi.filter-prosecution-case.json
+
+    responses:
+      500:
+        description: Internal Server Error
+      202:
+        description: Accepted
+
+/cppmessages/{id}:
+  description: |
+      Resend cpp message
+  post:
+    description: |
+      ...
+      (mapping):
+          requestType: application/vnd.hmcts.cjs.resend-message+json
+          name: hmcts.cjs.resend-message
+      ...
+    body:
+      application/vnd.hmcts.cjs.resend-message+json:
+        schema: !include  json/schema/hmcts.cjs.resend-message.json
+        example: !include json/example/hmcts.cjs.resend-message.json
+
+    responses:
+      500:
+        description: Internal Server Error
+      202:
+        description: Accepted
+/oi/{id}:
+  description: |
+      Update OI for Police system id
+  post:
+    description: |
+      ...
+      (mapping):
+          requestType: application/vnd.stagingprosecutorsspi.command.spi-oi-update-police-system-id+json
+          name: stagingprosecutorsspi.command.spi-oi-update-police-system-id
+      ...
+    body:
+      application/vnd.stagingprosecutorsspi.command.spi-oi-update-police-system-id+json:
+        schema: !include  json/schema/stagingprosecutorsspi.command.spi-oi-update-police-system-id.json
+        example: !include json/example/stagingprosecutorsspi.command.spi-oi-update-police-system-id.json
+
+    responses:
+      500:
+        description: Internal Server Error
+      202:
+        description: Accepted

@@ -1,0 +1,26 @@
+package uk.gov.moj.cpp.staging.query.api.accesscontrol;
+
+import uk.gov.moj.cpp.accesscontrol.drools.Outcome;
+import uk.gov.moj.cpp.accesscontrol.drools.Action;
+
+import uk.gov.moj.cpp.staging.prosecutorapi.query.api.accesscontrol.RuleConstants
+
+global uk.gov.moj.cpp.accesscontrol.common.providers.UserAndGroupProvider userAndGroupProvider;
+
+rule "Query - Rule for getting submission"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "stagingprosecutorsspi.query.cpp-message");
+    eval(userAndGroupProvider.isMemberOfAnyOfTheSuppliedGroups($action, RuleConstants.getSystemUsersAndCJSEGroups()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Query - Rule for getting spi out message"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "stagingprosecutorsspi.query.spi-out-message");
+    eval(userAndGroupProvider.isMemberOfAnyOfTheSuppliedGroups($action, RuleConstants.getSystemUsers()));
+  then
+    $outcome.setSuccess(true);
+end

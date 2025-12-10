@@ -1,0 +1,17 @@
+subscriptions_descriptor:
+  spec_version: 1.0.0
+  service: stagingprosecutorsspi
+  service_component: EVENT_LISTENER
+  subscriptions:
+    - name: event listener subscription
+      events:
+        - name: stagingprosecutorsspi.event.spi-oi-request-received
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/oi-request-received.json
+        - name: stagingprosecutorsspi.event.prosecution-case-received
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-message-received.json
+        - name: stagingprosecutorsspi.event.spi-result-prepared-for-sending
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-result-prepared-for-sending.json
+        - name: stagingprosecutorsspi.event.spi-oi-police-system-updated
+          schema_uri: http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/spi-oi-police-system-updated.json
+
+      event_source_name: stagingprosecutorsspi.event.source

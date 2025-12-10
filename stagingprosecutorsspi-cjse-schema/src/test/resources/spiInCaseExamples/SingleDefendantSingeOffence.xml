@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NewCaseMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Flow="NewCasesFromThePolice" Interface="LibraStandardProsecutorPolice" SchemaVersion="0.6g" xmlns="http://www.dca.gov.uk/xmlschemas/libra">
+    <Case>
+        <PTIURN>16BH0037004</PTIURN>
+        <OriginatingOrganisation>116HQ00</OriginatingOrganisation>
+        <CaseInitiation>C</CaseInitiation>
+        <CPSorganisation>A16AC00</CPSorganisation>
+        <InitialHearing>
+            <CourtHearingLocation>B16GE00</CourtHearingLocation>
+            <DateOfHearing>2004-12-09</DateOfHearing>
+            <TimeOfHearing>09:00:00.0000000-00:00</TimeOfHearing>
+        </InitialHearing>
+        <OtherPartyOfficerInCase>
+            <DXaddress>DXADDRESS0</DXaddress>
+            <OfficerName>
+                <PersonTitle>Mr</PersonTitle>
+                <PersonGivenName1>Vega</PersonGivenName1>
+                <PersonGivenName2>Non</PersonGivenName2>
+                <PersonGivenName3>Functional</PersonGivenName3>
+                <PersonFamilyName>OIC</PersonFamilyName>
+            </OfficerName>
+            <PoliceOfficerRank>Constable</PoliceOfficerRank>
+            <PoliceWorkerReferenceNumber>1234</PoliceWorkerReferenceNumber>
+            <PoliceWorkerLocationCode>116BH00</PoliceWorkerLocationCode>
+            <StructuredAddress>
+                <SAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          101</SAON>
+                <PAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          56Police House</PAON>
+                <StreetDescription xmlns="http://www.govtalk.gov.uk/people/bs7666">Letsby Avenue</StreetDescription>
+                <AdministrativeArea xmlns="http://www.govtalk.gov.uk/people/bs7666">Avon</AdministrativeArea>
+            </StructuredAddress>
+            <TelephoneDetails>
+                <TelephoneNumberBusiness>0117911911</TelephoneNumberBusiness>
+            </TelephoneDetails>
+            <FAXnumber>0117911911</FAXnumber>
+            <EmailDetails>
+                <EmailAddress1>vegaoic@test.dom</EmailAddress1>
+            </EmailDetails>
+        </OtherPartyOfficerInCase>
+        <Defendant>
+            <ProsecutorReference>0416BH0000000090557N</ProsecutorReference>
+            <PoliceCorporateDefendant>
+                <OrganisationName>
+                    <OrganisationName>AnOrganisation</OrganisationName>
+                </OrganisationName>
+                <TelephoneNumberBusiness>0117911911</TelephoneNumberBusiness>
+                <EmailDetails>
+                    <EmailAddress1>vegaoic@test.dom</EmailAddress1>
+                </EmailDetails>
+                <PNCidentifier>Test PNC</PNCidentifier>
+                <Address>
+                    <PAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          89</PAON>
+                    <StreetDescription xmlns="http://www.govtalk.gov.uk/people/bs7666">Palace Walk</StreetDescription>
+                    <AdministrativeArea xmlns="http://www.govtalk.gov.uk/people/bs7666">Humberside</AdministrativeArea>
+                </Address>
+                <CROnumber>12345</CROnumber>
+                <Alias>Alias1</Alias>
+                <Alias>Alias2</Alias>
+                <Alias>Alias3</Alias>
+            </PoliceCorporateDefendant>
+            <PoliceIndividualDefendant>
+                <Alias>
+                    <PersonTitle>Mr</PersonTitle>
+                    <PersonGivenName1>NotJohn</PersonGivenName1>
+                    <PersonFamilyName>Rambo</PersonFamilyName>
+                </Alias>
+                <PersonDefendant>
+                    <BasePersonDetails>
+                        <PersonName>
+                            <PersonTitle>Mr</PersonTitle>
+                            <PersonGivenName1>john</PersonGivenName1>
+                            <PersonFamilyName>RAMBO</PersonFamilyName>
+                        </PersonName>
+                        <TelephoneDetails/>
+                        <Birthdate>1974-05-03</Birthdate>
+                        <Gender>1</Gender>
+                    </BasePersonDetails>
+                    <BailConditions/>
+                </PersonDefendant>
+                <Address>
+                    <PAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          89</PAON>
+                    <StreetDescription xmlns="http://www.govtalk.gov.uk/people/bs7666">Palace Walk</StreetDescription>
+                    <AdministrativeArea xmlns="http://www.govtalk.gov.uk/people/bs7666">Humberside</AdministrativeArea>
+                </Address>
+                <PersonEthnicity>
+                    <ObservedEthnicity>9</ObservedEthnicity>
+                    <SelfDefinedEthnicity>W1</SelfDefinedEthnicity>
+                </PersonEthnicity>
+                <Occupation>Office</Occupation>
+                <CustodyStatus>U</CustodyStatus>
+                <LanguageOptions>
+                    <DocumentationLanguage>E</DocumentationLanguage>
+                    <HearingLanguage>E</HearingLanguage>
+                </LanguageOptions>
+                <DriverInformation>
+                    <DriverLicenceIssue>0</DriverLicenceIssue>
+                </DriverInformation>
+                <ParentGuardianDetails>
+                    <BasePersonDetails>
+                        <PersonName>
+                            <PersonTitle>Mr</PersonTitle>
+                            <PersonGivenName1>SeniorJohn</PersonGivenName1>
+                            <PersonFamilyName>RAMBO</PersonFamilyName>
+                        </PersonName>
+                        <TelephoneDetails/>
+                        <Birthdate>1950-05-03</Birthdate>
+                        <Gender>1</Gender>
+                    </BasePersonDetails>
+                    <Address>
+                        <PAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          89</PAON>
+                        <StreetDescription xmlns="http://www.govtalk.gov.uk/people/bs7666">Palace Walk</StreetDescription>
+                        <AdministrativeArea xmlns="http://www.govtalk.gov.uk/people/bs7666">Humberside</AdministrativeArea>
+                    </Address>
+                </ParentGuardianDetails>
+            </PoliceIndividualDefendant>
+            <Offence>
+                <BaseOffenceDetails>
+                    <OffenceSequenceNumber>1</OffenceSequenceNumber>
+                    <OffenceCode>FI68323</OffenceCode>
+                    <OffenceWording>On 09/12/2004 at East Yorkshire had in your possession a firearm with intent by means thereof to cause anonymous person to believe that unlawful violence would be used against him or another.</OffenceWording>
+                    <OffenceTiming>
+                        <OffenceDateCode>1</OffenceDateCode>
+                        <OffenceStart>
+                            <OffenceDateStartDate>2004-12-09</OffenceDateStartDate>
+                            <OffenceStartTime>09:00:00.0000000-00:00</OffenceStartTime>
+                        </OffenceStart>
+                        <OffenceEnd/>
+                    </OffenceTiming>
+                    <ChargeDate>2004-12-09</ChargeDate>
+                    <LocationOfOffence>East Yorkshire</LocationOfOffence>
+                </BaseOffenceDetails>
+                <OtherPartyVictim>
+                    <Address>
+                        <PAON xmlns="http://www.govtalk.gov.uk/people/bs7666">          89</PAON>
+                        <StreetDescription xmlns="http://www.govtalk.gov.uk/people/bs7666">Palace Walk</StreetDescription>
+                        <AdministrativeArea xmlns="http://www.govtalk.gov.uk/people/bs7666">Humberside</AdministrativeArea>
+                    </Address>
+                    <PersonDetails>
+                        <PersonTitle>Mr</PersonTitle>
+                        <PersonGivenName1>Rocky</PersonGivenName1>
+                        <PersonFamilyName>BALBOA</PersonFamilyName>
+                    </PersonDetails>
+                    <TelephoneDetails>
+                        <TelephoneNumberBusiness>0117911911</TelephoneNumberBusiness>
+                    </TelephoneDetails>
+                    <EmailDetails>
+                        <EmailAddress1>vegaoic@test.dom</EmailAddress1>
+                    </EmailDetails>
+                    <Birthdate>1960-12-05</Birthdate>
+                    <Gender>0</Gender>
+                    <PersonEthnicity>
+                        <ObservedEthnicity>9</ObservedEthnicity>
+                        <SelfDefinedEthnicity>W1</SelfDefinedEthnicity>
+                    </PersonEthnicity>
+                </OtherPartyVictim>
+            </Offence>
+        </Defendant>
+    </Case>
+</NewCaseMessage>

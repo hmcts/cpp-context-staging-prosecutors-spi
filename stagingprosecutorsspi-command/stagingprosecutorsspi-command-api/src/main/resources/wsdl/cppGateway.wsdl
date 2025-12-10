@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.cjse.gov.uk/endpoint/wsdl/" xmlns:s0="http://schemas.cjse.gov.uk/endpoint/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://schemas.cjse.gov.uk/endpoint/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.cjse.gov.uk/endpoint/types/">
+            <s:element name="SubmitRequestMes" type="s0:SubmitRequest" />
+            <s:complexType name="SubmitRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="s0:RequestBase">
+                        <s:sequence>
+                            <s:element minOccurs="0" maxOccurs="unbounded" name="DestinationID" type="s:string" />
+                            <s:element minOccurs="1" maxOccurs="1" name="ExecMode" type="s0:ExecMode" />
+                            <s:element minOccurs="1" maxOccurs="1" name="Timestamp" type="s:dateTime" />
+                            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType name="RequestBase" abstract="true">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="RequestID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SourceID" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="RetrieveRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="s0:RequestBase">
+                        <s:sequence>
+                            <s:element minOccurs="0" maxOccurs="1" name="Filter" type="s0:RetrieveFilter" />
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType name="RetrieveFilter">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="TimeFrom" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TimeTo" type="s:dateTime" />
+                </s:sequence>
+            </s:complexType>
+            <s:simpleType name="ExecMode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="ASYNCH"/>
+                    <s:enumeration value="SYNCH"/>
+                    <s:enumeration value="ROUTE"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:element name="SubmitResponseMes" type="s0:SubmitResponse"/>
+            <s:complexType name="SubmitResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="s0:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType name="ResponseBase" abstract="true">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="RequestID" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="ResponseCode" type="s:int"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="ResponseText" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="RetrieveResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="s0:ResponseBase">
+                        <s:sequence>
+                            <s:element minOccurs="1" maxOccurs="1" name="TimeLast" type="s:dateTime" />
+                            <s:element minOccurs="0" maxOccurs="unbounded" name="Message" type="s:string" />
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="RetrieveRequestMes" type="s0:RetrieveRequest"/>
+            <s:element name="RetrieveResponseMes" type="s0:RetrieveResponse"/>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="submitSoapIn">
+        <wsdl:part name="SubmitRequestMes" element="s0:SubmitRequestMes"/>
+    </wsdl:message>
+    <wsdl:message name="submitSoapOut">
+        <wsdl:part name="submitResult" element="s0:SubmitResponseMes"/>
+    </wsdl:message>
+    <wsdl:message name="retrieveSoapIn">
+        <wsdl:part name="RetrieveRequestMes" element="s0:RetrieveRequestMes"/>
+    </wsdl:message>
+    <wsdl:message name="retrieveSoapOut">
+        <wsdl:part name="retrieveResult" element="s0:RetrieveResponseMes"/>
+    </wsdl:message>
+    <wsdl:portType name="CInboundSOAPAdapterSoap">
+        <wsdl:operation name="submit">
+            <wsdl:input message="tns:submitSoapIn"/>
+            <wsdl:output message="tns:submitSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="retrieve">
+            <wsdl:input message="tns:retrieveSoapIn"/>
+            <wsdl:output message="tns:retrieveSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CInboundSOAPAdapterSoap" type="tns:CInboundSOAPAdapterSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="submit">
+            <soap:operation soapAction="http://schemas.cjse.gov.uk/endpoint/wsdl/submit" style="document" />
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="retrieve">
+            <soap:operation soapAction="http://schemas.cjse.gov.uk/endpoint/wsdl/retrieve" style="document" />
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CInboundSOAPAdapterSoap12" type="tns:CInboundSOAPAdapterSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="submit">
+            <soap12:operation soapAction="http://schemas.cjse.gov.uk/endpoint/wsdl/submit" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="retrieve">
+            <soap12:operation soapAction="http://schemas.cjse.gov.uk/endpoint/wsdl/retrieve" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CInboundSOAPAdapter">
+        <wsdl:port name="CInboundSOAPAdapterSoap" binding="tns:CInboundSOAPAdapterSoap">
+            <soap:address location="http://replace_url:port/staging-command-api/CInboundSOAPAdapter/CPPGatewayToCMS" />
+        </wsdl:port>
+        <wsdl:port name="CInboundSOAPAdapterSoap12" binding="tns:CInboundSOAPAdapterSoap12">
+            <soap12:address location="http://replace_url:port/staging-command-api/CInboundSOAPAdapter" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

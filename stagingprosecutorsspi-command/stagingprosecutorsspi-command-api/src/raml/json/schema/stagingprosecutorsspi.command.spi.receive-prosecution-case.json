@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/json/schemas/submit-spi-prosecution-http.json",
+  "type": "object",
+  "properties": {
+    "policeCase" : {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeCase.json"
+    }
+  },
+  "additionalProperties": true
+}

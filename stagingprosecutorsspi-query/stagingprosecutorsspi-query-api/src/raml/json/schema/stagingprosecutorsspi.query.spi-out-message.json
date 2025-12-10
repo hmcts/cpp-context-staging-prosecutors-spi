@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://justice.gov.uk/stagingprosecutors/query/stagingprosecutorsspi.query.spi-out-message",
+  "type": "object",
+  "properties": {
+    "caseUrn": {
+      "type": "string"
+    },
+    "defendantProsecutorReference": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "caseUrn",
+    "defendantProsecutorReference",
+    "payload"
+  ]
+}

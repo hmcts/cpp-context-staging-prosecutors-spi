@@ -1,0 +1,44 @@
+{
+    "_metadata": {
+        "id": "62426280-f4d7-45cf-9f94-c618a210f7c1",
+        "name": "charging.query.reviews-response",
+        "causation": ["7cbe55a2-8554-4a9a-b726-5c282dcbbb31"]
+    },
+    "reviews": [{
+        "caseId": "a526866d-bd18-44ae-8598-ae7fde0784b3",
+        "suspects": [{
+            "id": "fb4aef4d-69df-42b6-b815-3ecd28b49c8b",
+            "suspectId": "ebabacce-1628-48b3-83b8-6f0d2412019f",
+            "codeTestAnalysis": {
+                  "codeTestLevel": "FULL_CODE_TEST",
+                  "codeTestOutcome": "FULL_CODE_TEST_MET"
+            },
+            "authorisedCharges": [{
+                "id": "df8edbd7-f5ef-4bb9-9a33-240aacd200d7",
+                "cjsCode": "CJ182",
+                "description": "description",
+                "category": "Either Way",
+                "fromDate": "2015-10-10",
+                "toDate": "2015-10-10",
+                "proposedChargeId": "2f83526f-aded-4bc6-9e0b-e55948c72ab1",
+                "uniqueId": "AB746921-d839-4867-DDC9-B41BD8EBC852",
+                "anticipatedPlea": "GUILTY"
+            }],
+            "proposedCharges": [{
+                "id": "2f83526f-aded-4bc6-9e0b-e55948c72ab1",
+                "cjsCode": "CJ123",
+                "description": "description",
+                "category": "Either Way",
+                "fromDate": "2015-10-10",
+                "toDate": "2015-10-10",
+                "particulars": {
+                    "address": "10 downing street"
+                },
+                "status": "status",
+                "uniqueId": "AB746921-d839-4867-DDC9-B41BD8EBC852"
+            }]
+        }],
+        "reviewId": "20cb3d29-0516-4a27-854e-68fa5e93ab43",
+        "version": 1
+    }]
+}

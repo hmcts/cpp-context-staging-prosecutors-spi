@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/address.json",
+  "type": "object",
+  "description": "Address of the defendant",
+  "properties": {
+    "uniqueStreetReferenceNumber": {
+      "type": "string",
+      "description": "Unique Street Reference for the defendant",
+      "maxLength": 35
+    },
+    "postTown": {
+      "type": "string",
+      "description": "Post Town for the defendant",
+      "maxLength": 30
+    },
+    "postcode": {
+      "type": "string",
+      "description": "The code allocated by the Post Office to identify a group of postal delivery points",
+      "maxLength": 8,
+      "pattern": "[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][A-Z]{2}"
+    },
+    "locality": {
+      "type": "string",
+      "description": "Locality 3 for the defendant",
+      "maxLength": 35
+    },
+    "paon": {
+      "type": "string",
+      "description": "Paon for the defendant",
+      "maxLength": 100
+    },
+    "uniquePropertyReferenceNumber": {
+      "type": "string",
+      "description": "Unique property refernce for the defendant",
+      "maxLength": 35
+    },
+    "administrativeArea": {
+      "type": "string",
+      "description": "Administrative area for the defendant",
+      "maxLength": 30
+    },
+    "saon": {
+      "type": "string",
+      "description": "Saon for the defendant",
+      "maxLength": 100
+    },
+    "streetDescription": {
+      "type": "string",
+      "description": "Street description for the defendant",
+      "maxLength": 100
+    },
+    "town": {
+      "type": "string",
+      "description": "Town for the defendant",
+      "maxLength": 30
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeParentGuardian.json",
+  "type": "object",
+  "properties": {
+    "basePersonDetails": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/basePersonDetail.json"
+    },
+    "address": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/address.json"
+    },
+    "observedEthnicity": {
+      "type": "integer"
+    },
+    "selfDefinedEthnicity": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

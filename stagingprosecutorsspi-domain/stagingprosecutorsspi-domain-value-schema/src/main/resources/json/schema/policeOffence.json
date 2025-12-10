@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeOffense.json",
+  "type": "object",
+  "properties": {
+    "baseOffenceDetails": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/baseOffense.json"
+    },
+    "prosecutionFacts": {
+      "type": "string"
+    },
+    "otherPartyVictim": {
+      "type": "array",
+      "items": {
+        "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeVictim.json"
+      }
+    }
+  },
+  "required": [
+    "baseOffenceDetails"
+  ],
+  "additionalProperties": false
+}

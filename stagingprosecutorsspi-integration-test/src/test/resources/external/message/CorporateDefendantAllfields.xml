@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RouteData xmlns:cjseEntity="http://schemas.cjse.gov.uk/common/businessentities"
+           xmlns="http://schemas.cjse.gov.uk/common/operations" VersionNumber="1.0"
+           RequestResponse="Request">
+    <RequestFromSystem VersionNumber="1.0">
+        <CorrelationID>CORRELATION_ID</CorrelationID>
+        <SystemID literalvalue="String">C00CommonPlatform</SystemID>
+        <OrganizationalUnitID literalvalue="String">0000000</OrganizationalUnitID>
+        <DataController literalvalue="String">richard.hanley</DataController>
+        <User literalvalue="String">richard.hanley</User>
+        <SourceID literalvalue="String">00501PoliceCaseSystem</SourceID>
+        <DestinationID literalvalue="String">B00LIBRA</DestinationID>
+        <TestOperation>true</TestOperation>
+    </RequestFromSystem>
+                <DataStream VersionNumber="1.0">
+                <cjseEntity:System literalvalue="String">00501PoliceCaseSystem</cjseEntity:System>
+                <cjseEntity:DataStreamType literalvalue="String">SPINewCase</cjseEntity:DataStreamType>
+                <cjseEntity:SystemDataStreamID>21_05_2018_103408_000000306578</cjseEntity:SystemDataStreamID>
+                <cjseEntity:Name>SPI New Case</cjseEntity:Name>
+                <cjseEntity:Reference>21_05_2018_103408_000000306578</cjseEntity:Reference>
+                <cjseEntity:ReferenceType>SPINewCase</cjseEntity:ReferenceType>
+                <cjseEntity:Dated>2013-12-01</cjseEntity:Dated>
+                <cjseEntity:Timed>10:34:13.357Z</cjseEntity:Timed>
+                <cjseEntity:ContentType>text/plain</cjseEntity:ContentType>
+                    <cjseEntity:DataStreamContent>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+                                                  &lt;libra:NewCaseMessage xmlns:apd=&quot;http://www.govtalk.gov.uk/people/AddressAndPersonalDetails&quot;
+                                                   xmlns:bsa=&quot;http://www.govtalk.gov.uk/people/bs7666&quot;
+                                                   xmlns:cor=&quot;http://www.govtalk.gov.uk/core&quot;
+                                                   xmlns:fin=&quot;http://www.govtalk.gov.uk/financial/GDSCFinancialTypes&quot;
+                                                   xmlns:org=&quot;http://www.govtalk.gov.uk/financial/OrganisationIdentifiers&quot;
+                                                   xmlns:pds=&quot;http://www.govtalk.gov.uk/people/PersonDescriptives&quot;
+                                                   xmlns:xhtml=&quot;http://www.w3.org/TR/xhtml&quot;
+                                                   xmlns:code=&quot;http://example.com/codelists&quot;
+                                                   xmlns:codelist=&quot;http://example.com/iso4217CurrencyCodeSample&quot;
+                                                   xmlns:libra=&quot;http://www.dca.gov.uk/xmlschemas/libra&quot;
+                                                   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+                                                   xsi:schemaLocation=&quot;http://www.dca.gov.uk/xmlschemas/libra file:/Users/vishnu@kainos.com/MoJ/cpp.context.staging.prosecutors.spi/stagingprosecutors-spi-cjse-soap-api/src/main/resources/xsd/CPP-StdProsPoliceCase-v1-2.xsd&quot; Flow=&quot;NewCasesFromThePolice&quot; Interface=&quot;LibraStandardProsecutorPolice&quot; SchemaVersion=&quot;0.6g&quot;&gt;
+                                                      &lt;libra:Case&gt;
+                                                          &lt;libra:PTIURN&gt;URN_NUMBER&lt;/libra:PTIURN&gt;
+                                                          &lt;libra:OriginatingOrganisation&gt;Originatin&lt;/libra:OriginatingOrganisation&gt;
+                                                         &lt;libra:InitiationCode&gt;S&lt;/libra:InitiationCode&gt;
+                                                          &lt;libra:SummonsCode&gt;S&lt;/libra:SummonsCode&gt;
+                                                          &lt;!--&lt;libra:CaseInitiation&gt;J&lt;/libra:CaseInitiation&gt;--&gt;
+                                                          &lt;libra:Informant&gt;Informant0&lt;/libra:Informant&gt;
+                                                          &lt;libra:CPSorganisation&gt;CPSorganis&lt;/libra:CPSorganisation&gt;
+                                                          &lt;libra:CaseMarker&gt;CaseMarker&lt;/libra:CaseMarker&gt;
+                                                          &lt;libra:InitialHearing&gt;
+                                                              &lt;libra:CourtHearingLocation&gt;CourtHeari&lt;/libra:CourtHearingLocation&gt;
+                                                              &lt;libra:DateOfHearing&gt;2006-05-04&lt;/libra:DateOfHearing&gt;
+                                                              &lt;libra:TimeOfHearing&gt;09:01:01.001&lt;/libra:TimeOfHearing&gt;
+                                                          &lt;/libra:InitialHearing&gt;
+                                                          &lt;libra:VehicleOperatorLicenceNumber&gt;VehicleOp&lt;/libra:VehicleOperatorLicenceNumber&gt;
+                                                          &lt;libra:OtherPartyOfficerInCase&gt;
+                                                              &lt;libra:OfficerName&gt;
+                                                                  &lt;libra:PersonTitle&gt;PersonTitle0&lt;/libra:PersonTitle&gt;
+                                                                  &lt;libra:PersonGivenName1&gt;PersonGivenName10&lt;/libra:PersonGivenName1&gt;
+                                                                  &lt;libra:PersonGivenName2&gt;PersonGivenName20&lt;/libra:PersonGivenName2&gt;
+                                                                  &lt;libra:PersonGivenName3&gt;PersonGivenName30&lt;/libra:PersonGivenName3&gt;
+                                                                  &lt;libra:PersonFamilyName&gt;PersonFamilyName0&lt;/libra:PersonFamilyName&gt;
+                                                              &lt;/libra:OfficerName&gt;
+                                                              &lt;libra:PoliceOfficerRank&gt;PoliceOfficerRank0&lt;/libra:PoliceOfficerRank&gt;
+                                                              &lt;libra:PoliceWorkerReferenceNumber&gt;PoliceWorkerRef&lt;/libra:PoliceWorkerReferenceNumber&gt;
+                                                              &lt;libra:PoliceWorkerLocationCode&gt;PoliceWork&lt;/libra:PoliceWorkerLocationCode&gt;
+                                                              &lt;libra:StructuredAddress&gt;
+                                                                  &lt;bsa:SAON&gt;     &lt;/bsa:SAON&gt;
+                                                                  &lt;bsa:PAON&gt;     &lt;/bsa:PAON&gt;
+                                                                  &lt;bsa:StreetDescription&gt;StreetDescription0&lt;/bsa:StreetDescription&gt;
+                                                                  &lt;bsa:UniqueStreetReferenceNumber&gt;50000000&lt;/bsa:UniqueStreetReferenceNumber&gt;
+                                                                  &lt;bsa:Locality&gt;Locality0&lt;/bsa:Locality&gt;
+                                                                  &lt;bsa:Town&gt;Town0&lt;/bsa:Town&gt;
+                                                                  &lt;bsa:AdministrativeArea&gt;AdministrativeArea0&lt;/bsa:AdministrativeArea&gt;
+                                                  &lt;!--                &lt;bsa:AdministrativeArea&gt;AdministrativeArea1&lt;/bsa:AdministrativeArea&gt;--&gt;
+                                                  &lt;!--                &lt;bsa:Town&gt;Town1&lt;/bsa:Town&gt;
+                                                                  &lt;bsa:AdministrativeArea&gt;AdministrativeArea2&lt;/bsa:AdministrativeArea&gt;
+                                                  --&gt;
+                                                  &lt;!--                &lt;bsa:AdministrativeArea&gt;AdministrativeArea3&lt;/bsa:AdministrativeArea&gt;--&gt;
+                                                                  &lt;bsa:PostTown&gt;PostTown0&lt;/bsa:PostTown&gt;
+                                                                  &lt;bsa:PostCode&gt;A0 0AA&lt;/bsa:PostCode&gt;
+                                                                  &lt;bsa:UniquePropertyReferenceNumber&gt;50&lt;/bsa:UniquePropertyReferenceNumber&gt;
+                                                              &lt;/libra:StructuredAddress&gt;
+                                                              &lt;libra:TelephoneDetails&gt;
+                                                                  &lt;libra:TelephoneNumberBusiness&gt;0117894278022&lt;/libra:TelephoneNumberBusiness&gt;
+                                                                  &lt;libra:TelephoneNumberMobile&gt;07998021889&lt;/libra:TelephoneNumberMobile&gt;
+                                                              &lt;/libra:TelephoneDetails&gt;
+                                                              &lt;libra:DXaddress&gt;DXaddress0&lt;/libra:DXaddress&gt;
+                                                              &lt;libra:FAXnumber&gt;0117894278022&lt;/libra:FAXnumber&gt;
+                                                              &lt;libra:EmailDetails&gt;
+                                                                  &lt;libra:EmailAddress1&gt;vishnu@gmail.com&lt;/libra:EmailAddress1&gt;
+                                                                  &lt;libra:EmailAddress2&gt;ilja@gmail.com&lt;/libra:EmailAddress2&gt;
+                                                              &lt;/libra:EmailDetails&gt;
+                                                          &lt;/libra:OtherPartyOfficerInCase&gt;
+                                                          &lt;libra:Defendant&gt;
+                                                              &lt;libra:ProsecutorReference&gt;ProsecutorReference0&lt;/libra:ProsecutorReference&gt;
+
+                                                             &lt;libra:PoliceCorporateDefendant&gt;
+                                                                  &lt;libra:OrganisationName&gt;
+                                                                      &lt;libra:OrganisationName&gt;OrganisationName0&lt;/libra:OrganisationName&gt;
+                                                                  &lt;/libra:OrganisationName&gt;
+                                                                  &lt;libra:TelephoneNumberBusiness&gt;09876567576&lt;/libra:TelephoneNumberBusiness&gt;
+                                                                  &lt;libra:EmailDetails&gt;
+                                                                      &lt;libra:EmailAddress1&gt;B@gmail.com&lt;/libra:EmailAddress1&gt;
+                                                                      &lt;libra:EmailAddress2&gt;c@gmail.com&lt;/libra:EmailAddress2&gt;
+                                                                  &lt;/libra:EmailDetails&gt;
+                                                                  &lt;libra:PNCidentifier&gt;ABCD&lt;/libra:PNCidentifier&gt;
+                                                                  &lt;libra:Address&gt;
+                                                                      &lt;bsa:SAON&gt;     &lt;/bsa:SAON&gt;
+                                                                      &lt;bsa:PAON&gt;     &lt;/bsa:PAON&gt;
+                                                                      &lt;bsa:StreetDescription&gt;StreetDescription3&lt;/bsa:StreetDescription&gt;
+                                                                      &lt;bsa:UniqueStreetReferenceNumber&gt;50000000&lt;/bsa:UniqueStreetReferenceNumber&gt;
+                                                                      &lt;bsa:Locality&gt;Locality3&lt;/bsa:Locality&gt;
+                                                                      &lt;bsa:Town&gt;Town6&lt;/bsa:Town&gt;
+                                                                      &lt;bsa:AdministrativeArea&gt;AdministrativeArea10&lt;/bsa:AdministrativeArea&gt;
+                                                                      &lt;bsa:PostTown&gt;PostTown2&lt;/bsa:PostTown&gt;
+                                                                      &lt;bsa:PostCode&gt;A0 0AA&lt;/bsa:PostCode&gt;
+                                                                      &lt;bsa:UniquePropertyReferenceNumber&gt;50&lt;/bsa:UniquePropertyReferenceNumber&gt;
+                                                                  &lt;/libra:Address&gt;
+                                                                  &lt;libra:CROnumber&gt;CROnumber1&lt;/libra:CROnumber&gt;
+                                                                  &lt;libra:Alias&gt;Alias0&lt;/libra:Alias&gt;
+                                                              &lt;/libra:PoliceCorporateDefendant&gt;
+                                                              &lt;libra:Offence&gt;
+                                                                  &lt;libra:BaseOffenceDetails&gt;
+                                                                      &lt;libra:OffenceSequenceNumber&gt;500&lt;/libra:OffenceSequenceNumber&gt;
+                                                                      &lt;libra:OffenceCode&gt;OffenceC&lt;/libra:OffenceCode&gt;
+                                                                      &lt;libra:OffenceWording&gt;On 09/12/2004 at East Yorkshire had in your possession a firearm with intent by means thereof to cause anonymous person to believe that unlawful violence would be used against him or another.&lt;/libra:OffenceWording&gt;
+                                                                      &lt;libra:OffenceTiming&gt;
+                                                                          &lt;libra:OffenceDateCode&gt;1&lt;/libra:OffenceDateCode&gt;
+                                                                          &lt;libra:OffenceStart&gt;
+                                                                              &lt;libra:OffenceDateStartDate&gt;2006-05-04&lt;/libra:OffenceDateStartDate&gt;
+                                                                              &lt;libra:OffenceStartTime&gt;09:00:00.0000000-00:00&lt;/libra:OffenceStartTime&gt;
+                                                                          &lt;/libra:OffenceStart&gt;
+                                                                          &lt;libra:OffenceEnd&gt;
+                                                                              &lt;libra:OffenceEndDate&gt;2005-05-05&lt;/libra:OffenceEndDate&gt;
+                                                                              &lt;libra:OffenceEndTime&gt;10:00:00.0000000-00:00&lt;/libra:OffenceEndTime&gt;
+                                                                          &lt;/libra:OffenceEnd&gt;
+                                                                      &lt;/libra:OffenceTiming&gt;
+                                                                      &lt;libra:ChargeDate&gt;2006-05-04&lt;/libra:ChargeDate&gt;
+                                                                      &lt;libra:ArrestDate&gt;2006-05-04&lt;/libra:ArrestDate&gt;
+                                                                      &lt;libra:LocationOfOffence&gt;LocationOfOffence0&lt;/libra:LocationOfOffence&gt;
+                                                                      &lt;libra:AlcoholRelatedOffence&gt;
+                                                                          &lt;libra:AlcoholLevelAmount&gt;500&lt;/libra:AlcoholLevelAmount&gt;
+                                                                          &lt;libra:AlcoholLevelMethod&gt;A&lt;/libra:AlcoholLevelMethod&gt;
+                                                                      &lt;/libra:AlcoholRelatedOffence&gt;
+                                                                      &lt;libra:VehicleRelatedOffence&gt;
+                                                                          &lt;libra:VehicleCode&gt;a&lt;/libra:VehicleCode&gt;
+                                                                          &lt;libra:VehicleRegistrationMark&gt;TE4654&lt;/libra:VehicleRegistrationMark&gt;
+                                                                      &lt;/libra:VehicleRelatedOffence&gt;
+                                                                  &lt;/libra:BaseOffenceDetails&gt;
+                                                                  &lt;libra:ProsecutionFacts&gt;ProsecutionFacts0&lt;/libra:ProsecutionFacts&gt;
+                                                                  &lt;libra:OtherPartyVictim&gt;
+                                                                      &lt;libra:PersonDetails&gt;
+                                                                          &lt;libra:PersonTitle&gt;OPersonTitle1&lt;/libra:PersonTitle&gt;
+                                                                          &lt;libra:PersonGivenName1&gt;OPersonGivenName11&lt;/libra:PersonGivenName1&gt;
+                                                                          &lt;libra:PersonGivenName2&gt;OPersonGivenName21&lt;/libra:PersonGivenName2&gt;
+                                                                          &lt;libra:PersonGivenName3&gt;OPersonGivenName31&lt;/libra:PersonGivenName3&gt;
+                                                                          &lt;libra:PersonFamilyName&gt;OPersonFamilyName2&lt;/libra:PersonFamilyName&gt;
+                                                                      &lt;/libra:PersonDetails&gt;
+                                                                      &lt;libra:Address&gt;
+                                                                          &lt;bsa:SAON&gt;     &lt;/bsa:SAON&gt;
+                                                                          &lt;bsa:PAON&gt;     &lt;/bsa:PAON&gt;
+                                                                          &lt;bsa:StreetDescription&gt;StreetDescriptionO&lt;/bsa:StreetDescription&gt;
+                                                                          &lt;bsa:UniqueStreetReferenceNumber&gt;50000008&lt;/bsa:UniqueStreetReferenceNumber&gt;
+                                                                          &lt;bsa:Locality&gt;Locality2O&lt;/bsa:Locality&gt;
+                                                                          &lt;bsa:Town&gt;Town2O&lt;/bsa:Town&gt;
+                                                                          &lt;bsa:AdministrativeArea&gt;AdministrativeArea4O&lt;/bsa:AdministrativeArea&gt;
+                                                                          &lt;!--                    &lt;bsa:AdministrativeArea&gt;AdministrativeArea5&lt;/bsa:AdministrativeArea&gt;--&gt;
+                                                                          &lt;!--                    &lt;bsa:Town&gt;Town3&lt;/bsa:Town&gt;
+                                                                      &lt;bsa:AdministrativeArea&gt;AdministrativeArea6&lt;/bsa:AdministrativeArea&gt;
+                                                  --&gt;
+                                                                          &lt;!--                    &lt;bsa:AdministrativeArea&gt;AdministrativeArea7&lt;/bsa:AdministrativeArea&gt;--&gt;
+                                                                          &lt;bsa:PostTown&gt;PostTownO&lt;/bsa:PostTown&gt;
+                                                                          &lt;bsa:PostCode&gt;A0 0AO&lt;/bsa:PostCode&gt;
+                                                                          &lt;bsa:UniquePropertyReferenceNumber&gt;52&lt;/bsa:UniquePropertyReferenceNumber&gt;
+                                                                      &lt;/libra:Address&gt;
+                                                                      &lt;libra:TelephoneDetails&gt;
+                                                                          &lt;libra:TelephoneNumberBusiness&gt;2917894278022&lt;/libra:TelephoneNumberBusiness&gt;
+                                                                          &lt;libra:TelephoneNumberHome&gt;29998021888&lt;/libra:TelephoneNumberHome&gt;
+                                                                          &lt;libra:TelephoneNumberMobile&gt;29998021889&lt;/libra:TelephoneNumberMobile&gt;
+                                                                          &lt;/libra:TelephoneDetails&gt;
+                                                                      &lt;libra:EmailDetails&gt;
+                                                                          &lt;libra:EmailAddress1&gt;Ovishnu@gmail.com&lt;/libra:EmailAddress1&gt;
+                                                                          &lt;libra:EmailAddress2&gt;Oilja@gmail.com&lt;/libra:EmailAddress2&gt;
+                                                                      &lt;/libra:EmailDetails&gt;
+
+                                                                      &lt;libra:Birthdate&gt;2001-01-01&lt;/libra:Birthdate&gt;
+                                                                      &lt;libra:Gender&gt;0&lt;/libra:Gender&gt;
+                                                                      &lt;libra:PersonEthnicity&gt;
+                                                                          &lt;libra:ObservedEthnicity&gt;8&lt;/libra:ObservedEthnicity&gt;
+                                                                          &lt;libra:SelfDefinedEthnicity&gt;B1&lt;/libra:SelfDefinedEthnicity&gt;
+                                                                      &lt;/libra:PersonEthnicity&gt;
+                                                                  &lt;/libra:OtherPartyVictim&gt;
+                                                              &lt;/libra:Offence&gt;
+                                                          &lt;/libra:Defendant&gt;
+                                                      &lt;/libra:Case&gt;
+                                                  &lt;/libra:NewCaseMessage&gt;
+</cjseEntity:DataStreamContent>
+    </DataStream>
+    <Routes VersionNumber="1.0">
+        <Route VersionNumber="1.0">
+            <RouteID>001</RouteID>
+            <RouteSourceSystem literalvalue="String">00501PoliceCaseSystem</RouteSourceSystem>
+            <RouteDestinationSystem literalvalue="String">B00LIBRA</RouteDestinationSystem>
+            <Descriptor>String</Descriptor>
+        </Route>
+    </Routes>
+</RouteData>

@@ -1,0 +1,90 @@
+{
+  "caseDetails": {
+    "caseId": "31161e42-9df4-47b6-a41b-2a5c069f087d",
+    "caseMarkers": [
+      {
+        "markerTypeCode": "YO"
+      }
+    ],
+    "cpsOrganisation": "A16AC00",
+    "initiationCode": "C",
+    "dateReceived": "DATE_RECEIVED",
+    "originatingOrganisation": "116HQ00",
+    "otherPartyOfficerInCase": {
+      "personalInformation": {
+        "address": {
+          "address1": "101",
+          "address2": "56Police House",
+          "address3": "Letsby Avenue",
+          "address4": "Avon",
+          "postcode": "HA1 2ER"
+        },
+        "contactDetails": {
+          "primaryEmail": "vegaoic@test.dom",
+          "work": "0117911911"
+        },
+        "firstName": "Vega",
+        "lastName": "OIC",
+        "title": "Mr"
+      },
+      "policeOfficerRank": "Constable"
+    },
+    "prosecutor": {
+      "prosecutingAuthority": "116HQ00"
+    },
+    "prosecutorCaseReference": "16BH0037005"
+  },
+  "channel": "SPI",
+  "defendants": [
+    {
+      "asn": "0416BH0000000090557N",
+      "custodyStatus": "U",
+      "documentationLanguage": "E",
+      "hearingLanguage": "E",
+      "id": "d84c28d4-2cae-4543-9292-53142839919a",
+      "individual": {
+        "bailConditions": "",
+        "personalInformation": {
+          "address": {
+            "address1": "89",
+            "address2": "Palace Walk",
+            "address3": "Humberside",
+            "postcode": "HA1 2ER"
+          },
+          "contactDetails": {},
+          "firstName": "john",
+          "lastName": "RAMBO",
+          "observedEthnicity": 0,
+          "occupation": "Office",
+          "title": "Baron"
+        },
+        "selfDefinedInformation": {
+          "dateOfBirth": "1974-05-03",
+          "ethnicity": "W1",
+          "gender": "MALE"
+        }
+      },
+      "initialHearing": {
+        "courtHearingLocation": "B16GE00",
+        "dateOfHearing": "2004-12-09",
+        "timeOfHearing": "09:00:00.000"
+      },
+      "offences": [
+        {
+          "chargeDate": "2004-12-09",
+          "offenceCode": "CA03010",
+          "offenceCommittedDate": "2004-12-09",
+          "offenceDateCode": 1,
+          "offenceId": "OFFENCE_ID",
+          "offenceLocation": "East Yorkshire",
+          "offenceSequenceNumber": 1,
+          "offenceWording": "On 09/12/2004 at East Yorkshire had in your possession a firearm with intent by means thereof to cause anonymous person to believe that unlawful violence would be used against him or another.",
+          "otherPartyVictim": []
+        }
+      ],
+      "postingDate": "2004-12-09",
+      "prosecutorDefendantReference": "0416BH0000000090557N"
+    }
+  ],
+  "externalId": "EXTERNAL_ID"
+}

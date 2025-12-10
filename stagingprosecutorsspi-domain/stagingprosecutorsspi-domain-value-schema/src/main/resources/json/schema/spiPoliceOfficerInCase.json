@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/policeOfficerInCase.json",
+  "type": "object",
+  "description": "Personal Information",
+  "properties": {
+    "officerName": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/basePersonName.json"
+    },
+    "policeOfficerRank": {
+      "type": "string",
+      "description": "The first given name of a person, e.g. John ",
+      "maxLength": 130
+    },
+    "policeWorkerReferenceNumber": {
+      "type": "string",
+      "description": "Surname or Family name, e.g. Brown.",
+      "maxLength": 35
+    },
+    "policeWorkerLocationCode": {
+      "type": "string",
+      "description": "The description of an occupation.",
+      "maxLength": 54
+    },
+    "structuredAddress": {
+      "$ref": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/address.json"
+    },
+    "telephoneNumberBusiness": {
+      "type": "string"
+    },
+    "telephoneNumberHome": {
+      "type": "string"
+    },
+    "telephoneNumberMobile": {
+      "type": "string"
+    },
+    "faxNumber": {
+      "type": "string",
+      "description": "FAX Number"
+    },
+    "dxaddress": {
+      "type": "string",
+      "description": "An occupation code"
+    },
+    "emailAddress1": {
+      "type": "string",
+      "description": "An emailaddress1 of the dependent ."
+    },
+    "emailAddress2": {
+      "type": "string",
+      "description": "An emailaddress2 of the dependent."
+    }
+  },
+  "additionalProperties": false
+}

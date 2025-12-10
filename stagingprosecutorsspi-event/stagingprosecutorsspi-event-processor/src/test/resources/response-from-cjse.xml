@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RouteDataResp xmlns="http://schemas.cjse.gov.uk/common/operations" xmlns:ns2="http://schemas.cjse.gov.uk/common/businessentities" xmlns:ns3="http://schemas.cjse.gov.uk/common/businesstypes" VersionNumber="1.0">
+    <ResponseToSystem VersionNumber="1.0">
+        <CorrelationID>CORRELATION_ID</CorrelationID>
+        <SystemID literalvalue="String">Z00CJSE</SystemID>
+        <OrganizationalUnitID literalvalue="String">0000000</OrganizationalUnitID>
+        <DataController literalvalue="String">richard.hanley</DataController>
+        <User literalvalue="String">richard.hanley</User>
+        <SourceID literalvalue="String">C00CommonPlatform</SourceID>
+        <DestinationID literalvalue="String">C00CommonPlatform</DestinationID>
+        <TestOperation>true</TestOperation>
+    </ResponseToSystem>
+    <OperationStatus>
+        <StatusClass>FatalError</StatusClass>
+        <Code>1310</Code>
+        <Description>UnusableDataStream</Description>
+        <ResponseContext>javax.xml.bind.UnmarshalException\n - with linked exception:\n[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.]\n\tat javax.xml.bind.helpers.AbstractUnmars</ResponseContext>
+        <RouteId>001</RouteId>
+    </OperationStatus>
+</RouteDataResp>

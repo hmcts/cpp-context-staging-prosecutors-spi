@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://cpp.moj.gov.uk/staging/prosecutors/spi/json/schemas/sync-response.json",
+  "type": "object",
+  "description": "Synchronous response",
+  "properties": {
+    "requestID": {
+      "type": "string"
+    },
+    "responseCode": {
+      "type": "integer"
+    },
+    "responseText": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "requestID"
+  ]
+}

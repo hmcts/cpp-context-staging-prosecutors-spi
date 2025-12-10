@@ -1,0 +1,155 @@
+{
+  "caseId": "40af74c2-497c-4f36-abda-286e111b84f2",
+  "defendants": [
+    {
+      "offence": [
+        {
+          "baseOffenceDetails": {
+            "alcoholLevelAmount": null,
+            "alcoholLevelMethod": null,
+            "arrestDate": null,
+            "chargeDate": {
+              "year": 2004,
+              "month": "DECEMBER",
+              "chronology": {
+                "calendarType": "iso8601",
+                "id": "ISO"
+              },
+              "era": "CE",
+              "dayOfMonth": 9,
+              "dayOfWeek": "THURSDAY",
+              "dayOfYear": 344,
+              "leapYear": true,
+              "monthValue": 12
+            },
+            "locationOfOffence": "East Yorkshire",
+            "offenceCode": "FI68323",
+            "offenceDateCode": 1,
+            "offenceDateStartDate": {
+              "year": 2004,
+              "month": "DECEMBER",
+              "chronology": {
+                "calendarType": "iso8601",
+                "id": "ISO"
+              },
+              "era": "CE",
+              "dayOfMonth": 9,
+              "dayOfWeek": "THURSDAY",
+              "dayOfYear": 344,
+              "leapYear": true,
+              "monthValue": 12
+            },
+            "offenceEndDate": null,
+            "offenceEndTime": null,
+            "offenceSequenceNumber": 1,
+            "offenceStartTime": "09:00:00.0000000Z",
+            "offenceWording": "On 09/12/2004 at East Yorkshire had in your possession a firearm with intent by means thereof to cause anonymous person to believe that unlawful violence would be used against him or another.",
+            "vehicleCode": null,
+            "vehicleRegistrationMark": null
+          },
+          "otherPartyVictim": [],
+          "prosecutionFacts": null
+        }
+      ],
+      "policeCorporateDefendant": null,
+      "policeIndividualDefendant": {
+        "address": {
+          "administrativeArea": "Humberside",
+          "locality": null,
+          "paon": "          89",
+          "postTown": null,
+          "postcode": null,
+          "saon": null,
+          "streetDescription": "Palace Walk",
+          "town": null,
+          "uniquePropertyReferenceNumber": null,
+          "uniqueStreetReferenceNumber": null
+        },
+        "alias": [],
+        "counterpartIssue": null,
+        "crOnumber": null,
+        "custodyStatus": "U",
+        "documentationLanguage": "E",
+        "driverLicenceCode": null,
+        "driverLicenceIssue": "0",
+        "driverNumber": null,
+        "hearingLanguage": "E",
+        "languageNeeds": null,
+        "observedEthnicity": 9,
+        "occupation": "Office",
+        "occupationCode": null,
+        "offenderCode": null,
+        "parentGuardianDetails": null,
+        "perceivedBirthYear": null,
+        "personDefendant": {
+          "bailConditions": "",
+          "basePersonDetails": {
+            "birthDate": {
+              "year": 1974,
+              "month": "MAY",
+              "chronology": {
+                "calendarType": "iso8601",
+                "id": "ISO"
+              },
+              "era": "CE",
+              "dayOfMonth": 3,
+              "dayOfWeek": "FRIDAY",
+              "dayOfYear": 123,
+              "leapYear": false,
+              "monthValue": 5
+            },
+            "emailAddress1": null,
+            "emailAddress2": null,
+            "gender": 1,
+            "personName": {
+              "personFamilyName": "RAMBO",
+              "personGivenName1": "john",
+              "personGivenName2": null,
+              "personGivenName3": null,
+              "personTitle": "Baron"
+            },
+            "telephoneNumberBusiness": null,
+            "telephoneNumberHome": null,
+            "telephoneNumberMobile": null
+          },
+          "personStatedNationality": null,
+          "pnCidentifier": null
+        },
+        "selfDefinedEthnicity": "W1",
+        "specialNeeds": null
+      },
+      "prosecutorReference": "0416BH0000000090557N"
+    }
+  ],
+  "otherPartyOfficerInCase": {
+    "dxaddress": "DXADDRESS0",
+    "emailAddress1": "vegaoic@test.dom",
+    "emailAddress2": null,
+    "faxNumber": "0117911911",
+    "officerName": {
+      "personFamilyName": "OIC",
+      "personGivenName1": "Vega",
+      "personGivenName2": "Non",
+      "personGivenName3": "Functional",
+      "personTitle": "Baron"
+    },
+    "policeOfficerRank": "Constable",
+    "policeWorkerLocationCode": "116BH00",
+    "policeWorkerReferenceNumber": "1234",
+    "structuredAddress": {
+      "administrativeArea": "Avon",
+      "locality": null,
+      "paon": "          56Police House",
+      "postTown": null,
+      "postcode": null,
+      "saon": "          101",
+      "streetDescription": "Letsby Avenue",
+      "town": null,
+      "uniquePropertyReferenceNumber": null,
+      "uniqueStreetReferenceNumber": null
+    },
+    "telephoneNumberBusiness": "0117911911",
+    "telephoneNumberHome": null,
+    "telephoneNumberMobile": null
+  }
+}

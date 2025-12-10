@@ -1,0 +1,92 @@
+{
+  "caseDetails": {
+    "caseId": "2cb73965-2b3f-430c-a08e-4a786870ee1b",
+    "caseMarkers": [],
+    "cpsOrganisation": "A16AC00",
+    "dateReceived": "2020-12-01",
+    "initiationCode": "C",
+    "originatingOrganisation": "116HQ00",
+    "otherPartyOfficerInCase": {
+      "personalInformation": {
+        "address": {
+          "address1": "101",
+          "address2": "56Police House",
+          "address3": "Letsby Avenue",
+          "address4": "Avon",
+          "postcode": "A0 0AA"
+        },
+        "contactDetails": {
+          "primaryEmail": "vegaoic@test.dom",
+          "work": "0117911911"
+        },
+        "firstName": "Vega",
+        "lastName": "OIC",
+        "title": "Baron"
+      },
+      "policeOfficerRank": "Constable"
+    },
+    "policeSystemId": "00501PoliceCaseSystem",
+    "prosecutor": {
+      "prosecutingAuthority": "116HQ00"
+    },
+    "prosecutorCaseReference": "[URN_NUMBER]"
+  },
+  "channel": "SPI",
+  "defendants": [
+    {
+      "asn": "SecondDefendant",
+      "custodyStatus": "U",
+      "documentationLanguage": "E",
+      "hearingLanguage": "E",
+      "id": "f597d950-c226-4e8d-abe3-ccbaff569c15",
+      "individual": {
+        "bailConditions": "",
+        "personalInformation": {
+          "address": {
+            "address1": "89",
+            "address2": "Palace Walk",
+            "address3": "Humberside",
+            "postcode": "A0 0AA"
+          },
+          "contactDetails": {
+            "primaryEmail": "Dvishnu@gmail.com",
+            "secondaryEmail": "Dilja@gmail.com"
+          },
+          "firstName": "Calvin",
+          "givenName2": "MOJ",
+          "lastName": "Agu",
+          "observedEthnicity": 0,
+          "occupation": "Office",
+          "title": "Baron"
+        },
+        "selfDefinedInformation": {
+          "dateOfBirth": "1974-05-03",
+          "ethnicity": "W1",
+          "gender": "MALE"
+        }
+      },
+      "initialHearing": {
+        "courtHearingLocation": "B16GE00",
+        "dateOfHearing": "2004-12-09",
+        "timeOfHearing": "09:00:00.000"
+      },
+      "offences": [
+        {
+          "chargeDate": "2004-12-09",
+          "offenceCode": "FI68323",
+          "offenceCommittedDate": "2004-12-09",
+          "offenceDateCode": 1,
+          "offenceId": "f1a00c2a-cdc4-4c74-8cca-11b11d51e04b",
+          "offenceLocation": "East Yorkshire",
+          "offenceSequenceNumber": 1,
+          "offenceWording": "OfWord",
+          "otherPartyVictim": [],
+          "statementOfFacts": "ProsecutionFacts0"
+        }
+      ],
+      "postingDate": "2004-12-09",
+      "prosecutorDefendantReference": "SecondDefendant"
+    }
+  ],
+  "externalId": "[OI_ID]"
+}

@@ -1,0 +1,135 @@
+<soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <NS2:SubmitRequestMes xmlns:NS2="http://schemas.cjse.gov.uk/endpoint/types/">
+            <NS2:RequestID>230111-102636-3067-K9X5-3X2E</NS2:RequestID>
+            <NS2:SourceID>Z00CJSE</NS2:SourceID>
+            <NS2:DestinationID>C00CommonPlatform</NS2:DestinationID>
+            <NS2:ExecMode>ASYNCH</NS2:ExecMode>
+            <NS2:Timestamp>2023-01-11T10:26:37Z</NS2:Timestamp>
+            <NS2:Message>
+                &lt;RouteData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema" VersionNumber="1.0"
+                RequestResponse="Request"
+                xmlns:cjseEntity="http://schemas.cjse.gov.uk/common/businessentities"
+                xmlns="http://schemas.cjse.gov.uk/common/operations"&gt;
+                &lt;RequestFromSystem VersionNumber="1.0"&gt;
+                &lt;CorrelationID&gt;230111-102634-KX2R-PT26-JO8F&lt;/CorrelationID&gt;
+                &lt;SystemID literalvalue="05001PoliceCaseSystem"&gt;Z00CJSE&lt;/SystemID&gt;
+                &lt;OrganizationalUnitID literalvalue="Police HQ"&gt;Z000000&lt;/OrganizationalUnitID&gt;
+                &lt;TestOperation&gt;false&lt;/TestOperation&gt;
+                &lt;/RequestFromSystem&gt;
+                &lt;DataStream VersionNumber="1.0"&gt;
+                &lt;cjseEntity:System&gt;05001PoliceCaseSystem&lt;/cjseEntity:System&gt;
+                &lt;cjseEntity:DataStreamType&gt;SPINewCase&lt;/cjseEntity:DataStreamType&gt;
+                &lt;cjseEntity:SystemDataStreamID&gt;UNIFI50_161664&lt;/cjseEntity:SystemDataStreamID&gt;
+                &lt;cjseEntity:ContentType&gt;text/xml&lt;/cjseEntity:ContentType&gt;
+                &lt;cjseEntity:DataStreamContent&gt;&amp;lt;a:NewCaseMessage
+                xmlns:a="http://www.dca.gov.uk/xmlschemas/libra"
+                xmlns:b="http://www.govtalk.gov.uk/people/bs7666"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Flow="NewCasesFromThePolice"
+                Interface="LibraStandardProsecutorPolice" SchemaVersion="0.6g"
+                xsi:schemaLocation="http://www.dca.gov.uk/xmlschemas/libra
+                DCA-Libra-StdProsPoliceCase-v1-2.xsd"&amp;gt;
+                &amp;lt;a:Case&amp;gt;
+                &amp;lt;a:PTIURN&amp;gt;50CH0000122&amp;lt;/a:PTIURN&amp;gt;
+                &amp;lt;a:OriginatingOrganisation&amp;gt;150DE00&amp;lt;/a:OriginatingOrganisation&amp;gt;
+                &amp;lt;a:CaseInitiation&amp;gt;Q&amp;lt;/a:CaseInitiation&amp;gt;
+                &amp;lt;a:CPSorganisation&amp;gt;A50BA00&amp;lt;/a:CPSorganisation&amp;gt;
+                &amp;lt;a:InitialHearing&amp;gt;
+                &amp;lt;a:CourtHearingLocation&amp;gt;B50FI01&amp;lt;/a:CourtHearingLocation&amp;gt;
+                &amp;lt;a:DateOfHearing&amp;gt;2023-01-25&amp;lt;/a:DateOfHearing&amp;gt;
+                &amp;lt;a:TimeOfHearing&amp;gt;10:00:00+00:00&amp;lt;/a:TimeOfHearing&amp;gt;
+                &amp;lt;/a:InitialHearing&amp;gt;
+                &amp;lt;a:OtherPartyOfficerInCase&amp;gt;
+                &amp;lt;a:OfficerName&amp;gt;
+                &amp;lt;a:PersonGivenName1&amp;gt;DAVID&amp;lt;/a:PersonGivenName1&amp;gt;
+                &amp;lt;a:PersonFamilyName&amp;gt;HOBBS&amp;lt;/a:PersonFamilyName&amp;gt;
+                &amp;lt;/a:OfficerName&amp;gt;
+                &amp;lt;a:PoliceOfficerRank&amp;gt;POLICE STAFF&amp;lt;/a:PoliceOfficerRank&amp;gt;
+                &amp;lt;a:PoliceWorkerReferenceNumber&amp;gt;99228&amp;lt;/a:PoliceWorkerReferenceNumber&amp;gt;
+                &amp;lt;a:PoliceWorkerLocationCode&amp;gt;11&amp;lt;/a:PoliceWorkerLocationCode&amp;gt;
+                &amp;lt;a:StructuredAddress&amp;gt;
+                &amp;lt;b:PAON&amp;gt; HOMER HOUSE&amp;lt;/b:PAON&amp;gt;
+                &amp;lt;b:StreetDescription&amp;gt;GREENWOOD DRIVE&amp;lt;/b:StreetDescription&amp;gt;
+                &amp;lt;b:Locality&amp;gt;POLICE HQ MIDDLEMOOR&amp;lt;/b:Locality&amp;gt;
+                &amp;lt;b:Town&amp;gt;EXETER&amp;lt;/b:Town&amp;gt;
+                &amp;lt;b:AdministrativeArea&amp;gt;DEVON&amp;lt;/b:AdministrativeArea&amp;gt;
+                &amp;lt;b:PostCode&amp;gt;EX2 7HQ&amp;lt;/b:PostCode&amp;gt;
+                &amp;lt;/a:StructuredAddress&amp;gt;
+                &amp;lt;a:TelephoneDetails&amp;gt;
+                &amp;lt;a:TelephoneNumberBusiness&amp;gt;01392777777&amp;lt;/a:TelephoneNumberBusiness&amp;gt;
+                &amp;lt;/a:TelephoneDetails&amp;gt;
+                &amp;lt;a:EmailDetails&amp;gt;
+                &amp;lt;a:EmailAddress1&amp;gt;ictopssystemssupportteam@devonandcornwall.pnn.police.uk&amp;lt;/a:EmailAddress1&amp;gt;
+                &amp;lt;/a:EmailDetails&amp;gt;
+                &amp;lt;/a:OtherPartyOfficerInCase&amp;gt;
+                &amp;lt;a:Defendant&amp;gt;
+                &amp;lt;a:ProsecutorReference&amp;gt;2300000000000000001N&amp;lt;/a:ProsecutorReference&amp;gt;
+                &amp;lt;a:PoliceIndividualDefendant&amp;gt;
+                &amp;lt;a:PersonDefendant&amp;gt;
+                &amp;lt;a:BasePersonDetails&amp;gt;
+                &amp;lt;a:PersonName&amp;gt;
+                &amp;lt;a:PersonGivenName1&amp;gt;MILDRED&amp;lt;/a:PersonGivenName1&amp;gt;
+                &amp;lt;a:PersonFamilyName&amp;gt;JONES&amp;lt;/a:PersonFamilyName&amp;gt;
+                &amp;lt;/a:PersonName&amp;gt;
+                &amp;lt;a:Birthdate&amp;gt;1980-03-01&amp;lt;/a:Birthdate&amp;gt;
+                &amp;lt;a:Gender&amp;gt;2&amp;lt;/a:Gender&amp;gt;
+                &amp;lt;/a:BasePersonDetails&amp;gt;
+                &amp;lt;a:PNCidentifier&amp;gt;20160000400C&amp;lt;/a:PNCidentifier&amp;gt;
+                &amp;lt;a:PersonStatedNationality&amp;gt;001&amp;lt;/a:PersonStatedNationality&amp;gt;
+                &amp;lt;/a:PersonDefendant&amp;gt;
+                &amp;lt;a:Address&amp;gt;
+                &amp;lt;b:PAON&amp;gt; 10 &amp;lt;/b:PAON&amp;gt;
+                &amp;lt;b:StreetDescription&amp;gt;FORE STREET&amp;lt;/b:StreetDescription&amp;gt;
+                &amp;lt;b:Locality&amp;gt;KINGSTEIGNTON&amp;lt;/b:Locality&amp;gt;
+                &amp;lt;b:Town&amp;gt;NEWTON ABBOT&amp;lt;/b:Town&amp;gt;
+                &amp;lt;b:AdministrativeArea&amp;gt;DEVON&amp;lt;/b:AdministrativeArea&amp;gt;
+                &amp;lt;b:PostCode&amp;gt;TQ12 3AS&amp;lt;/b:PostCode&amp;gt;
+                &amp;lt;/a:Address&amp;gt;
+                &amp;lt;a:PersonEthnicity&amp;gt;
+                &amp;lt;a:ObservedEthnicity&amp;gt;1&amp;lt;/a:ObservedEthnicity&amp;gt;
+                &amp;lt;a:SelfDefinedEthnicity&amp;gt;W1&amp;lt;/a:SelfDefinedEthnicity&amp;gt;
+                &amp;lt;/a:PersonEthnicity&amp;gt;
+                &amp;lt;a:LanguageOptions&amp;gt;
+                &amp;lt;a:DocumentationLanguage&amp;gt;E&amp;lt;/a:DocumentationLanguage&amp;gt;
+                &amp;lt;a:HearingLanguage&amp;gt;E&amp;lt;/a:HearingLanguage&amp;gt;
+                &amp;lt;/a:LanguageOptions&amp;gt;
+                &amp;lt;/a:PoliceIndividualDefendant&amp;gt;
+                &amp;lt;a:Offence&amp;gt;
+                &amp;lt;a:BaseOffenceDetails&amp;gt;
+                &amp;lt;a:OffenceSequenceNumber&amp;gt;501&amp;lt;/a:OffenceSequenceNumber&amp;gt;
+                &amp;lt;a:OffenceCode&amp;gt;TH68026&amp;lt;/a:OffenceCode&amp;gt;
+                &amp;lt;a:OffenceWording&amp;gt;----------ORIGINAL CHARGE----------
+
+                ON 31-OCT-2022 AT TOTNES IN THE COUNTY OF DEVON ENTERED AS A TRESPASSER A DWELLING,
+                NAMELY 20 HIGH STREET, TOTNES, WITH INTENT TO STEAL THEREIN
+                CONTRARY TO SECTION 9(1)(A) OF THE THEFT ACT 1968.&amp;lt;/a:OffenceWording&amp;gt;
+                &amp;lt;a:OffenceTiming&amp;gt;
+                &amp;lt;a:OffenceDateCode&amp;gt;1&amp;lt;/a:OffenceDateCode&amp;gt;
+                &amp;lt;a:OffenceStart&amp;gt;
+                &amp;lt;a:OffenceDateStartDate&amp;gt;2022-10-31&amp;lt;/a:OffenceDateStartDate&amp;gt;
+                &amp;lt;a:OffenceStartTime&amp;gt;10:00:00+00:00&amp;lt;/a:OffenceStartTime&amp;gt;
+                &amp;lt;/a:OffenceStart&amp;gt;
+                &amp;lt;/a:OffenceTiming&amp;gt;
+                &amp;lt;a:ChargeDate&amp;gt;2023-01-11&amp;lt;/a:ChargeDate&amp;gt;
+                &amp;lt;/a:BaseOffenceDetails&amp;gt;
+                &amp;lt;/a:Offence&amp;gt;
+                &amp;lt;/a:Defendant&amp;gt;
+                &amp;lt;/a:Case&amp;gt;
+                &amp;lt;/a:NewCaseMessage&amp;gt;
+                &lt;/cjseEntity:DataStreamContent&gt;
+                &lt;/DataStream&gt;
+                &lt;Routes VersionNumber="1.0"&gt;
+                &lt;Route VersionNumber="1.0"&gt;
+                &lt;RouteID&gt;1&lt;/RouteID&gt;
+                &lt;RouteSourceSystem&gt;05001PoliceCaseSystem&lt;/RouteSourceSystem&gt;
+                &lt;RouteDestinationSystem&gt;C00CommonPlatform&lt;/RouteDestinationSystem&gt;
+                &lt;/Route&gt;
+                &lt;/Routes&gt;
+                &lt;/RouteData&gt;
+            </NS2:Message>
+        </NS2:SubmitRequestMes>
+    </soap:Body>
+</soap:Envelope>

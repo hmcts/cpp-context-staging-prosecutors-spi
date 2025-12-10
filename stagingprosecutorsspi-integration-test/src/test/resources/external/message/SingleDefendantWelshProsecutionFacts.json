@@ -1,0 +1,90 @@
+{
+  "defendants": [
+    {
+      "id": "xxx",
+      "offence": [
+        {
+          "prosecutionFacts": "ProsecutionFacts0 || Welsh prosecution facts",
+          "otherPartyVictim": [],
+          "baseOffenceDetails": {
+            "offenceDateCode": 1,
+            "locationOfOffence": "East Yorkshire",
+            "offenceCode": "FI68323",
+            "offenceWording": "OfWord",
+            "offenceStartTime": "09:00:00.000",
+            "offenceDateStartDate": "2004-12-09",
+            "offenceSequenceNumber": 1,
+            "chargeDate": "2004-12-09"
+          }
+        }
+      ],
+      "prosecutorReference": "0416BH0000000090557N",
+      "policeIndividualDefendant": {
+        "driverLicenceIssue": "0",
+        "address": {
+          "paon": "          89",
+          "streetDescription": "Palace Walk",
+          "postcode": "A0 0AA",
+          "administrativeArea": "Humberside"
+        },
+        "documentationLanguage": "E",
+        "occupation": "Office",
+        "custodyStatus": "U",
+        "observedEthnicity": 0,
+        "alias": [],
+        "hearingLanguage": "E",
+        "perceivedBirthYear": "2006",
+        "selfDefinedEthnicity": "W1",
+        "personDefendant": {
+          "bailConditions": "",
+          "basePersonDetails": {
+            "personName": {
+              "personTitle": "Baron",
+              "personGivenName2": "PersonGivenName20A",
+              "personGivenName1": "john",
+              "personFamilyName": "RAMBO"
+            },
+            "gender": 1,
+            "emailAddress1": "Dvishnu@gmail.com",
+            "emailAddress2": "Dilja@gmail.com",
+            "birthDate": "1974-05-03"
+          }
+        }
+      }
+    }
+  ],
+  "caseDetails": {
+    "cpSorganisation": "A16AC00",
+    "originatingOrganisation": "116HQ00",
+    "policeSystemId" : "00501PoliceCaseSystem",
+    "initialHearing": {
+      "timeOfHearing": "09:00:00.000",
+      "courtHearingLocation": "B16GE00",
+      "dateOfHearing": "2004-12-09"
+    },
+    "vehicleOperatorLicenceNumber": "VehicleOp",
+    "ptiurn": "URN_NUMBER",
+    "caseInitiationCode": "C"
+  },
+  "otherPartyOfficerInCase": {
+    "policeWorkerLocationCode": "116BH00",
+    "structuredAddress": {
+      "paon": "          56Police House",
+      "streetDescription": "Letsby Avenue",
+      "postcode": "A0 0AA",
+      "saon": "          101",
+      "administrativeArea": "Avon"
+    },
+    "policeOfficerRank": "Constable",
+    "telephoneNumberBusiness": "01012323456",
+    "emailAddress1": "vegaoic@test.dom",
+    "officerName": {
+      "personTitle": "Baron",
+      "personGivenName2": "Non",
+      "personGivenName1": "Vega",
+      "personFamilyName": "OIC"
+    },
+    "faxNumber": "0117911911",
+    "policeWorkerReferenceNumber": "1234"
+  }
+}
