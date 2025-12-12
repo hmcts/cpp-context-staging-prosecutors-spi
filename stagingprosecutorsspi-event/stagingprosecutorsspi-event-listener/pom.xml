@@ -3,7 +3,7 @@
     <parent>
         <artifactId>stagingprosecutorsspi-event</artifactId>
         <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
-        <version>17.103.44-SNAPSHOT</version>
+        <version>17.103.44-CCT-2357-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
