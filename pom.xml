@@ -11,7 +11,7 @@
 
     <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
     <artifactId>stagingprosecutorsspi</artifactId>
-    <version>17.103.44-CCT-2357-SNAPSHOT</version>
+    <version>17.103.45-CCT-2357-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>stagingprosecutorsspi</name>
 
