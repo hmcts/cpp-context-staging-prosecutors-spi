@@ -3,7 +3,7 @@
     <parent>
         <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
         <artifactId>stagingprosecutorsspi</artifactId>
-        <version>17.103.45-CCT-2357-SNAPSHOT</version>
+        <version>17.103.46-CCT-2357-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>stagingprosecutorsspi-query</artifactId>
