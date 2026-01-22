@@ -6,7 +6,7 @@ import static com.microsoft.azure.functions.HttpStatus.OK;
 import static com.microsoft.azure.functions.annotation.AuthorizationLevel.FUNCTION;
 import static java.lang.String.format;
 import static java.lang.System.getenv;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 import java.util.Optional;

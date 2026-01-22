@@ -9,7 +9,7 @@ import uk.gov.justice.services.messaging.JsonEnvelope;
 import uk.gov.justice.services.messaging.Metadata;
 
 import javax.inject.Inject;
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonObject;
 
 import static uk.gov.justice.services.core.annotation.Component.EVENT_PROCESSOR;
@@ -32,7 +32,7 @@ public class SPIPoliceCaseEjectedProcessor {
         final JsonObject payload = envelope.payloadAsJsonObject();
         if (payload.containsKey(PROSECUTION_CASE_ID)) {
             final String caseId = payload.getString(PROSECUTION_CASE_ID);
-            final JsonObject caseEjectedCommandPayload = Json.createObjectBuilder()
+            final JsonObject caseEjectedCommandPayload = JsonObjects.createObjectBuilder()
                     .add(CASE_ID, caseId)
                     .build();
             final Metadata metadata = metadataFrom(envelope.metadata())

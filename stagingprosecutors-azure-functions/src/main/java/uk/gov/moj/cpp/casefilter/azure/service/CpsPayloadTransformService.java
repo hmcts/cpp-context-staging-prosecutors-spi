@@ -11,8 +11,8 @@ import java.util.stream.IntStream;
 
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
-import static javax.json.Json.createArrayBuilder;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createArrayBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static uk.gov.moj.cpp.casefilter.azure.utils.ExceptionProvider.generateMissingFieldException;
 import static uk.gov.moj.cpp.casefilter.azure.utils.FileUtil.getPathValue;
@@ -23,7 +23,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
@@ -79,7 +79,7 @@ public class CpsPayloadTransformService {
     private Optional<JsonObjectBuilder> getProsecutionCaseSubject(final JsonObject sourcePayload) {
         final JsonObjectBuilder objectBuilder = createObjectBuilder();
         final Optional<JsonArrayBuilder> defendantSubject = getDefendantSubject(sourcePayload);
-        final JsonArrayBuilder cases = Json.createArrayBuilder();
+        final JsonArrayBuilder cases = JsonObjects.createArrayBuilder();
         if (Objects.nonNull(sourcePayload.get(CASES)) && !sourcePayload.getJsonArray(CASES).isEmpty()) {
             JsonArray casesFromNotification = sourcePayload.getJsonArray(CASES);
             IntStream.range(0, casesFromNotification.size()).mapToObj(caseCounter -> casesFromNotification.getJsonObject(caseCounter)).forEach(caseFromNotification ->

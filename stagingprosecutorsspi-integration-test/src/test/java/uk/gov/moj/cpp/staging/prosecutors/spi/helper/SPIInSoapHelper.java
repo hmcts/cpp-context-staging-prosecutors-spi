@@ -54,7 +54,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import com.github.tomakehurst.wiremock.verification.LoggedRequest;
@@ -234,7 +234,7 @@ public class SPIInSoapHelper {
 
     public static void sendCaseUnsupportedMessageAndVerifyAsyncErrorMessageToSpiPublished(final String urn, final UUID oiId) throws IOException, DatatypeConfigurationException {
         final String unsupportedErrorMessage = "unsupported error message";
-        final String payloadForUnsupportedCasePublicEvent = Json.createObjectBuilder()
+        final String payloadForUnsupportedCasePublicEvent = JsonObjects.createObjectBuilder()
                 .add("channel", "SPI")
                 .add("errorMessage", unsupportedErrorMessage)
                 .add("externalId", oiId.toString())

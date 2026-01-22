@@ -12,7 +12,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.utils.TestUtils;
 
 import java.io.IOException;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -37,8 +37,8 @@ public class SPIEjectCaseIT extends AbstractIT {
     @Test
     public void testCaseEjected_whenCaseEjectedPublicEventIsRaised_expectSPIPoliceCaseEjectedPrivateEvent() {
 
-        final String payloadForEjectedCasePublicEvent = Json.createObjectBuilder()
-                .add("hearingIds", Json.createArrayBuilder().add(randomUUID().toString()).build())
+        final String payloadForEjectedCasePublicEvent = JsonObjects.createObjectBuilder()
+                .add("hearingIds", JsonObjects.createArrayBuilder().add(randomUUID().toString()).build())
                 .add("prosecutionCaseId", PROSECUTOR_CASE_ID)
                 .add("removalReason", "legal")
                 .build().toString();

@@ -47,7 +47,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.utils.stub.SystemIdMapperStub;
 
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -86,7 +86,7 @@ public class ReceiveSPIMessageIT extends AbstractIT {
         SystemIdMapperStub.stubGetRequestUUIDByCorrelationIdAndSystemId(correlationId.concat(CPP_SYSTEM_ID), oiID);
         sendAndVerifySPImessage(TEST_CONFIG_INSTANCE.getURN(), ADD_DEFENDANT_MESSAGE_FILE, NEW_DEFENDANTS_RECEIVED_JSON, requestId, correlationId);
 
-        final String body = Json.createObjectBuilder().add("policeSystemId", "newPoliceSystemId").build().toString();
+        final String body = JsonObjects.createObjectBuilder().add("policeSystemId", "newPoliceSystemId").build().toString();
         postCommandForPoliceSystemIdUpdate(oiID.toString(), body);
         verifyCPPMessageWithUrnPoliceSystemId(TEST_CONFIG_INSTANCE.getURN(), "newPoliceSystemId");
 

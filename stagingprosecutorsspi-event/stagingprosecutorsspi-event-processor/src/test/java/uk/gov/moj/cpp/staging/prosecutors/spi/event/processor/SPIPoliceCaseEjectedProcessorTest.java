@@ -12,7 +12,7 @@ import static uk.gov.justice.services.test.utils.core.messaging.MetadataBuilderF
 import uk.gov.justice.services.core.sender.Sender;
 import uk.gov.justice.services.messaging.JsonEnvelope;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonObject;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -49,8 +49,8 @@ public class SPIPoliceCaseEjectedProcessorTest {
 
     @Test
     public void testHandleCaseOrApplicationEjected_whenProsecutionCaseIdPresentInPayload_expectCommandRaisedForCaseEjected() {
-        final JsonObject payload = Json.createObjectBuilder()
-                .add("hearingIds", Json.createArrayBuilder().add(randomUUID().toString()).build())
+        final JsonObject payload = JsonObjects.createObjectBuilder()
+                .add("hearingIds", JsonObjects.createArrayBuilder().add(randomUUID().toString()).build())
                 .add("prosecutionCaseId", PROSECUTOR_CASE_ID)
                 .add("removalReason", "legal")
                 .build();
@@ -66,8 +66,8 @@ public class SPIPoliceCaseEjectedProcessorTest {
 
     @Test
     public void testHandleCaseOrApplicationEjected_whenProsecutionCaseIdNotPresentInPayload_expectNoCommandRaisedForCaseEjected() {
-        final JsonObject payload = Json.createObjectBuilder()
-                .add("hearingIds", Json.createArrayBuilder().add(randomUUID().toString()).build())
+        final JsonObject payload = JsonObjects.createObjectBuilder()
+                .add("hearingIds", JsonObjects.createArrayBuilder().add(randomUUID().toString()).build())
                 .add("applicationId", PROSECUTOR_CASE_ID)
                 .add("removalReason", "legal")
                 .build();
