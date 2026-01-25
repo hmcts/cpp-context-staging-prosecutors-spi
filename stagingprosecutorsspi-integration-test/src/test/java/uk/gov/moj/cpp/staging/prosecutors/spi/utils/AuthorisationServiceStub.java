@@ -9,7 +9,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 
 public class AuthorisationServiceStub {
 
@@ -28,7 +28,7 @@ public class AuthorisationServiceStub {
     }
 
     private static void stubEnableCapabilities(String stubUrl, boolean statusToReturn, int priority) {
-        String responsePayload = Json.createObjectBuilder().add("enabled", statusToReturn).build().toString();
+        String responsePayload = JsonObjects.createObjectBuilder().add("enabled", statusToReturn).build().toString();
 
         stubFor(get(urlMatching(stubUrl))
                 .atPriority(priority)

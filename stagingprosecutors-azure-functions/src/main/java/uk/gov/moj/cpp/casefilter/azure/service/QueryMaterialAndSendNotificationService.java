@@ -2,7 +2,7 @@ package uk.gov.moj.cpp.casefilter.azure.service;
 
 import static java.lang.String.format;
 import static java.lang.System.getenv;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static org.apache.http.HttpStatus.SC_OK;
 
 import uk.gov.moj.cpp.casefilter.azure.pojo.ResponseDto;
