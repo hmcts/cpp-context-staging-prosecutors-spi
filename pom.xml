@@ -11,7 +11,7 @@
 
     <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
     <artifactId>stagingprosecutorsspi</artifactId>
-    <version>17.104.43-CIMD-3355-SNAPSHOT</version>
+    <version>17.104.44-CIMD-3355-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>stagingprosecutorsspi</name>
 
