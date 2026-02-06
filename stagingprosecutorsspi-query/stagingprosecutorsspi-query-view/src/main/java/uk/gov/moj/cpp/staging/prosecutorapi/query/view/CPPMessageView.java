@@ -1,8 +1,9 @@
 package uk.gov.moj.cpp.staging.prosecutorapi.query.view;
 
-import static javax.json.Json.createObjectBuilder;
 import static uk.gov.justice.services.core.annotation.Component.QUERY_VIEW;
 import static uk.gov.justice.services.messaging.JsonEnvelope.envelopeFrom;
+import static uk.gov.justice.services.messaging.JsonObjects.createArrayBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 
 import uk.gov.justice.services.core.annotation.Handles;
 import uk.gov.justice.services.core.annotation.ServiceComponent;
@@ -14,7 +15,6 @@ import uk.gov.moj.cpp.staging.prosecutors.persistence.entity.CPPMessage;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
@@ -39,7 +39,7 @@ public class CPPMessageView {
     }
 
     private JsonObject getCppMessagesPayload(final List<CPPMessage> cppMessages) {
-        final JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
+        final JsonArrayBuilder jsonArrayBuilder = createArrayBuilder();
 
         cppMessages.stream().forEach(cppMessage ->
                 {
@@ -62,6 +62,4 @@ public class CPPMessageView {
         return createObjectBuilder()
                 .add("cppMessages", jsonArrayBuilder.build()).build();
     }
-
-
 }

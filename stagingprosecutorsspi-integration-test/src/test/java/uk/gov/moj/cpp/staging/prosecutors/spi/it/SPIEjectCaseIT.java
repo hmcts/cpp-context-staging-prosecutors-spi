@@ -1,7 +1,8 @@
 package uk.gov.moj.cpp.staging.prosecutors.spi.it;
 
-import static java.util.UUID.fromString;
 import static java.util.UUID.randomUUID;
+import static uk.gov.justice.services.messaging.JsonObjects.createArrayBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.JMSTopicHelper.postMessageToTopicAndVerify;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.EXTERNAL_MESSAGE_INDIVIDUAL_DEFENDANT_ALL_FIELDS_JSON;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.INPUT_SPI_MESSAGE_INDIVIDUAL_DEFENDANT_ALL_FIELDS;
@@ -12,7 +13,6 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.utils.TestUtils;
 
 import java.io.IOException;
 
-import javax.json.Json;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -37,8 +37,8 @@ public class SPIEjectCaseIT extends AbstractIT {
     @Test
     public void testCaseEjected_whenCaseEjectedPublicEventIsRaised_expectSPIPoliceCaseEjectedPrivateEvent() {
 
-        final String payloadForEjectedCasePublicEvent = Json.createObjectBuilder()
-                .add("hearingIds", Json.createArrayBuilder().add(randomUUID().toString()).build())
+        final String payloadForEjectedCasePublicEvent = createObjectBuilder()
+                .add("hearingIds", createArrayBuilder().add(randomUUID().toString()).build())
                 .add("prosecutionCaseId", PROSECUTOR_CASE_ID)
                 .add("removalReason", "legal")
                 .build().toString();

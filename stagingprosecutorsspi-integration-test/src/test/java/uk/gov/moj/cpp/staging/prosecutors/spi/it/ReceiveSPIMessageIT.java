@@ -1,7 +1,7 @@
 package uk.gov.moj.cpp.staging.prosecutors.spi.it;
 
-import static java.util.UUID.fromString;
 import static java.util.UUID.randomUUID;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.ADD_DEFENDANT_MESSAGE_FILE;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.EXTERNAL_MESSAGE_CORPORATE_DEFENDANT_ALL_FIELDS_JSON;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.EXTERNAL_MESSAGE_CORPORATE_DEFENDANT_ALL_FIELDS_WITHOUT_EMAIL_JSON;
@@ -47,8 +47,6 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.utils.stub.SystemIdMapperStub;
 
 import java.util.UUID;
 
-import javax.json.Json;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -86,7 +84,7 @@ public class ReceiveSPIMessageIT extends AbstractIT {
         SystemIdMapperStub.stubGetRequestUUIDByCorrelationIdAndSystemId(correlationId.concat(CPP_SYSTEM_ID), oiID);
         sendAndVerifySPImessage(TEST_CONFIG_INSTANCE.getURN(), ADD_DEFENDANT_MESSAGE_FILE, NEW_DEFENDANTS_RECEIVED_JSON, requestId, correlationId);
 
-        final String body = Json.createObjectBuilder().add("policeSystemId", "newPoliceSystemId").build().toString();
+        final String body = createObjectBuilder().add("policeSystemId", "newPoliceSystemId").build().toString();
         postCommandForPoliceSystemIdUpdate(oiID.toString(), body);
         verifyCPPMessageWithUrnPoliceSystemId(TEST_CONFIG_INSTANCE.getURN(), "newPoliceSystemId");
 

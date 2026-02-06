@@ -6,10 +6,9 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 
 import java.util.UUID;
-
-import javax.json.Json;
 
 public class AuthorisationServiceStub {
 
@@ -28,7 +27,7 @@ public class AuthorisationServiceStub {
     }
 
     private static void stubEnableCapabilities(String stubUrl, boolean statusToReturn, int priority) {
-        String responsePayload = Json.createObjectBuilder().add("enabled", statusToReturn).build().toString();
+        String responsePayload = createObjectBuilder().add("enabled", statusToReturn).build().toString();
 
         stubFor(get(urlMatching(stubUrl))
                 .atPriority(priority)

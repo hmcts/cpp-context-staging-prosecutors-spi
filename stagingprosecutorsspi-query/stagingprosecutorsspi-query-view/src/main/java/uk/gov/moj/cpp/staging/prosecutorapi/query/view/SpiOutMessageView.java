@@ -3,6 +3,7 @@ package uk.gov.moj.cpp.staging.prosecutorapi.query.view;
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 import static uk.gov.justice.services.core.annotation.Component.QUERY_VIEW;
 import static uk.gov.justice.services.messaging.JsonEnvelope.envelopeFrom;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 
 import uk.gov.justice.services.core.annotation.Handles;
 import uk.gov.justice.services.core.annotation.ServiceComponent;
@@ -14,7 +15,6 @@ import uk.gov.moj.cpp.staging.prosecutors.persistence.repository.SpiOutMessageRe
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
@@ -43,7 +43,7 @@ public class SpiOutMessageView {
     }
 
     private JsonObject getResponse(final String caseUrn, final String defendantProsecutorReference, final SpiOutMessage spiOutMessage) {
-        final JsonObjectBuilder builder = Json.createObjectBuilder();
+        final JsonObjectBuilder builder = createObjectBuilder();
 
         builder.add("caseUrn", caseUrn)
                 .add("defendantProsecutorReference", defendantProsecutorReference)
