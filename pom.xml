@@ -22,8 +22,8 @@
         <system.users.library.version>6.4.0</system.users.library.version>
         <cpp.system-users.version>6.4.0</cpp.system-users.version>
         <system.id-mapper.version>6.4.0</system.id-mapper.version>
-        <referencedata.version>17.0.120</referencedata.version>
-        <coredomain.version>17.103.10</coredomain.version>
+        <referencedata.version>17.103.122</referencedata.version>
+        <coredomain.version>17.103.11</coredomain.version>
         <maven.cucumber.reporting.plugin.version>2.0.0</maven.cucumber.reporting.plugin.version>
         <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
         <jaxws.maven.plugin.version>2.6</jaxws.maven.plugin.version>
