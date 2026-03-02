@@ -5,6 +5,8 @@ import static java.time.LocalDate.now;
 import static java.util.UUID.fromString;
 import static java.util.UUID.randomUUID;
 import static javax.xml.datatype.DatatypeFactory.newInstance;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static uk.gov.justice.core.courts.Address.address;
 import static uk.gov.justice.core.courts.AllocationDecision.allocationDecision;
 import static uk.gov.justice.core.courts.ContactNumber.contactNumber;
@@ -17,6 +19,7 @@ import static uk.gov.justice.core.courts.OffenceFacts.offenceFacts;
 import static uk.gov.justice.core.courts.Plea.plea;
 import static uk.gov.justice.core.courts.SecondaryCJSCode.secondaryCJSCode;
 import static uk.gov.justice.core.courts.VehicleCode.LARGE_GOODS_VEHICLE;
+import static uk.gov.justice.services.test.utils.core.reflection.ReflectionUtil.setField;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.event.helper.PublicPoliceResultGenerated.publicPoliceResultGenerated;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.AssociatedIndividual.associatedIndividual;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.AttendanceDay.attendanceDay;
@@ -43,6 +46,11 @@ import uk.gov.justice.core.courts.NextHearing;
 import uk.gov.justice.core.courts.OffenceFacts;
 import uk.gov.justice.core.courts.SecondaryCJSCode;
 import uk.gov.justice.core.courts.VehicleCode;
+import uk.gov.justice.services.common.converter.JsonObjectToObjectConverter;
+import uk.gov.justice.services.common.converter.jackson.ObjectMapperProducer;
+import uk.gov.justice.services.messaging.Envelope;
+import uk.gov.justice.services.messaging.Metadata;
+import uk.gov.moj.cpp.staging.prosecutors.spi.event.EventClientTestBase;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.AssociatedIndividual;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.AttendanceDay;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.AttendanceType;
@@ -51,6 +59,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.CourtCentre;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.CourtCentreWithLJA;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.Individual;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.IndividualDefendant;
+import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.Offence;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.OffenceDetails;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.OrganisationDetails;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.SessionDay;
@@ -66,11 +75,15 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.UUID;
 
+import javax.json.JsonObject;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Spy;
 
 public class TestTemplate {
     private static final String RESULT_TEXT_3000 = RandomStringUtils.randomAlphabetic(3000);
@@ -109,7 +122,15 @@ public class TestTemplate {
     private static final String SECONDARY_CJS_CODE_3 = "";
     private static final String SECONDARY_CJS_TEXT_3 = "NonNumericSecondaryCjsCode";
 
-    public static PublicPoliceResultGenerated createPublicPoliceResultGenerated() {
+    public static PublicPoliceResultGenerated createPublicPoliceResultGeneratedFromJson(final String json) {
+        return EventClientTestBase.readJson(json, PublicPoliceResultGenerated.class);
+    }
+
+    public static Offence createOffence(final String json) {
+        return EventClientTestBase.readJson(json, Offence.class);
+    }
+
+    public static PublicPoliceResultGenerated createPublicPoliceResultGenerated()  {
         final PublicPoliceResultGenerated publicPoliceResultGenerated = publicPoliceResultGenerated();
         publicPoliceResultGenerated.setId(randomUUID());
         publicPoliceResultGenerated.setCaseId(CASE_ID);
