@@ -3,7 +3,7 @@
     <parent>
         <artifactId>stagingprosecutorsspi</artifactId>
         <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
-        <version>17.105.1-PEG-3047-SNAPSHOT</version>
+        <version>17.105.44-PEG-3047-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -72,6 +72,10 @@
             <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
             <artifactId>stagingprosecutorsspi-healthchecks</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.gov.justice.event-store</groupId>
+            <artifactId>event-tracking-discovery</artifactId>
         </dependency>
 
         <!-- Test dependencies -->
