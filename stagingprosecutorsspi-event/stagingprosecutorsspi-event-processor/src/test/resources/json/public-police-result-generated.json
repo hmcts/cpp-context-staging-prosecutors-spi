@@ -1,0 +1,170 @@
+
+  {
+    "caseId": "264c93fc-6080-4e22-b313-94db8ba68e5a",
+    "courtCentreWithLJA": {
+      "courtCentre": {
+        "address": {
+          "address1": "xxx",
+          "address2": "xxx",
+          "address3": "xxx",
+          "address4": "xxx",
+          "address5": "xxx",
+          "postcode": "xxx"
+        },
+        "code": "xxx",
+        "courtHearingLocation": "xxx",
+        "id": "ad790d92-8990-4eb9-bce3-76cf23894cb3",
+        "lja": {
+          "ljaCode": "xxx",
+          "ljaName": "xxx"
+        },
+        "name": "xxx",
+        "roomId": "64ba65c5-41f2-4aba-8c5e-004346e1622e",
+        "roomName": "xxx"
+      },
+      "courtHearingLocation": "xxx",
+      "psaCode": 0
+    },
+    "sessionDays": [
+      {
+        "listedDurationMinutes": 0,
+        "listingSequence": 0,
+        "sittingDay": "2026-02-26T10:00:00Z"
+      }
+    ],
+    "defendant": {
+      "associatedPerson": [],
+      "attendanceDays": [
+        {
+          "attendanceType": "IN_PERSON",
+          "day": "2026-02-26"
+        }
+      ],
+      "defendantId": "81b65e76-0b79-41c4-9e19-1d5f08d3fb97",
+      "individualDefendant": {
+        "bailConditions": "xxx",
+        "bailStatus": {
+          "code": "xxx",
+          "description": "xxx",
+          "id": "98b64812-74c8-4743-8822-969b46983636"
+        },
+        "person": {
+          "address": {
+            "address1": "xxx",
+            "address2": "xxx",
+            "address3": "xxx",
+            "address4": "xxx",
+            "postcode": "xxx"
+          },
+          "firstName": "xxx",
+          "gender": "MALE",
+          "lastName": "xxx",
+          "nationality": "xxx",
+          "title": "xxx"
+        },
+        "presentAtHearing": "xxx"
+      },
+      "offences": [
+
+        {
+          "allocationDecision": {
+            "allocationDecisionDate": null,
+            "courtIndicatedSentence": null,
+            "motReasonCode": "10",
+            "motReasonDescription": "Remand Custody",
+            "motReasonId": null,
+            "offenceId": "b9abaf2b-a948-4a66-8022-c8aa12317c81",
+            "originatingHearingId": null,
+            "sequenceNumber": null
+          },
+          "civilOffence": {
+            "isExParte": false
+          },
+          "id": "ebc73866-c5b4-4d8f-971d-d7b986051e6b",
+          "convictingCourt": 123,
+          "convictionDate": "2019-02-03",
+          "endDate": "2019-02-07",
+          "finalDisposal": "T",
+          "finding": "finding",
+          "indicatedPlea": null,
+          "judicialResults": [
+            {
+              "alwaysPublished": false,
+              "canBeSubjectOfBreach": false,
+              "canBeSubjectOfVariation": false,
+              "canExtendActiveOrder": false,
+              "category": null,
+              "committedToCC": false,
+              "courtClerk": {
+                "firstName": "xxx",
+                "lastName": "xxx",
+                "userId": "653f5699-690c-4c3b-b618-60e1f2e8002b"
+              },
+              "d20": false,
+              "excludedFromResults": false,
+              "isAdjournmentResult": false,
+              "isAvailableForCourtExtract": false,
+              "isConvictedResult": false,
+              "isDeleted": false,
+              "isFinancialResult": false,
+              "isNewAmendment": false,
+              "isUnscheduled": false,
+              "judicialResultId": "f3a9199e-dfdf-4579-823b-bdcd01303df7",
+              "judicialResultTypeId": "ce484f60-b5fe-4737-b6e7-73c30d735527",
+              "label": "xxx",
+              "lastSharedDateTime": "2026-02-26T10:00:00Z",
+              "level": "xxx",
+              "lifeDuration": false,
+              "orderedDate": null,
+              "orderedHearingId": "81f8d5ab-46aa-43c1-af3f-5976b83c48f1",
+              "postHearingCustodyStatus": "xxx",
+              "preserveActiveOrder": false,
+              "publishedAsAPrompt": false,
+              "publishedForNows": false,
+              "rank": 0,
+              "resultText": "xxx",
+              "rollUpPrompts": false,
+              "rootJudicialResultId": "81f8d5ab-46aa-43c1-af3f-5976b83c48f1",
+              "rootJudicialResultTypeId": "7b9e9cab-c9d7-455d-a6b3-403b85f14eb0",
+              "sentToCC": false,
+              "terminatesOffenceProceedings": false,
+              "urgent": false,
+              "usergroups": []
+            }
+          ],
+          "modeOfTrial": "3",
+          "offenceCode": "61131",
+          "offenceDateCode": 1998,
+          "offenceFacts": {
+            "alcoholReadingAmount": 1,
+            "alcoholReadingMethodCode": "AlcoholReadingMethod",
+            "alcoholReadingMethodDescription": null,
+            "vehicleCode": "LARGE_GOODS_VEHICLE",
+            "vehicleMake": null,
+            "vehicleRegistration": "34334"
+          },
+          "offenceSequenceNumber": 1,
+          "plea": {
+            "applicationId": null,
+            "delegatedPowers": null,
+            "lesserOrAlternativeOffence": null,
+            "offenceId": null,
+            "originatingHearingId": null,
+            "pleaDate": "2019-01-02",
+            "pleaValue": "GUILTY"
+          },
+
+          "startDate": "2019-02-06",
+          "wording": "wording",
+          "arrestDate": "2019-02-08",
+          "chargeDate": "2019-02-05",
+          "additionalProperties": {}
+        }
+      ],
+      "prosecutorReference": "xxx",
+      "pncId": "pncId"
+    },
+    "id": "f40c9386-84db-41e2-9b2b-178739223268",
+    "urn": "xxx"
+  }
+
