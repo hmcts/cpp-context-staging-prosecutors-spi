@@ -6,24 +6,15 @@ import javax.json.*;
 
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
-import static javax.json.Json.createArrayBuilder;
-import static javax.json.Json.createObjectBuilder;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static uk.gov.justice.services.messaging.JsonObjects.createArrayBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.moj.cpp.casefilter.azure.utils.ExceptionProvider.generateMissingFieldException;
 import static uk.gov.moj.cpp.casefilter.azure.utils.FileUtil.getPathValue;
 
-import uk.gov.moj.cpp.casefilter.azure.utils.DateTimeProvider;
-
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.IntStream;
-
-import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
