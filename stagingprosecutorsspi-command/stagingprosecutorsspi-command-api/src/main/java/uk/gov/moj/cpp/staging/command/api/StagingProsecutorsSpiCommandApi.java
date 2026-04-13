@@ -8,9 +8,9 @@ import uk.gov.justice.services.messaging.JsonEnvelope;
 import javax.inject.Inject;
 import javax.json.JsonObjectBuilder;
 
-import static javax.json.Json.createObjectBuilder;
 import static uk.gov.justice.services.core.annotation.Component.COMMAND_API;
 import static uk.gov.justice.services.messaging.JsonEnvelope.envelopeFrom;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.moj.cpp.staging.command.api.converter.TimeOfHearingConverter.updateBSTTimeOfHearing;
 
 @SuppressWarnings("WeakerAccess")
