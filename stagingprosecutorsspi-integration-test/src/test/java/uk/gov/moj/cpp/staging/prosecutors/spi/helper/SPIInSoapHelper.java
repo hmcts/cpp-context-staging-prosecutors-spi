@@ -24,6 +24,7 @@ import static org.skyscreamer.jsonassert.JSONCompareMode.LENIENT;
 import static org.skyscreamer.jsonassert.JSONCompareMode.STRICT;
 import static uk.gov.justice.services.integrationtest.utils.jms.JmsMessageConsumerClientProvider.newPrivateJmsMessageConsumerClientProvider;
 import static uk.gov.justice.services.integrationtest.utils.jms.JmsMessageConsumerClientProvider.newPublicJmsMessageConsumerClientProvider;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.justice.services.test.utils.core.http.RequestParamsBuilder.requestParams;
 import static uk.gov.justice.services.test.utils.core.http.RestPoller.poll;
 import static uk.gov.justice.services.test.utils.core.matchers.ResponsePayloadMatcher.payload;
@@ -54,7 +55,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import javax.json.Json;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import com.github.tomakehurst.wiremock.verification.LoggedRequest;
@@ -234,7 +234,7 @@ public class SPIInSoapHelper {
 
     public static void sendCaseUnsupportedMessageAndVerifyAsyncErrorMessageToSpiPublished(final String urn, final UUID oiId) throws IOException, DatatypeConfigurationException {
         final String unsupportedErrorMessage = "unsupported error message";
-        final String payloadForUnsupportedCasePublicEvent = Json.createObjectBuilder()
+        final String payloadForUnsupportedCasePublicEvent = createObjectBuilder()
                 .add("channel", "SPI")
                 .add("errorMessage", unsupportedErrorMessage)
                 .add("externalId", oiId.toString())

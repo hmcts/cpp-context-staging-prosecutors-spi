@@ -7,12 +7,13 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 import static uk.gov.justice.services.messaging.JsonEnvelope.envelopeFrom;
+import static uk.gov.justice.services.messaging.JsonObjects.createArrayBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.justice.services.test.utils.core.messaging.MetadataBuilderFactory.metadataWithRandomUUID;
 
 import uk.gov.justice.services.core.sender.Sender;
 import uk.gov.justice.services.messaging.JsonEnvelope;
 
-import javax.json.Json;
 import javax.json.JsonObject;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -49,8 +50,8 @@ public class SPIPoliceCaseEjectedProcessorTest {
 
     @Test
     public void testHandleCaseOrApplicationEjected_whenProsecutionCaseIdPresentInPayload_expectCommandRaisedForCaseEjected() {
-        final JsonObject payload = Json.createObjectBuilder()
-                .add("hearingIds", Json.createArrayBuilder().add(randomUUID().toString()).build())
+        final JsonObject payload = createObjectBuilder()
+                .add("hearingIds", createArrayBuilder().add(randomUUID().toString()).build())
                 .add("prosecutionCaseId", PROSECUTOR_CASE_ID)
                 .add("removalReason", "legal")
                 .build();
@@ -66,8 +67,8 @@ public class SPIPoliceCaseEjectedProcessorTest {
 
     @Test
     public void testHandleCaseOrApplicationEjected_whenProsecutionCaseIdNotPresentInPayload_expectNoCommandRaisedForCaseEjected() {
-        final JsonObject payload = Json.createObjectBuilder()
-                .add("hearingIds", Json.createArrayBuilder().add(randomUUID().toString()).build())
+        final JsonObject payload = createObjectBuilder()
+                .add("hearingIds", createArrayBuilder().add(randomUUID().toString()).build())
                 .add("applicationId", PROSECUTOR_CASE_ID)
                 .add("removalReason", "legal")
                 .build();

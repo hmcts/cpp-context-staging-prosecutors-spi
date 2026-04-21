@@ -2,6 +2,7 @@ package uk.gov.moj.cpp.staging.prosecutors.spi.event.service;
 
 import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 
 import uk.gov.justice.services.core.enveloper.Enveloper;
 import uk.gov.justice.services.core.requester.Requester;
@@ -12,7 +13,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.IntStream;
 
-import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 
@@ -23,7 +23,7 @@ public class ProsecutionCaseFileService {
     private JsonObject getProsecutionCase(final Envelope<?> envelope, final Requester requester, final UUID caseId) {
 
 
-        final JsonObject getCaseDetails = Json.createObjectBuilder().add("caseId", caseId.toString()).build();
+        final JsonObject getCaseDetails = createObjectBuilder().add("caseId", caseId.toString()).build();
         final Envelope<JsonObject> requestEnvelope = Enveloper.envelop(getCaseDetails)
                 .withName(PROSECUTION_CASE_QUERY).withMetadataFrom(envelope);
         final Envelope<JsonObject> response = requester.requestAsAdmin(requestEnvelope, JsonObject.class);

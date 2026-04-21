@@ -4,8 +4,6 @@ import static com.google.common.collect.ImmutableMap.of;
 import static java.util.Collections.emptyMap;
 import static java.util.Objects.isNull;
 import static java.util.UUID.randomUUID;
-import static javax.json.Json.createArrayBuilder;
-import static javax.json.Json.createObjectBuilder;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -18,10 +16,13 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 import static uk.gov.justice.services.messaging.Envelope.metadataBuilder;
 import static uk.gov.justice.services.messaging.JsonEnvelope.envelopeFrom;
+import static uk.gov.justice.services.messaging.JsonObjects.createArrayBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.justice.services.test.utils.core.enveloper.EnveloperFactory.createEnveloper;
 import static uk.gov.justice.services.test.utils.core.messaging.MetadataBuilderFactory.metadataWithRandomUUID;
 import static uk.gov.justice.services.test.utils.core.reflection.ReflectionUtil.setField;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.event.helper.TestTemplate.createPublicPoliceResultGenerated;
+import static uk.gov.moj.cpp.staging.prosecutors.spi.event.helper.TestTemplate.createPublicPoliceResultGeneratedFromJson;
 
 import uk.gov.dca.xmlschemas.libra.StdProsPoliceResultedCaseStructure;
 import uk.gov.justice.services.common.converter.JsonObjectToObjectConverter;
@@ -67,6 +68,8 @@ public class ResultProcessorTest {
     private static final String SEND_SPI_RESULT_COMMAND = "stagingprosecutorsspi.command.handler.send-spi-result";
     private static final String SPI_RESULT_PREPARED_FOR_SENDING = "stagingprosecutorsspi.command.handler.prepare-cpp-message-for-sending";
     private static final String NON_POLICE_SYSTEM_ID = "00001NPPforB7";
+    public static final String JSON_PUBLIC_POLICE_RESULT_GENERATED_JSON = "json/public-police-result-generated.json";
+
 
     @Spy
     private final Enveloper enveloper = createEnveloper();
@@ -109,12 +112,38 @@ public class ResultProcessorTest {
     }
 
     @Test
+    public void shouldRaiseAPublicEventPoliceResultGeneratedFromJsonForCivilCase() throws JAXBException {
+
+        when(requester.requestAsAdmin(any(), any())).thenReturn(getCppMessage(of(
+                "policeSystemId", "3232",
+                "organizationUnitID", "232",
+                "dataController", "34343")));
+        final PublicPoliceResultGenerated publicPoliceResultGenerated = createPublicPoliceResultGeneratedFromJson(JSON_PUBLIC_POLICE_RESULT_GENERATED_JSON);
+
+        final JsonEnvelope envelope = envelopeFrom(metadataWithRandomUUID("public.results.police-result-generated"),
+                objectToJsonObjectConverter.convert(publicPoliceResultGenerated));
+        final Map<String, Object> context = new HashMap<>();
+        when(resultConverter.convert(eq(publicPoliceResultGenerated), eq(context))).thenReturn(new StdProsPoliceResultedCaseStructure());
+        when(jsonObjectToObjectConverter.convert(any(), any())).thenReturn(publicPoliceResultGenerated);
+        resultProcessor.onSpiCaseGenerated(envelope);
+
+        verify(prosecutionCaseFileService).extractOffenceLocation(envelope, requester, publicPoliceResultGenerated.getCaseId());
+        verify(sender).send(envelopeArgumentCaptor.capture());
+        final Envelope captorValue = envelopeArgumentCaptor.getValue();
+
+        assertThat(captorValue.payload(), is(notNullValue()));
+        assertThat(captorValue.metadata().name(), is(SEND_SPI_RESULT_COMMAND));
+    }
+
+
+    @Test
     public void shouldRaiseAPublicEventPoliceResultGenerated() throws JAXBException {
         when(requester.requestAsAdmin(any(), any())).thenReturn(getCppMessage(of(
                 "policeSystemId", "3232",
                 "organizationUnitID", "232",
                 "dataController", "34343")));
         final PublicPoliceResultGenerated publicPoliceResultGenerated = createPublicPoliceResultGenerated();
+
         final JsonEnvelope envelope = envelopeFrom(metadataWithRandomUUID("public.results.police-result-generated"),
                 objectToJsonObjectConverter.convert(publicPoliceResultGenerated));
         final Map<String, Object> context = new HashMap<>();
@@ -256,8 +285,7 @@ public class ResultProcessorTest {
 
         if (fieldsMap.isEmpty()) {
             jsonArray = createArrayBuilder().build();
-        }
-        else {
+        } else {
             fieldsMap.forEach((key, value) -> jsonObjectBuilder.add(key, value));
             jsonObject = jsonObjectBuilder.build();
             jsonArray = createArrayBuilder().add(jsonObject).build();

@@ -4,11 +4,11 @@ import static com.jayway.jsonpath.JsonPath.read;
 import static java.lang.String.format;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
+import static uk.gov.justice.services.messaging.JsonObjects.createReader;
 
 import java.io.StringReader;
 import java.util.Optional;
 
-import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
@@ -23,7 +23,7 @@ public class FileUtil {
 
     public static JsonObject getJsonObject(final String jsonAsString) {
         final JsonObject payload;
-        try (JsonReader jsonReader = Json.createReader(new StringReader(jsonAsString))) {
+        try (JsonReader jsonReader = createReader(new StringReader(jsonAsString))) {
             payload = jsonReader.readObject();
         }
         return payload;
