@@ -114,6 +114,7 @@ public class SPIInSoapHelper {
     public static final String INPUT_SPI_MDI_NO_SOURCE_ID = "external/message/errors/MDINoSourceId.xml";
     public static final String INPUT_SPI_MDI_NO_DESTINATION_ID = "external/message/errors/MDINoDestinationId.xml";
     public static final String INPUT_SPI_MDI_NO_EXEC_MODE = "external/message/errors/MDINoExecMode.xml";
+    public static final String INPUT_SPI_MDI_NO_OFFENCE_CODE = "external/message/errors/MDINoOffenceCode.xml";
     public static final String INPUT_MINIMAL_SPI_MDI_MESSAGE = "external/message/errors/MDIMinimalSPIMessage.xml";
 
     public static final String OIValidation_MANDATORY_FIELDS = "external/message/OIValidationForMandatoryFields.xml";
@@ -250,6 +251,12 @@ public class SPIInSoapHelper {
     public static void sendAndVerifyErrorWithNoRequestId(final String urn, final String inputResource, final String correlationId) {
         final SubmitResponse submitResponse = sendPayload(urn, inputResource, correlationId);
         SPISoapAdapterHelper.validateSubmitResponseCodeForInvalidRequestId(submitResponse);
+
+    }
+
+    public static void sendAndVerifyErrorWithNoOffenceCode(final String urn, final String inputResource, final String correlationId) {
+        final SubmitResponse submitResponse = sendPayload(urn, inputResource, correlationId);
+        SPISoapAdapterHelper.validateSubmitResponseCodeForNoOffenceCode(submitResponse);
 
     }
 

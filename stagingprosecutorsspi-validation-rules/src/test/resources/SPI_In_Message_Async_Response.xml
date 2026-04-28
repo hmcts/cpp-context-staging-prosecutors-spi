@@ -1,0 +1,31 @@
+<NS1:Envelope xmlns:NS1="http://schemas.xmlsoap.org/soap/envelope/">
+    <NS1:Body>
+        <NS2:SubmitRequestMes xmlns:NS2="http://schemas.cjse.gov.uk/endpoint/types/">
+            <NS2:RequestID>1570787530239</NS2:RequestID>
+            <NS2:SourceID>Z00CJSE</NS2:SourceID>
+            <NS2:DestinationID>C00CommonPlatform</NS2:DestinationID>
+            <NS2:ExecMode>ASYNCH</NS2:ExecMode>
+            <NS2:Timestamp>2019-02-06T14:27:48Z</NS2:Timestamp>
+            <NS2:Message>&lt;RouteDataResp xmlns=&quot;http://schemas.cjse.gov.uk/common/operations&quot; xmlns:ns2=&quot;http://schemas.cjse.gov.uk/common/businessentities&quot; xmlns:ns3=&quot;http://schemas.cjse.gov.uk/common/businesstypes&quot; VersionNumber=&quot;1.0&quot;&gt;
+                                                      &lt;ResponseToSystem VersionNumber=&quot;1.0&quot;&gt;
+                                                          &lt;CorrelationID&gt;CORRELATION_ID&lt;/CorrelationID&gt;
+                                                          &lt;SystemID literalvalue=&quot;CJSE&quot;&gt;Z00CJSE&lt;/SystemID&gt;
+                                                          &lt;OrganizationalUnitID literalvalue=&quot;CJIT&quot;&gt;Z0000000&lt;/OrganizationalUnitID&gt;
+                                                          &lt;DataController literalvalue=&quot;String&quot;&gt;richard.hanley&lt;/DataController&gt;
+                                                          &lt;User literalvalue=&quot;String&quot;&gt;richard.hanley&lt;/User&gt;
+                                                          &lt;SourceID literalvalue=&quot;String&quot;&gt;C00CommonPlatform&lt;/SourceID&gt;
+                                                          &lt;DestinationID literalvalue=&quot;String&quot;&gt;B00LIBRA&lt;/DestinationID&gt;
+                                                          &lt;TestOperation&gt;true&lt;/TestOperation&gt;
+                                                      &lt;/ResponseToSystem&gt;
+                                                      &lt;OperationStatus&gt;
+                                                          &lt;StatusClass&gt;FatalError&lt;/StatusClass&gt;
+                                                          &lt;Code&gt;1317&lt;/Code&gt;
+                                                          &lt;Description&gt;UnusableDataStream&lt;/Description&gt;
+                                                          &lt;ResponseContext&gt;javax.xml.bind.UnmarshalException\n - with linked exception:\n[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.]\n\tat javax.xml.bind.helpers.AbstractUnmars&lt;/ResponseContext&gt;
+                                                          &lt;RouteId&gt;001&lt;/RouteId&gt;
+                                                      &lt;/OperationStatus&gt;
+                                                  &lt;/RouteDataResp&gt;
+            </NS2:Message>
+        </NS2:SubmitRequestMes>
+    </NS1:Body>
+</NS1:Envelope>
