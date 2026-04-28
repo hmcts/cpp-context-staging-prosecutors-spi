@@ -32,6 +32,7 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+@SuppressWarnings("squid:S2699")
 @ExtendWith(MockitoExtension.class)
 public class MDIValidatorTest {
 
