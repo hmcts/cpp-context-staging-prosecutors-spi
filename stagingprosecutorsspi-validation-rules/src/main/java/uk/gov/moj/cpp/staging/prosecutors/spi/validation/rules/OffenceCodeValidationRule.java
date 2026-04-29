@@ -34,6 +34,8 @@ public class OffenceCodeValidationRule extends AbstractValidationRule implements
     public Optional<ValidationError> validate(final SubmitRequest input) {
 
             XMLInputFactory factory = XMLInputFactory.newInstance();
+            factory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
+            factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
 
             try (StringReader reader = new StringReader(input.getMessage())) {
                 XMLStreamReader xmlReader = factory.createXMLStreamReader(reader);
