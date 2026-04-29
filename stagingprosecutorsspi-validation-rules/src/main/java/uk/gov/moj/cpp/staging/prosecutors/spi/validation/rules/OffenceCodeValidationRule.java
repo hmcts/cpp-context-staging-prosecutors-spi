@@ -9,10 +9,14 @@ import uk.gov.dca.xmlschemas.libra.StdProsPoliceNewCaseStructure;
 import uk.gov.moj.cpp.staging.prosecutors.spi.validation.ValidationError;
 import uk.gov.moj.cpp.staging.soap.schema.ObjectUnMarshaller;
 
+import java.io.StringReader;
 import java.util.Optional;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -28,20 +32,56 @@ public class OffenceCodeValidationRule extends AbstractValidationRule implements
 
     @Override
     public Optional<ValidationError> validate(final SubmitRequest input) {
-        try {
-            final Object requestOrResponseType = ((JAXBElement) new ObjectUnMarshaller().getRequestOrResponseType(input.getMessage())).getValue();
-            if(requestOrResponseType instanceof RouteDataRequestType){
-                final RouteDataRequestType requestType = (RouteDataRequestType) requestOrResponseType;
-                final StdProsPoliceNewCaseStructure stdProsPoliceNewCaseStructure = new ObjectUnMarshaller().getStdProsPoliceNewCaseStructure(requestType.getDataStream().getDataStreamContent());
-                if (stdProsPoliceNewCaseStructure.getCase().getDefendant().stream()
-                        .flatMap(def -> def.getOffence().stream())
-                        .anyMatch(off -> StringUtils.isBlank(off.getBaseOffenceDetails().getOffenceCode()))){
-                    return of(getValidationError());
+
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+
+            try (StringReader reader = new StringReader(input.getMessage())) {
+                XMLStreamReader xmlReader = factory.createXMLStreamReader(reader);
+
+                while (xmlReader.hasNext()) {
+                    int event = xmlReader.next();
+
+                    if (event == XMLStreamConstants.START_ELEMENT &&
+                            "DataStreamContent".equals(xmlReader.getLocalName())) {
+
+                        String innerXml = xmlReader.getElementText();
+
+                        if (hasBlankOffenceCode(innerXml)) {
+                            return of(getValidationError());
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                LOGGER.info("Input XML failed validation: {}", e.getCause());
+            }
+
+        return Optional.empty();
+    }
+
+
+    public boolean hasBlankOffenceCode(String xml) {
+        XMLInputFactory factory = XMLInputFactory.newInstance();
+
+        try (StringReader reader = new StringReader(xml)) {
+            XMLStreamReader xmlReader = factory.createXMLStreamReader(reader);
+
+            while (xmlReader.hasNext()) {
+                int event = xmlReader.next();
+
+                if (event == XMLStreamConstants.START_ELEMENT &&
+                        "OffenceCode".equals(xmlReader.getLocalName())) {
+
+                    String value = xmlReader.getElementText();
+
+                    if (value == null || value.trim().isEmpty()) {
+                        return true;
+                    }
                 }
             }
-        } catch (JAXBException | SAXException e  ) {
+        } catch (Exception e) {
             LOGGER.info("Input XML failed validation: {}", e.getCause());
         }
-        return Optional.empty();
+
+        return false;
     }
 }
