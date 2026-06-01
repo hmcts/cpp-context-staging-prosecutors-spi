@@ -11,6 +11,7 @@ public enum ValidationError {
     INVALID_EXEC_MODE(307, "ModeError"),
     INVALID_DATA_CONTROLLER(307, "InvalidDataController"),
     INVALID_ORGANIZATIONAL_UNIT_ID(308, "InvalidOrganizationalUnitID"),
+    INVALID_OFFENCE_CODE(309, "InvalidOffenceCode"),
     INVALID_ROUTE_SOURCE_SYSTEM(1317, "UnknownRouteSourceSystem"),
     INVALID_ROUTE_DESTINATION_SYSTEM(1318, "UnknownRouteDestinationSystem"),
     SAME_SOURCE_AND_DESTINATION_SYSTEM(1321, "SameSourceAndDestinationSystem"),
