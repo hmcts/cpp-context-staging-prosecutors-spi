@@ -140,7 +140,7 @@
                                                                   &lt;/libra:Address&gt;
                                                                   &lt;libra:PersonEthnicity&gt;
                                                                       &lt;libra:ObservedEthnicity&gt;4&lt;/libra:ObservedEthnicity&gt;
-                                                                      &lt;libra:SelfDefinedEthnicity&gt;A1&lt;/libra:SelfDefinedEthnicity&gt;
+                                                                      &lt;libra:SelfDefinedEthnicity&gt;B1&lt;/libra:SelfDefinedEthnicity&gt;
                                                                   &lt;/libra:PersonEthnicity&gt;
                                                                   &lt;libra:OccupationCode&gt;50&lt;/libra:OccupationCode&gt;
                                                                   &lt;libra:Occupation&gt;Occupation0&lt;/libra:Occupation&gt;
@@ -242,7 +242,7 @@
                                                               &lt;libra:Offence&gt;
                                                                   &lt;libra:BaseOffenceDetails&gt;
                                                                       &lt;libra:OffenceSequenceNumber&gt;500&lt;/libra:OffenceSequenceNumber&gt;
-                                                                      &lt;libra:OffenceCode&gt;OffenceC&lt;/libra:OffenceCode&gt;
+                                                                      &lt;libra:OffenceCode&gt;&lt;/libra:OffenceCode&gt;
                                                                       &lt;libra:OffenceWording&gt;OfWord&lt;/libra:OffenceWording&gt;
                                                                       &lt;libra:OffenceTiming&gt;
                                                                           &lt;libra:OffenceDateCode&gt;1&lt;/libra:OffenceDateCode&gt;
@@ -307,7 +307,7 @@
                                                                       &lt;libra:Gender&gt;0&lt;/libra:Gender&gt;
                                                                       &lt;libra:PersonEthnicity&gt;
                                                                           &lt;libra:ObservedEthnicity&gt;8&lt;/libra:ObservedEthnicity&gt;
-                                                                          &lt;libra:SelfDefinedEthnicity&gt;B1&lt;/libra:SelfDefinedEthnicity&gt;
+                                                                          &lt;libra:SelfDefinedEthnicity&gt;B0&lt;/libra:SelfDefinedEthnicity&gt;
                                                                       &lt;/libra:PersonEthnicity&gt;
                                                                   &lt;/libra:OtherPartyVictim&gt;
                                                               &lt;/libra:Offence&gt;

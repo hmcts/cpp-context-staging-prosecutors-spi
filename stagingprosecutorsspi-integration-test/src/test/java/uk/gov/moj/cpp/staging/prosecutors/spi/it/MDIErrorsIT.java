@@ -4,6 +4,7 @@ import static java.util.UUID.randomUUID;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.INPUT_MINIMAL_SPI_MDI_MESSAGE;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.INPUT_SPI_MDI_NO_DESTINATION_ID;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.INPUT_SPI_MDI_NO_EXEC_MODE;
+import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.INPUT_SPI_MDI_NO_OFFENCE_CODE;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.INPUT_SPI_MDI_NO_REQUEST_ID;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.INPUT_SPI_MDI_NO_SOURCE_ID;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.sendAndVerifyErrorWithInvalidDestinationId;
@@ -12,6 +13,7 @@ import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.send
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.sendAndVerifyErrorWithInvalidSourceId;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.sendAndVerifyErrorWithNoDestinationId;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.sendAndVerifyErrorWithNoExecMode;
+import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.sendAndVerifyErrorWithNoOffenceCode;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.sendAndVerifyErrorWithNoRequestId;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.sendAndVerifyErrorWithNoSourceId;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.TestConfig.TEST_CONFIG_INSTANCE;
@@ -27,6 +29,12 @@ public class MDIErrorsIT extends AbstractIT {
     public void setUp() {
         TEST_CONFIG_INSTANCE.setUp();
     }
+
+    @Test
+    public void sendSPIInWithMDIValidationErrorNoOffenceCode() {
+        sendAndVerifyErrorWithNoOffenceCode(TEST_CONFIG_INSTANCE.getURN(), INPUT_SPI_MDI_NO_OFFENCE_CODE, TEST_CONFIG_INSTANCE.getCorrelationId());
+    }
+
 
     @Test
     public void sendSPIInWithMDIValidationErrorNoRequestId() {
