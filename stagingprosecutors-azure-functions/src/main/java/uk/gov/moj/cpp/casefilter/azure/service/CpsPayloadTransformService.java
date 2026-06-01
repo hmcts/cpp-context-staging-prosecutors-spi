@@ -70,7 +70,7 @@ public class CpsPayloadTransformService {
     private Optional<JsonObjectBuilder> getProsecutionCaseSubject(final JsonObject sourcePayload) {
         final JsonObjectBuilder objectBuilder = createObjectBuilder();
         final Optional<JsonArrayBuilder> defendantSubject = getDefendantSubject(sourcePayload);
-        final JsonArrayBuilder cases = Json.createArrayBuilder();
+        final JsonArrayBuilder cases = JsonObjects.createArrayBuilder();
         if (Objects.nonNull(sourcePayload.get(CASES)) && !sourcePayload.getJsonArray(CASES).isEmpty()) {
             JsonArray casesFromNotification = sourcePayload.getJsonArray(CASES);
             IntStream.range(0, casesFromNotification.size()).mapToObj(caseCounter -> casesFromNotification.getJsonObject(caseCounter)).forEach(caseFromNotification ->
