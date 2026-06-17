@@ -131,6 +131,12 @@ public class SPISoapAdapterHelper {
         assertThat("Response message should be present", retrieveResponse.getResponseText(), is("RetrieveNotAvailable"));
     }
 
+    public static void validateSubmitResponseCodeForNoOffenceCode(SubmitResponse submitResponse) {
+        assertNotNull(submitResponse);
+        assertThat("Response message should be present", submitResponse.getResponseCode(), is(309));
+        assertThat("Response message should be present", submitResponse.getResponseText(), is("InvalidOffenceCode"));
+    }
+
     public static void validateSubmitResponseCodeForInvalidSourceId(SubmitResponse submitResponse) {
         assertNotNull(submitResponse);
         assertThat("Response message should be present", submitResponse.getResponseCode(), is(304));

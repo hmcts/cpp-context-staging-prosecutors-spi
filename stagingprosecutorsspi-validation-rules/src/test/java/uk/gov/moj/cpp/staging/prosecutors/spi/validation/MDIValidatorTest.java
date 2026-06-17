@@ -1,6 +1,7 @@
 package uk.gov.moj.cpp.staging.prosecutors.spi.validation;
 
 import static java.util.UUID.randomUUID;
+import static org.apache.commons.io.FileUtils.readFileToString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.when;
@@ -10,9 +11,12 @@ import uk.gov.cjse.schemas.endpoint.types.SubmitRequest;
 import uk.gov.moj.cpp.staging.prosecutors.spi.validation.rules.DestinationIdValidationRule;
 import uk.gov.moj.cpp.staging.prosecutors.spi.validation.rules.ExecModeValidationRule;
 import uk.gov.moj.cpp.staging.prosecutors.spi.validation.rules.MDIValidationRule;
+import uk.gov.moj.cpp.staging.prosecutors.spi.validation.rules.OffenceCodeValidationRule;
 import uk.gov.moj.cpp.staging.prosecutors.spi.validation.rules.RequestIdValidationRule;
 import uk.gov.moj.cpp.staging.prosecutors.spi.validation.rules.SourceIdValidationRule;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +32,7 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+@SuppressWarnings("squid:S2699")
 @ExtendWith(MockitoExtension.class)
 public class MDIValidatorTest {
 
@@ -44,6 +49,9 @@ public class MDIValidatorTest {
     private static final String INVALID_REQUEST_ID_TEXT = "InvalidRequestID";
     private static final int INVALID_EXEC_MODE_CODE = 307;
     private static final String INVALID_EXEC_MODE_TEXT = "ModeError";
+    public static final String INVALID_OFFENCE_TEXT = "InvalidOffenceCode";
+    public static final int INVALID_OFFENCE_CODE = 309;
+
 
     @InjectMocks
     private MDIValidator mdiValidator;
@@ -63,19 +71,24 @@ public class MDIValidatorTest {
     @Spy
     private ExecModeValidationRule execModeValidationRule;
 
+    @Spy
+    private OffenceCodeValidationRule offenceCodeValidationRule;
+
 
     private SubmitRequest submitRequest;
 
     @BeforeEach
-    public void setup() throws IllegalAccessException {
+    public void setup() throws IllegalAccessException, IOException {
         submitRequest = new SubmitRequest();
         submitRequest.setRequestID(REQUEST_ID);
         submitRequest.setSourceID(SOURCE_ID);
         submitRequest.getDestinationID().add(0, BOO_LIBRA_AS_DESTINATION_ID);
         submitRequest.setExecMode(ExecMode.ASYNCH);
+        final String payload = readFileToString(new File(this.getClass().getClassLoader().getResource("IndividualDefendantAllfields.xml").getFile()));
+        submitRequest.setMessage(payload);
 
         List<MDIValidationRule> validationRules =
-                Arrays.asList(sourceIdValidationRule, requestIdValidator, destinationIdValidationRule, execModeValidationRule);
+                Arrays.asList(sourceIdValidationRule, requestIdValidator, destinationIdValidationRule, execModeValidationRule, offenceCodeValidationRule);
 
         when(validatorRules.spliterator()).thenReturn(validationRules.spliterator());
         FieldUtils.writeField(destinationIdValidationRule, "cppSystemId", BOO_LIBRA_AS_DESTINATION_ID, true);
@@ -129,6 +142,24 @@ public class MDIValidatorTest {
         assertThat(mdiValidationError.isPresent(), is(true));
         assertThat(mdiValidationError.get().getText(), is(INVALID_EXEC_MODE_TEXT));
         assertThat(mdiValidationError.get().getCode(), is(INVALID_EXEC_MODE_CODE));
+    }
+
+    @Test
+    public void shouldReturnAppropriateErrorWhenOffenceCodeInvalid() throws IOException {
+        final String payload = readFileToString(new File(this.getClass().getClassLoader().getResource("IndividualDefendantWithoutOffenceCode.xml").getFile()));
+        submitRequest.setMessage(payload);
+        Optional<ValidationError> mdiValidationError = mdiValidator.validate(submitRequest);
+        assertThat(mdiValidationError.isPresent(), is(true));
+        assertThat(mdiValidationError.get().getText(), is(INVALID_OFFENCE_TEXT));
+        assertThat(mdiValidationError.get().getCode(), is(INVALID_OFFENCE_CODE));
+    }
+
+    @Test
+    public void shouldNotReturnAppropriateErrorWhenResponseMessage() throws IOException {
+        final String payload = readFileToString(new File(this.getClass().getClassLoader().getResource("SPI_In_Message_Async_Response.xml").getFile()));
+        submitRequest.setMessage(payload);
+        Optional<ValidationError> mdiValidationError = mdiValidator.validate(submitRequest);
+        assertThat(mdiValidationError.isPresent(), is(false));
     }
 
 }
