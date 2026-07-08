@@ -41,6 +41,12 @@ public class CheckProsecutorIsLiveFunction {
             final ExecutionContext context) {
         logger = context.getLogger();
         logger.info("Java checkProsecutorIsLiveFunction processing a request.");
+
+        if (!courtCentreFilterCheckEnabled) {
+            logger.info("Court centre filter check is disabled - reporting prosecutor as live");
+            return request.createResponseBuilder(HttpStatus.OK).body(true).build();
+        }
+
         final String prosecutorOUCODE = request.getQueryParameters().get(OUCODE);
         logger.info("prosecutorOUCODE : " + prosecutorOUCODE);
         final boolean prosecutorIsLive = getCaseFilters().stream().anyMatch(x -> x.matchOUCODE(prosecutorOUCODE, logger));
