@@ -94,21 +94,33 @@ public class CaseFilterRule {
     }
 
     private boolean prosecutorMatches(final SpiCase spiCase) {
-        if (FIRST_CHARACTER_AS_DIGIT.matcher(spiCase.getProsecutorOUCode()).matches()) {
-            return FIRST_CHARACTER_AS_DIGIT.matcher(this.prosecutorOUCode).matches() &&
-                    spiCase.getProsecutorOUCode().substring(1, 3)
-                            .equals(this.prosecutorOUCode.substring(1, 3));
+        final String spiProsecutorOUCode = spiCase.getProsecutorOUCode();
+        if (FIRST_CHARACTER_AS_DIGIT.matcher(spiProsecutorOUCode).matches()) {
+            if (!FIRST_CHARACTER_AS_DIGIT.matcher(this.prosecutorOUCode).matches()) {
+                return false;
+            }
+            if (isTooShortForForceCodeComparison(spiProsecutorOUCode) || isTooShortForForceCodeComparison(this.prosecutorOUCode)) {
+                return spiProsecutorOUCode.equals(this.prosecutorOUCode);
+            }
+            return spiProsecutorOUCode.substring(1, 3).equals(this.prosecutorOUCode.substring(1, 3));
         } else {
-            return spiCase.getProsecutorOUCode().equals(this.prosecutorOUCode);
+            return spiProsecutorOUCode.equals(this.prosecutorOUCode);
         }
     }
 
     public boolean matchOUCODE(final String oucode, final Logger logger) {
         if (isNotBlank(oucode)) {
+            if (isTooShortForForceCodeComparison(oucode) || isTooShortForForceCodeComparison(this.prosecutorOUCode)) {
+                return oucode.equals(this.prosecutorOUCode);
+            }
             return oucode.substring(1, 3).equals(this.prosecutorOUCode.substring(1, 3));
         }
         logger.info("CaseFilterRule: oucode is blank");
         return false;
+    }
+
+    private static boolean isTooShortForForceCodeComparison(final String prosecutorOUCode) {
+        return prosecutorOUCode.length() < 3;
     }
 
     public static boolean anyRuleMatches(final InputStream inputStream, final SpiCase spiCase, final Logger logger) {

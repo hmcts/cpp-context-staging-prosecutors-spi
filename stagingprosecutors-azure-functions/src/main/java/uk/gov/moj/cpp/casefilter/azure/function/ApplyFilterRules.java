@@ -74,6 +74,10 @@ public class ApplyFilterRules {
 
         final SpiCase spiCase = createSpiCase(request);
 
+        if (!courtCentreFilterCheckEnabled) {
+            return applyRelaxedFilter(request, spiCase);
+        }
+
         if (!validateParams(spiCase)) {
             logger.info("Mandatory parameters missing (CourtCentreCode, ProsecutorCode, InitiationCode, CaseReference, DateOfHearing, TimeOfHearing, SummonsCode) on the query string");
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body(true).build();
@@ -96,6 +100,19 @@ public class ApplyFilterRules {
         if (filteredOut) {
             stagingProsecutorsSpiCommandService.filterProsecutionCaseInStagingProsecutorSpi(spiCase.getUrn(),logger);
             updateTable(spiCase);
+        }
+        return request.createResponseBuilder(HttpStatus.OK).body(filteredOut).build();
+    }
+
+    private HttpResponseMessage applyRelaxedFilter(final HttpRequestMessage<Optional<String>> request, final SpiCase spiCase) {
+        if (isBlank(spiCase.getProsecutorOUCode()) || isBlank(spiCase.getUrn())) {
+            logger.warning("Court centre filter check is disabled and ProsecutorCode or CaseReference is missing - filtering case in for XSD validation in staging");
+            return request.createResponseBuilder(HttpStatus.OK).body(false).build();
+        }
+
+        final boolean filteredOut = isAlreadyFilteredOut(spiCase.getProsecutorOUCode(), spiCase.getUrn());
+        if (filteredOut) {
+            logger.info("Case is already filtered or ejected");
         }
         return request.createResponseBuilder(HttpStatus.OK).body(filteredOut).build();
     }
