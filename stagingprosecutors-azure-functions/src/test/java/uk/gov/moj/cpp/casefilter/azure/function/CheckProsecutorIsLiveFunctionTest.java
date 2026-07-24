@@ -30,6 +30,7 @@ import static com.microsoft.azure.functions.HttpStatus.OK;
 import static com.microsoft.azure.functions.annotation.AuthorizationLevel.FUNCTION;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.mock;
 
@@ -58,6 +59,7 @@ public class CheckProsecutorIsLiveFunctionTest {
         checkProsecutorIsLiveFunction = new CheckProsecutorIsLiveFunction();
         azureCloudStorageService = mock(AzureCloudStorageService.class);
         checkProsecutorIsLiveFunction.setAzureCloudStorageService(azureCloudStorageService);
+        checkProsecutorIsLiveFunction.setCourtCentreFilterCheckEnabled(true);
         context = mock(ExecutionContext.class);
         final Logger logger = mock(Logger.class);
         when(context.getLogger()).thenReturn(logger);
@@ -93,6 +95,42 @@ public class CheckProsecutorIsLiveFunctionTest {
         assertEquals(OK, response.getStatus());
         assertEquals(true, response.getBody());
     }
+    @Test
+    public void shouldReturnTrueForNotFoundOucodeWhenCheckDisabled() throws StorageException {
+        checkProsecutorIsLiveFunction.setCourtCentreFilterCheckEnabled(false);
+        queryParams.put(OUCODE, "AAAAAA");
+        doReturn(queryParams).when(req).getQueryParameters();
+        doRequest(req);
+        final HttpResponseMessage response = checkProsecutorIsLiveFunction.checkProsecutorIsLive(req, context);
+        assertEquals(OK, response.getStatus());
+        assertEquals(true, response.getBody());
+        verify(azureCloudStorageService, never()).readRemoteFile();
+    }
+
+    @Test
+    public void shouldReturnTrueForBlankOucodeWhenCheckDisabled() throws StorageException {
+        checkProsecutorIsLiveFunction.setCourtCentreFilterCheckEnabled(false);
+        doRequest(req);
+        final HttpResponseMessage response = checkProsecutorIsLiveFunction.checkProsecutorIsLive(req, context);
+        assertEquals(OK, response.getStatus());
+        assertEquals(true, response.getBody());
+        verify(azureCloudStorageService, never()).readRemoteFile();
+    }
+
+    @Test
+    public void shouldDefaultToCheckDisabledWhenEnvVarAbsent() throws StorageException {
+        assumeTrue(System.getenv("ENABLE_COURT_CENTRE_FILTER_CHECK") == null);
+        final CheckProsecutorIsLiveFunction defaultConfiguredFunction = new CheckProsecutorIsLiveFunction();
+        defaultConfiguredFunction.setAzureCloudStorageService(azureCloudStorageService);
+        queryParams.put(OUCODE, "AAAAAA");
+        doReturn(queryParams).when(req).getQueryParameters();
+        doRequest(req);
+        final HttpResponseMessage response = defaultConfiguredFunction.checkProsecutorIsLive(req, context);
+        assertEquals(OK, response.getStatus());
+        assertEquals(true, response.getBody());
+        verify(azureCloudStorageService, never()).readRemoteFile();
+    }
+
     public InputStream readFileAsStream(final String fileName) {
         return this.getClass().getClassLoader().getResourceAsStream(fileName);
     }
