@@ -2,7 +2,7 @@
 
 #The prerequisite for this script is that vagrant is running
 #Script that runs, liquibase, deploys wars and runs integration tests
-#
+
 CONTEXT_NAME=stagingprosecutorsspi
 
 
