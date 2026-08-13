@@ -2,6 +2,7 @@ package uk.gov.moj.cpp.casefilter.azure.function;
 
 import static com.microsoft.azure.functions.HttpMethod.GET;
 import static com.microsoft.azure.functions.annotation.AuthorizationLevel.FUNCTION;
+import static java.lang.System.getenv;
 
 import uk.gov.moj.cpp.casefilter.azure.exception.AzureStorageException;
 import uk.gov.moj.cpp.casefilter.azure.pojo.CaseFilterRule;
@@ -23,12 +24,15 @@ import com.microsoft.azure.storage.StorageException;
 public class CheckProsecutorIsLiveFunction {
 
     private static final String OUCODE = "oucode";
+    private static final String ENABLE_COURT_CENTRE_FILTER_CHECK = "ENABLE_COURT_CENTRE_FILTER_CHECK";
 
     private AzureCloudStorageService azureCloudStorageService;
+    private boolean courtCentreFilterCheckEnabled;
     private Logger logger = null;
 
     public CheckProsecutorIsLiveFunction() {
         this.azureCloudStorageService = new AzureCloudStorageService();
+        this.courtCentreFilterCheckEnabled = Boolean.parseBoolean(getenv(ENABLE_COURT_CENTRE_FILTER_CHECK));
     }
 
     @FunctionName("checkProsecutorIsLiveFunction")
@@ -37,6 +41,12 @@ public class CheckProsecutorIsLiveFunction {
             final ExecutionContext context) {
         logger = context.getLogger();
         logger.info("Java checkProsecutorIsLiveFunction processing a request.");
+
+        if (!courtCentreFilterCheckEnabled) {
+            logger.info("Court centre filter check is disabled - reporting prosecutor as live");
+            return request.createResponseBuilder(HttpStatus.OK).body(true).build();
+        }
+
         final String prosecutorOUCODE = request.getQueryParameters().get(OUCODE);
         logger.info("prosecutorOUCODE : " + prosecutorOUCODE);
         final boolean prosecutorIsLive = getCaseFilters().stream().anyMatch(x -> x.matchOUCODE(prosecutorOUCODE, logger));
@@ -56,6 +66,10 @@ public class CheckProsecutorIsLiveFunction {
 
     public void setAzureCloudStorageService(AzureCloudStorageService azureCloudStorageService) {
         this.azureCloudStorageService = azureCloudStorageService;
+    }
+
+    public void setCourtCentreFilterCheckEnabled(final boolean courtCentreFilterCheckEnabled) {
+        this.courtCentreFilterCheckEnabled = courtCentreFilterCheckEnabled;
     }
 
     public void setLogger(Logger logger) {

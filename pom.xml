@@ -16,13 +16,13 @@
     <name>stagingprosecutorsspi</name>
 
     <properties>
-        <prosecutioncasefile.version>17.0.65</prosecutioncasefile.version>
+        <prosecutioncasefile.version>17.0.95</prosecutioncasefile.version>
         <joda-time.version>2.10</joda-time.version>
         <lombok.version>1.18.24</lombok.version>
         <system.users.library.version>6.4.0</system.users.library.version>
         <cpp.system-users.version>6.4.0</cpp.system-users.version>
         <system.id-mapper.version>6.4.0</system.id-mapper.version>
-        <referencedata.version>17.103.133</referencedata.version>
+        <referencedata.version>17.104.137</referencedata.version>
         <coredomain.version>17.104.3</coredomain.version>
         <maven.cucumber.reporting.plugin.version>2.0.0</maven.cucumber.reporting.plugin.version>
         <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
