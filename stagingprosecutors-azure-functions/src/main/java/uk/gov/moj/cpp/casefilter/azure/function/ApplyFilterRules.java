@@ -28,6 +28,7 @@ import static com.microsoft.azure.functions.HttpMethod.GET;
 import static com.microsoft.azure.functions.HttpMethod.POST;
 import static com.microsoft.azure.functions.annotation.AuthorizationLevel.FUNCTION;
 import static java.lang.String.format;
+import static java.lang.System.getenv;
 import static java.util.Arrays.asList;
 import static java.util.Objects.isNull;
 import static java.util.Optional.ofNullable;
@@ -39,6 +40,7 @@ import static uk.gov.moj.cpp.casefilter.azure.pojo.SpiCase.SpiCaseBuilder.aSpiCa
 public class ApplyFilterRules {
 
     private static final String INITIATION_CODE_FOR_SUMMONS = "S";
+    private static final String ENABLE_COURT_CENTRE_FILTER_CHECK = "ENABLE_COURT_CENTRE_FILTER_CHECK";
     private static final String DATE_PATTERN = "yyyy-MM-dd";
     private static final String TIME_PATTERN = "HH:mm:ss";
     private static final String COURT_CENTRE_CODE = "CourtCentreCode";
@@ -52,12 +54,14 @@ public class ApplyFilterRules {
     private AzureCloudStorageService azureCloudStorageService;
     private PCFQueryService pcfQueryService;
     private StagingProsecutorsSpiCommandService stagingProsecutorsSpiCommandService;
+    private boolean courtCentreFilterCheckEnabled;
     private Logger logger = null;
 
     public ApplyFilterRules() {
         this.azureCloudStorageService = new AzureCloudStorageService();
         this.pcfQueryService = new PCFQueryService();
         this.stagingProsecutorsSpiCommandService = new StagingProsecutorsSpiCommandService();
+        this.courtCentreFilterCheckEnabled = Boolean.parseBoolean(getenv(ENABLE_COURT_CENTRE_FILTER_CHECK));
     }
 
     @FunctionName("applyFilterRules")
@@ -69,6 +73,10 @@ public class ApplyFilterRules {
         logger.info("Java applyFilterRules processed a request.");
 
         final SpiCase spiCase = createSpiCase(request);
+
+        if (!courtCentreFilterCheckEnabled) {
+            return applyRelaxedFilter(request, spiCase);
+        }
 
         if (!validateParams(spiCase)) {
             logger.info("Mandatory parameters missing (CourtCentreCode, ProsecutorCode, InitiationCode, CaseReference, DateOfHearing, TimeOfHearing, SummonsCode) on the query string");
@@ -92,6 +100,19 @@ public class ApplyFilterRules {
         if (filteredOut) {
             stagingProsecutorsSpiCommandService.filterProsecutionCaseInStagingProsecutorSpi(spiCase.getUrn(),logger);
             updateTable(spiCase);
+        }
+        return request.createResponseBuilder(HttpStatus.OK).body(filteredOut).build();
+    }
+
+    private HttpResponseMessage applyRelaxedFilter(final HttpRequestMessage<Optional<String>> request, final SpiCase spiCase) {
+        if (isBlank(spiCase.getProsecutorOUCode()) || isBlank(spiCase.getUrn())) {
+            logger.warning("Court centre filter check is disabled and ProsecutorCode or CaseReference is missing - filtering case in for XSD validation in staging");
+            return request.createResponseBuilder(HttpStatus.OK).body(false).build();
+        }
+
+        final boolean filteredOut = isAlreadyFilteredOut(spiCase.getProsecutorOUCode(), spiCase.getUrn());
+        if (filteredOut) {
+            logger.info("Case is already filtered or ejected");
         }
         return request.createResponseBuilder(HttpStatus.OK).body(filteredOut).build();
     }
@@ -184,5 +205,9 @@ public class ApplyFilterRules {
 
     public void setStagingProsecutorsSpiCommandService(final StagingProsecutorsSpiCommandService stagingProsecutorsSpiCommandService) {
         this.stagingProsecutorsSpiCommandService = stagingProsecutorsSpiCommandService;
+    }
+
+    public void setCourtCentreFilterCheckEnabled(final boolean courtCentreFilterCheckEnabled) {
+        this.courtCentreFilterCheckEnabled = courtCentreFilterCheckEnabled;
     }
 }
