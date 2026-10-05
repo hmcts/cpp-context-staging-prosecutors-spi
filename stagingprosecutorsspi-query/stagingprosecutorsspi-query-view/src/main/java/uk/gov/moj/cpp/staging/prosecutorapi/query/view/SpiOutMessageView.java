@@ -14,9 +14,9 @@ import uk.gov.moj.cpp.staging.prosecutors.persistence.repository.SpiOutMessageRe
 
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
+import jakarta.inject.Inject;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonObjectBuilder;
 
 @ServiceComponent(QUERY_VIEW)
 public class SpiOutMessageView {

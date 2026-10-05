@@ -3,7 +3,7 @@
     <parent>
         <artifactId>stagingprosecutorsspi-command</artifactId>
         <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
-        <version>17.104.53-SNAPSHOT</version>
+        <version>25.104.0-M1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -22,14 +22,9 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>uk.gov.justice.services</groupId>
-            <artifactId>persistence-deltaspike</artifactId>
         </dependency>
 
         <dependency>
@@ -176,6 +171,11 @@
                         <artifactId>stagingprosecutorsspi-command-handler</artifactId>
                         <version>${project.version}</version>
                         <classifier>raml</classifier>
+                    </dependency>
+                    <dependency>
+                        <groupId>jakarta.xml.bind</groupId>
+                        <artifactId>jakarta.xml.bind-api</artifactId>
+                        <version>${jakarta.xml.bind-api.raml.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
