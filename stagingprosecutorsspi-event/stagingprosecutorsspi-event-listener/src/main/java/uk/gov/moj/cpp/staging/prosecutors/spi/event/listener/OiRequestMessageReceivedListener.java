@@ -12,7 +12,7 @@ import uk.gov.moj.cpp.staging.prosecutors.persistence.repository.CPPMessageRepos
 import uk.gov.moj.cpp.staging.prosecutors.spi.events.OiPoliceSystemUpdated;
 import uk.gov.moj.cpp.staging.prosecutors.spi.events.OiRequestMessageReceived;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.UUID;
 
 @ServiceComponent(EVENT_LISTENER)

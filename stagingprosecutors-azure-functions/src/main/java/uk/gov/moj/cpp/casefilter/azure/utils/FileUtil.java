@@ -9,8 +9,8 @@ import static uk.gov.justice.services.messaging.JsonObjects.createReader;
 import java.io.StringReader;
 import java.util.Optional;
 
-import javax.json.JsonObject;
-import javax.json.JsonReader;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
 
 import com.jayway.jsonpath.PathNotFoundException;
 import org.slf4j.Logger;

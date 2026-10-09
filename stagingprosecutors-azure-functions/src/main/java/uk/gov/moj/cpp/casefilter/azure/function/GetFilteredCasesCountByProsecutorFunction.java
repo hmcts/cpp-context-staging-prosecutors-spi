@@ -1,7 +1,7 @@
 package uk.gov.moj.cpp.casefilter.azure.function;
 
-import static javax.ws.rs.core.HttpHeaders.CONTENT_TYPE;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static jakarta.ws.rs.core.HttpHeaders.CONTENT_TYPE;
+import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import uk.gov.moj.cpp.casefilter.azure.pojo.FilteredCaseCountByProsecutor;
 import uk.gov.moj.cpp.casefilter.azure.service.AzureCloudStorageService;

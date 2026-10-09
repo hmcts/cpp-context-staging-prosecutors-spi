@@ -27,12 +27,12 @@ import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.WebServiceRef;
+import jakarta.xml.ws.BindingProvider;
+import jakarta.xml.ws.WebServiceRef;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

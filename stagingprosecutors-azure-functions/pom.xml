@@ -3,7 +3,7 @@
     <parent>
         <artifactId>stagingprosecutorsspi</artifactId>
         <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
-        <version>17.104.53-SNAPSHOT</version>
+        <version>25.104.53-CIMD-4077-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -12,9 +12,8 @@
     <properties>
         <azureEnv>STE</azureEnv>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>${compiler.source}</maven.compiler.source>
-        <maven.compiler.target>${compiler.target}</maven.compiler.target>
-        <java.version>${java.se.version}</java.version>
+        <!-- Runs on the Azure Functions Java runtime, not WildFly: keep the Java 17 target until the Function App runtime is upgraded -->
+        <java.version>17</java.version>
         <functionAppName>fa-ste-casefilter</functionAppName>
         <functionAppRegion>uksouth</functionAppRegion>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}
@@ -36,8 +35,8 @@
             <artifactId>azure-storage</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.microsoft.azure</groupId>
@@ -68,8 +67,8 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
+            <groupId>org.eclipse.parsson</groupId>
+            <artifactId>parsson</artifactId>
         </dependency>
         <dependency>
             <groupId>uk.gov.justice.utils</groupId>
@@ -119,8 +118,7 @@
                         <arg>-Xlint:all,-options,-path</arg>
                         <arg>-verbose</arg>
                     </compilerArgs>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>

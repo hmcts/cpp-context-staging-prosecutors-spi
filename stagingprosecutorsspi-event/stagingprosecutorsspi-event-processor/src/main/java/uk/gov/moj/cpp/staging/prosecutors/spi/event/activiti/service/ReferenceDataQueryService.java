@@ -13,9 +13,9 @@ import uk.gov.justice.services.messaging.MetadataBuilder;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
+import jakarta.inject.Inject;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
 
 public class ReferenceDataQueryService {
     private static final String REFERENCEDATA_QUERY_PLEA_TYPES = "referencedata.query.plea-types";
