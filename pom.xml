@@ -6,12 +6,12 @@
     <parent>
         <groupId>uk.gov.moj.cpp.common</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>25.104.3</version>
+        <version>25.104.4</version>
     </parent>
 
     <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
     <artifactId>stagingprosecutorsspi</artifactId>
-    <version>25.104.0-M1-SNAPSHOT</version>
+    <version>25.104.53-CIMD-4077-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>stagingprosecutorsspi</name>
 
@@ -21,7 +21,7 @@
         <cpp.system-users.version>6.4.0</cpp.system-users.version>
         <system.id-mapper.version>6.4.0</system.id-mapper.version>
         <referencedata.version>17.104.137</referencedata.version>
-        <coredomain.version>25.104.3</coredomain.version>
+        <coredomain.version>25.104.4</coredomain.version>
         <maven.cucumber.reporting.plugin.version>2.0.0</maven.cucumber.reporting.plugin.version>
         <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
         <!-- TEMPORARY: the 25.104.x BOMs still manage the javax JAX-WS stack (jaxws-rt 2.3.4, codehaus jaxws-maven-plugin 2.5).
