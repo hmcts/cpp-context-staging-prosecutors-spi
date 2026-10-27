@@ -12,8 +12,7 @@
     <properties>
         <azureEnv>STE</azureEnv>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Runs on the Azure Functions Java runtime, not WildFly: keep the Java 17 target until the Function App runtime is upgraded -->
-        <java.version>17</java.version>
+        <java.version>${java.se.version}</java.version>
         <functionAppName>fa-ste-casefilter</functionAppName>
         <functionAppRegion>uksouth</functionAppRegion>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}
