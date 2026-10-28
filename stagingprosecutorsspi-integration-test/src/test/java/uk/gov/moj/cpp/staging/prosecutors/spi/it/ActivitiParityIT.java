@@ -3,11 +3,6 @@ package uk.gov.moj.cpp.staging.prosecutors.spi.it;
 import uk.gov.moj.cpp.staging.prosecutors.spi.utils.stub.SystemIdMapperStub;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,7 +25,6 @@ import static org.apache.commons.io.FileUtils.readFileToString;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.JMSTopicHelper.postMessageToTopicAndVerify;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.EXTERNAL_MESSAGE_INDIVIDUAL_DEFENDANT_ALL_FIELDS_JSON;
@@ -41,7 +35,6 @@ import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.TestConfig.TEST_CONFI
 import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.TestUtils.CJSE_DELIVERY_URL;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.TestUtils.readFile;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.TestUtils.stubPCFcommand;
-import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.WiremockTestHelper.BASE_URI;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.WiremockTestHelper.HOST;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.stub.CJSESoapServiceStubForRetry.stubCJSESoapService;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.stub.ProsecutionCaseFileStub.stubGetProsecutionCaseFile;
@@ -50,20 +43,14 @@ import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.stub.ProsecutionCaseF
  * J17/J25 parity characterisation (J17 golden master) for the Activiti engine that runs the SPI result retry timer.
  *
  * On J17 the event processor builds its own engine (ProgrammaticProcessEngineConfiguration): JTA transactions,
- * history level NONE, process deployed by activiti-cdi from processes/time_delay.bpmn, and no Activiti REST API.
- * The J25 upgrade replaces it with the platform activiti-embedded-rest library (as used by prosecution-casefile on J17),
- * which hard-codes history level AUDIT, adds a REST API under /internal/activiti/service and deploys
- * processes/*.bpmn20.xml by file name. Those three differences are accepted and pinned here as J25 behaviour (see
- * doc/java25-parity-test-report.md, SPI-M02/M03/M04); every other assertion encodes the J17 result.
+ * history level NONE and timer_flow deployed by activiti-cdi from processes/time_delay.bpmn. The J25 upgrade replaces
+ * it with the platform activiti-embedded-rest library, which deploys processes/*.bpmn20.xml by file name. That
+ * deployment change is accepted and pinned as J25 behaviour (SPI-M04); every other assertion encodes the J17 result.
  */
 class ActivitiParityIT extends AbstractIT {
 
     private static final String VIEWSTORE_JDBC_URL = "jdbc:postgresql://" + HOST + ":5432/stagingprosecutorsspiviewstore";
     private static final String DB_USER_AND_PASSWORD = "stagingprosecutorsspi";
-    // the library's process-instances resource needs both query parameters, otherwise it answers 500 "Business key is null"
-    private static final String ACTIVITI_REST_PROCESS_INSTANCES_URL = BASE_URI + "/stagingprosecutorsspi-service/internal/activiti/service/runtime/process-instances?processDefinitionKey=timer_flow&businessKey=" + randomUUID();
-    // timer_flow is started with the variables cppMessageId, SPI_RETRY_TIMER_VALUE and userId (ActivitiService)
-    private static final long TIMER_FLOW_VARIABLES = 3L;
 
     @BeforeEach
     void setUp() throws Exception {
@@ -73,14 +60,9 @@ class ActivitiParityIT extends AbstractIT {
     }
 
     // SPI-M01 (BC-09): on J17 the timer job's DB work and its JMS send share one JTA transaction, so the retry is
-    // sent once and the job is removed. SPI-M02: J17 ran with history level NONE and wrote no history rows; the J25
-    // library hard-codes AUDIT, so each retry leaves one process instance and its variables in the history tables.
+    // sent once and the job is removed. SPI-M02: J17 runs with history level NONE, so the retry leaves no history rows.
     @Test
-    void spiM01_spiM02_retryShouldBeSentExactlyOnceAndLeaveNoActivitiJobsButAuditHistory() throws Exception {
-        final long historicProcessInstancesBefore = count("select count(*) from act_hi_procinst");
-        final long historicActivitiesBefore = count("select count(*) from act_hi_actinst");
-        final long historicVariablesBefore = count("select count(*) from act_hi_varinst");
-
+    void spiM01_spiM02_retryShouldBeSentExactlyOnceAndLeaveNoActivitiJobsOrHistory() throws Exception {
         triggerOneCjseRetry();
 
         await().pollDelay(2, SECONDS).pollInterval(1, SECONDS).atMost(15, SECONDS)
@@ -90,26 +72,15 @@ class ActivitiParityIT extends AbstractIT {
 
         await().pollInterval(1, SECONDS).atMost(30, SECONDS)
                 .until(() -> count("select count(*) from act_ru_job"), is(0L));
-        assertThat(count("select count(*) from act_hi_procinst"), is(historicProcessInstancesBefore + 1));
-        assertThat(count("select count(*) from act_hi_actinst"), greaterThan(historicActivitiesBefore));
-        assertThat(count("select count(*) from act_hi_varinst"), is(historicVariablesBefore + TIMER_FLOW_VARIABLES));
-    }
-
-    // SPI-M03 (BC-10): J17 exposed no Activiti REST API (404). The J25 library adds /internal/activiti/service, which
-    // answers without authentication; it must be blocked at the ingress (/internal/*) in every environment.
-    @Test
-    void spiM03_activitiRestApiShouldBeExposedUnderInternal() throws IOException, InterruptedException {
-        final HttpResponse<String> response = HttpClient.newHttpClient().send(
-                HttpRequest.newBuilder(URI.create(ACTIVITI_REST_PROCESS_INSTANCES_URL)).GET().build(),
-                HttpResponse.BodyHandlers.ofString());
-
-        assertThat(response.statusCode(), is(200));
+        assertThat(count("select count(*) from act_hi_procinst"), is(0L));
+        assertThat(count("select count(*) from act_hi_actinst"), is(0L));
+        assertThat(count("select count(*) from act_hi_varinst"), is(0L));
     }
 
     // SPI-M04: on J17 activiti-cdi deployed timer_flow from processes/time_delay.bpmn (via processes.xml). The J25
     // library deploys processes/*.bpmn20.xml and names each resource by its file name; the BPMN content is unchanged.
     @Test
-    void spiM04_timerFlowShouldBeDeployedFromTimeDelayBpmn20Xml() {
+    void spiM04_timerFlowShouldBeDeployedFromTimeDelayBpmn() {
         assertThat(resourceNamesOfTimerFlowDefinitions(), contains("time_delay.bpmn20.xml"));
     }
 
