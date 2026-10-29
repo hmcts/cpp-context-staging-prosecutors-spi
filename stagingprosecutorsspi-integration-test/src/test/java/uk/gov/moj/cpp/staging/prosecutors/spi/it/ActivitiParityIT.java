@@ -25,6 +25,7 @@ import static org.apache.commons.io.FileUtils.readFileToString;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.JMSTopicHelper.postMessageToTopicAndVerify;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.EXTERNAL_MESSAGE_INDIVIDUAL_DEFENDANT_ALL_FIELDS_JSON;
@@ -44,13 +45,16 @@ import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.stub.ProsecutionCaseF
  *
  * On J17 the event processor builds its own engine (ProgrammaticProcessEngineConfiguration): JTA transactions,
  * history level NONE and timer_flow deployed by activiti-cdi from processes/time_delay.bpmn. The J25 upgrade replaces
- * it with the platform activiti-embedded-rest library, which deploys processes/*.bpmn20.xml by file name. That
- * deployment change is accepted and pinned as J25 behaviour (SPI-M04); every other assertion encodes the J17 result.
+ * it with the platform activiti-embedded-rest library (as used by prosecution-casefile), which hard-codes history level
+ * AUDIT and deploys processes/*.bpmn20.xml by file name. Those two differences are accepted and pinned here as J25
+ * behaviour (SPI-M02, SPI-M04); every other assertion encodes the J17 result.
  */
 class ActivitiParityIT extends AbstractIT {
 
     private static final String VIEWSTORE_JDBC_URL = "jdbc:postgresql://" + HOST + ":5432/stagingprosecutorsspiviewstore";
     private static final String DB_USER_AND_PASSWORD = "stagingprosecutorsspi";
+    // timer_flow is started with the variables cppMessageId, SPI_RETRY_TIMER_VALUE and userId (ActivitiService)
+    private static final long TIMER_FLOW_VARIABLES = 3L;
 
     @BeforeEach
     void setUp() throws Exception {
@@ -60,9 +64,14 @@ class ActivitiParityIT extends AbstractIT {
     }
 
     // SPI-M01 (BC-09): on J17 the timer job's DB work and its JMS send share one JTA transaction, so the retry is
-    // sent once and the job is removed. SPI-M02: J17 runs with history level NONE, so the retry leaves no history rows.
+    // sent once and the job is removed. SPI-M02: J17 ran with history level NONE and wrote no history rows; the J25
+    // library hard-codes AUDIT, so each retry leaves one process instance and its variables in the history tables.
     @Test
-    void spiM01_spiM02_retryShouldBeSentExactlyOnceAndLeaveNoActivitiJobsOrHistory() throws Exception {
+    void spiM01_spiM02_retryShouldBeSentExactlyOnceAndLeaveNoActivitiJobsButAuditHistory() throws Exception {
+        final long historicProcessInstancesBefore = count("select count(*) from act_hi_procinst");
+        final long historicActivitiesBefore = count("select count(*) from act_hi_actinst");
+        final long historicVariablesBefore = count("select count(*) from act_hi_varinst");
+
         triggerOneCjseRetry();
 
         await().pollDelay(2, SECONDS).pollInterval(1, SECONDS).atMost(15, SECONDS)
@@ -72,9 +81,9 @@ class ActivitiParityIT extends AbstractIT {
 
         await().pollInterval(1, SECONDS).atMost(30, SECONDS)
                 .until(() -> count("select count(*) from act_ru_job"), is(0L));
-        assertThat(count("select count(*) from act_hi_procinst"), is(0L));
-        assertThat(count("select count(*) from act_hi_actinst"), is(0L));
-        assertThat(count("select count(*) from act_hi_varinst"), is(0L));
+        assertThat(count("select count(*) from act_hi_procinst"), is(historicProcessInstancesBefore + 1));
+        assertThat(count("select count(*) from act_hi_actinst"), greaterThan(historicActivitiesBefore));
+        assertThat(count("select count(*) from act_hi_varinst"), is(historicVariablesBefore + TIMER_FLOW_VARIABLES));
     }
 
     // SPI-M04: on J17 activiti-cdi deployed timer_flow from processes/time_delay.bpmn (via processes.xml). The J25

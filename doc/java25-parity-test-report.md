@@ -2,7 +2,7 @@
 
 **Branch:** `dev/java25-upgrade` (`d573c9a`), tests on `dev/java25-upgrade-java17-parity`.
 **Baseline:** Java 17 `main` (`c02d92c`), tests on `dev/CIMD-4111-parity-with-j25`.
-**Jira:** CIMD-4111. **Date:** 2026-10-15. **Updated:** 2026-10-27 — dispositions applied; every finding is fixed or accepted and pinned (see *Resolution*).
+**Jira:** CIMD-4111. **Date:** 2026-10-15. **Updated:** 2026-10-27 — dispositions applied; every finding is fixed or accepted (see *Resolution*). **Updated:** 2026-10-29 — the team confirmed the Java 25 Activiti behaviour (SPI-M02, SPI-M04); the SPI-M03 test was removed, so SPI-M03 is accepted but no longer pinned by a test.
 
 ## What this is
 
@@ -24,6 +24,7 @@ Every Java change in the upgrade itself is an import rename (`javax.*` → `jaka
 | Java 25 this branch, `runIntegrationTests.sh` (WildFly 40), before resolution | 60 | **3** | all 3 are `ActivitiParityIT`; every other IT passes |
 | Java 25 this branch, unit (JDK 25), after resolution (2026-10-27) | 356 | **0** | |
 | Java 25 this branch, `runIntegrationTests.sh` (WildFly 40), after resolution (2026-10-27) | 60 | **0** | full run 59/60; the `spiM03` URL then gained the `businessKey` parameter the library requires, and `ActivitiParityIT` was re-run alone: 3/3 |
+| Java 25 this branch, `ActivitiParityIT` alone against the running WildFly 40 (2026-10-29) | 2 | **0** | after `spiM03` was removed; the full IT suite was not re-run |
 
 ## Behaviour changes found (tests failed on Java 25 before resolution)
 
@@ -65,8 +66,8 @@ Each finding was settled the same way as cpp-context-material's parity fix (CIMD
 |---|---|---|---|
 | SPI-M05 | **Fixed:** the Function App moves to Java 25 in the same release | `stagingprosecutors-azure-functions/pom.xml`: `java.version` is `${java.se.version}` again (as on `main` and in material), instead of the hard-coded `17`. The compiler `release`, the plugin `javaVersion` and the `JAVA_VERSION` app setting all become 25. | `spiM05_frameworkJsonObjectsShouldTargetTheJava25FunctionAppRuntime` and `spiM05_moduleClassesShouldTargetTheJava25FunctionAppRuntime` pin class-file version 69 |
 | SPI-M02 | **Accepted** (platform library, as in prosecution-casefile on J17) | none | `spiM01_spiM02_retryShouldBeSentExactlyOnceAndLeaveNoActivitiJobsButAuditHistory`: one retry adds 1 `act_hi_procinst` row, at least 1 `act_hi_actinst` row and 3 `act_hi_varinst` rows; the exactly-once and job-cleanup checks are unchanged |
-| SPI-M03 | **Accepted** (platform library, as in prosecution-casefile on J17) | none | `spiM03_activitiRestApiShouldBeExposedUnderInternal`: `GET …/runtime/process-instances?processDefinitionKey=timer_flow&businessKey=<uuid>` returns 200 without authentication. The resource answers 500 "Business key is null" when `businessKey` is missing. |
-| SPI-M04 | **Accepted** | none | `spiM04_timerFlowShouldBeDeployedFromTimeDelayBpmn20Xml`: `timer_flow` is deployed from `time_delay.bpmn20.xml` |
+| SPI-M03 | **Accepted** (platform library, as in prosecution-casefile on J17) | none | No test. `spiM03` was removed from `ActivitiParityIT` on 2026-10-29, so nothing pins this behaviour. When it was last run, `GET …/runtime/process-instances?processDefinitionKey=timer_flow&businessKey=<uuid>` returned 200 without authentication, and 500 "Business key is null" when `businessKey` was missing. |
+| SPI-M04 | **Accepted** | none | `spiM04_timerFlowShouldBeDeployedFromTimeDelayBpmn`: `timer_flow` is deployed from `time_delay.bpmn20.xml` |
 | SPI-P02 | **Accepted:** the server runs in UTC, as material's maP02 | none | `spiP02_repositoryUseShouldLeaveTheJvmDefaultTimeZoneUnchanged`; `spiP02_shouldStoreSpiOutMessageTimestampAsUtcWallClock` keeps the J17 value with the database session in UTC (H2 fixes its session zone at connect, so the test runs `set time zone 'UTC'`) |
 | SPI-P03 | **Accepted**, as material's maP03 | none | `spiP03_saveOfNewEntityShouldReturnAManagedEntityWithTheSameFields` (`samePropertyValuesAs`, and the returned entity is managed) |
 
