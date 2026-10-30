@@ -1,6 +1,6 @@
 package uk.gov.moj.cpp.staging.prosecutors.spi.event.processor;
 
-import static javax.xml.bind.JAXBContext.newInstance;
+import static jakarta.xml.bind.JAXBContext.newInstance;
 import static uk.gov.justice.services.core.annotation.Component.EVENT_PROCESSOR;
 import static uk.gov.justice.services.messaging.Envelope.envelopeFrom;
 import static uk.gov.justice.services.messaging.Envelope.metadataFrom;
@@ -18,9 +18,9 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.events.OperationalDetailsPreparedF
 
 import java.io.StringWriter;
 
-import javax.inject.Inject;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
+import jakarta.inject.Inject;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
 
 @ServiceComponent(EVENT_PROCESSOR)
 public class OperationalInterfaceProcessor {

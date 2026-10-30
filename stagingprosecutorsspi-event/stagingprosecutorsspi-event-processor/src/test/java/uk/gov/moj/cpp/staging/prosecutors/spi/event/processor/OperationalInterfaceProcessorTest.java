@@ -25,7 +25,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.ErrorDetails;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -17,8 +17,8 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.SystemCodes;
 
 import java.util.List;
 
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
+import jakarta.json.JsonArrayBuilder;
+import jakarta.json.JsonObject;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

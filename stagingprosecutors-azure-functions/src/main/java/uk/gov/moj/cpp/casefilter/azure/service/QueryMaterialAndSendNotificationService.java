@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;

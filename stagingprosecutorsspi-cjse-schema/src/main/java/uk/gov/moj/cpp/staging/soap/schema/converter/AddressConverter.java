@@ -7,7 +7,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.Address;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBElement;
 
 public class AddressConverter implements Converter<BSaddressStructure, Address> {
 

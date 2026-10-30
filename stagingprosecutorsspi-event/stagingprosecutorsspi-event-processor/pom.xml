@@ -3,7 +3,7 @@
     <parent>
         <artifactId>stagingprosecutorsspi-event</artifactId>
         <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
-        <version>17.104.53-SNAPSHOT</version>
+        <version>25.104.53-CIMD-4077-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -18,8 +18,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -29,6 +29,16 @@
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-cdi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>uk.gov.moj.cpp.activiti</groupId>
+            <artifactId>activiti-embedded-rest</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.tinyjee.jgraphx</groupId>
+                    <artifactId>jgraphx</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>uk.gov.moj.cpp.common</groupId>
@@ -101,10 +111,6 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>uk.gov.justice.generators</groupId>
                 <artifactId>pojo-generation-plugin</artifactId>
@@ -263,9 +269,14 @@
                         </exclusions>
                     </dependency>
                     <dependency>
-                        <groupId>javax</groupId>
-                        <artifactId>javaee-api</artifactId>
+                        <groupId>jakarta.platform</groupId>
+                        <artifactId>jakarta.jakartaee-api</artifactId>
                         <version>${javaee-api.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>jakarta.xml.bind</groupId>
+                        <artifactId>jakarta.xml.bind-api</artifactId>
+                        <version>${jakarta.xml.bind-api.raml.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -274,8 +285,8 @@
                 <artifactId>rest-client-generator-plugin</artifactId>
                 <dependencies>
                     <dependency>
-                        <groupId>javax</groupId>
-                        <artifactId>javaee-api</artifactId>
+                        <groupId>jakarta.platform</groupId>
+                        <artifactId>jakarta.jakartaee-api</artifactId>
                         <version>${javaee-api.version}</version>
                     </dependency>
                     <dependency>
@@ -345,6 +356,8 @@
                             <goal>unpack</goal>
                         </goals>
                         <configuration>
+                            <!-- Java 25: the RELEASE MI contract-test jar is still built against javax; re-enable once mireportdata publishes a jakarta test-jar -->
+                            <skip>true</skip>
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>uk.gov.moj.cpp.mi.reportdata</groupId>

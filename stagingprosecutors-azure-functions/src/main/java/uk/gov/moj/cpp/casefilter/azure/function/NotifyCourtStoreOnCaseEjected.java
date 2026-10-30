@@ -9,7 +9,7 @@ import uk.gov.moj.cpp.casefilter.azure.utils.FileUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 import com.microsoft.azure.functions.ExecutionContext;
 import com.microsoft.azure.functions.annotation.EventGridTrigger;

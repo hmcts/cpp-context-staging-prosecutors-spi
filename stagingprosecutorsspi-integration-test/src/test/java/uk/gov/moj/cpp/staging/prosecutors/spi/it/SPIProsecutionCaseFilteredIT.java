@@ -12,7 +12,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.utils.SPISoapAdapterHelper;
 
 import java.io.IOException;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.apache.http.HttpStatus;

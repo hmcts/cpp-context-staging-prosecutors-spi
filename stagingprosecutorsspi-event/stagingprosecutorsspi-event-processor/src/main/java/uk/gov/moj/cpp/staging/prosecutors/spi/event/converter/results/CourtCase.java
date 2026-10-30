@@ -5,7 +5,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.event.helper.PublicPoliceResultGen
 
 import java.util.Map;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 public class CourtCase {

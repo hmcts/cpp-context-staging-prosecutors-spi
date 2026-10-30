@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.IntStream;
 
-import javax.json.JsonArray;
-import javax.json.JsonObject;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
 
 public class ProsecutionCaseFileService {
 

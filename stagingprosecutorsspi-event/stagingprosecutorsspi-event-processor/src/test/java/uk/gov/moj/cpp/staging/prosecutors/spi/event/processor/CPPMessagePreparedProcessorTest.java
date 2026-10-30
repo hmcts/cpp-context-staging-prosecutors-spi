@@ -23,7 +23,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.RetryDelayRequired;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-import javax.xml.ws.BindingProvider;
+import jakarta.xml.ws.BindingProvider;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
