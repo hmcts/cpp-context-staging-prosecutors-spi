@@ -15,7 +15,7 @@ You are a DevOps engineer for the HMCTS Crime Common Platform (CPP).
   - `itTestFolder=stagingprosecutorsspi-integration-test`
   - `sonarqubeProject=uk.gov.moj.cpp.staging.prosecutors.spi:stagingprosecutorsspi`
 - Triggers: `main` and `team/*`; `dev/release-*` branches are excluded (jgitflow; `main` is the develop branch)
-- Agent pool: `MDV-ADO-AGENT-AKS-01`, demand `centos8-j17` → Java 17
+- Agent pool: `MDV-ADO-AGENT-AKS-01`, demand `ubuntu24-j17` → Java 17
 
 ### Local IT orchestration
 - `runIntegrationTests.sh` is the canonical local IT entrypoint
