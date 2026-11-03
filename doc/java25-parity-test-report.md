@@ -2,7 +2,7 @@
 
 **Branch:** `dev/java25-upgrade` (`d573c9a`), tests on `dev/java25-upgrade-java17-parity`.
 **Baseline:** Java 17 `main` (`c02d92c`), tests on `dev/CIMD-4111-parity-with-j25`.
-**Jira:** CIMD-4111. **Date:** 2026-10-15. **Updated:** 2026-10-27 — dispositions applied; every finding is fixed or accepted (see *Resolution*). **Updated:** 2026-10-29 — the team confirmed the Java 25 Activiti behaviour (SPI-M02, SPI-M04); the SPI-M03 test was removed, so SPI-M03 is accepted but no longer pinned by a test.
+**Jira:** CIMD-4111. **Date:** 2026-10-15. **Updated:** 2026-10-27 — dispositions applied; every finding is fixed or accepted (see *Resolution*). **Updated:** 2026-10-29 — the team confirmed the Java 25 Activiti behaviour (SPI-M02, SPI-M04); the SPI-M03 test was removed, so SPI-M03 is accepted but no longer pinned by a test. **Updated:** 2026-11-03 — the SPI-M01 failure path is reproduced on Java 25 with fault injection (`ActivitiTimerJobRollbackParityIT`, 3 of 4 tests fail); see *Handover: SPI-M01 failure path*.
 
 ## What this is
 
@@ -25,6 +25,7 @@ Every Java change in the upgrade itself is an import rename (`javax.*` → `jaka
 | Java 25 this branch, unit (JDK 25), after resolution (2026-10-27) | 356 | **0** | |
 | Java 25 this branch, `runIntegrationTests.sh` (WildFly 40), after resolution (2026-10-27) | 60 | **0** | full run 59/60; the `spiM03` URL then gained the `businessKey` parameter the library requires, and `ActivitiParityIT` was re-run alone: 3/3 |
 | Java 25 this branch, `ActivitiParityIT` alone against the running WildFly 40 (2026-10-29) | 2 | **0** | after `spiM03` was removed; the full IT suite was not re-run |
+| Java 25, `ActivitiTimerJobRollbackParityIT` alone against the running WildFly 40 (2026-10-29) | 4 | **3** | SPI-M01 failure path, see *Handover: SPI-M01 failure path*; not yet run on Java 17 |
 
 ## Behaviour changes found (tests failed on Java 25 before resolution)
 
@@ -43,7 +44,7 @@ The test names below are the original ones; see *Resolution* for the J25 names a
 
 | ID | Area | Test |
 |---|---|---|
-| SPI-M01 (BC-09) | Activiti now uses a no-op transaction manager instead of JTA. In the normal retry flow the CJSE retry is still sent exactly once and no jobs are left behind. The difference only shows if the timer job fails after its JMS send. On Java 25 the send cannot be rolled back, so a job retry could resend to CJSE. That needs fault injection to reproduce. It is the same platform gap as casefile PCF-04. | `integration-test` `ActivitiParityIT#spiM01_spiM02_…` (exactly-once and job cleanup) |
+| SPI-M01 (BC-09) | Activiti now uses a no-op transaction manager instead of JTA. In the normal retry flow the CJSE retry is still sent exactly once and no jobs are left behind. The difference only shows if the timer job fails after its JMS send. On Java 25 the send cannot be rolled back, so a job retry could resend to CJSE. That needs fault injection to reproduce. It is the same platform gap as casefile PCF-04. **Update 2026-11-03:** now reproduced with fault injection, so this is a behaviour change on the failure path; see *Handover: SPI-M01 failure path*. | `integration-test` `ActivitiParityIT#spiM01_spiM02_…` (exactly-once and job cleanup) |
 | SPI-M07 (BC-20) | Access-control kbases load the same rules: COMMAND_API 5, QUERY_API 2. | `command-api` `CommandApiRuleCountParityTest`, `query-api` `QueryApiRuleCountParityTest` |
 | SPI-M08 | The `send-spi-result` XML from `ResultProcessor` is byte-identical: JAXB 4 namespaces, element order and date formats are unchanged. | `event-processor` `ResultProcessorXmlParityTest` |
 | SPI-M05 (module) | Before resolution, the module's own classes were still Java 17 bytecode. Now pinned at Java 25 with the rest of SPI-M05. | `azure-functions` `AzureFunctionsBytecodeLevelParityTest#spiM05_moduleClassesShouldTargetTheJava25FunctionAppRuntime` |
@@ -103,3 +104,132 @@ Run the same tests on `dev/CIMD-4111-parity-with-j25` with JDK 17, and cpp-devel
 - When a fix lands, the matching parity test should start passing. Keep the tests as regression guards. Where a change was accepted, the J25 test pins the new behaviour, so a later change to it shows up as a failure.
 - The J25 viewstore harness creates the schema with `hbm2ddl`. On Hibernate 6+ that makes `spi_out_message.timestamp` a column *with* time zone, so `spiP02_shouldStoreSpiOutMessageTimestampAsUtcWallClock` first changes it back to `TIMESTAMP`, to match Liquibase (`DATETIME`) and the Java 17 harness.
 - The J17 viewstore harness (HSQLDialect over H2) cannot look a UUID-keyed entity up after the persistence context is cleared, so the parity tests never do that.
+
+## Handover: SPI-M01 failure path (`ActivitiTimerJobRollbackParityIT`)
+
+Added 2026-11-03. The test is `stagingprosecutorsspi-integration-test/src/test/java/uk/gov/moj/cpp/staging/prosecutors/spi/it/ActivitiTimerJobRollbackParityIT.java`. The same file runs unchanged on Java 17 and Java 25: it has no `javax`/`jakarta` imports.
+
+### Why it exists
+
+`ActivitiParityIT` covers SPI-M01 only in the normal flow, where nothing fails, so it passes on both sides. The risk is a timer job that fails *after* its JMS send. This class injects exactly that failure.
+
+How the CJSE retry uses Activiti (the code is the same on both branches):
+1. CJSE answers a submission with a retry code (200, 201 or 202). `CPPMessage.receiveSyncResponse` records `unsuccessful-sync-response-recorded` and `cppmessage-retry-delay-required`.
+2. `CPPMessagePreparedProcessor.processTimerDelayRequired` calls `ActivitiService.startTimerProcess`, which starts the Activiti process `timer_flow` (`time_delay.bpmn20.xml`). This runs on the event processor's JMS thread, inside its JTA transaction.
+3. When the timer is due (`cjse.retry.duration`: `PT5M` by default, `PT1S` in the local Docker stack), Activiti's async executor runs `ProcessTimerFinished`. The delegate sends `stagingprosecutorsspi.command.handler.receive-retry-delay-timer-finished` over JMS. Activiti then deletes the timer job, the 3 process variables and the execution.
+4. `StagingSyncResponseHandler.receiveDelayTimerFinished` calls `CPPMessage.sendMessageForRetry`. That records `cppmessage-prepared-for-sending`, and the processor submits to CJSE again.
+
+What changed in step 3:
+- **Java 17:** `ProgrammaticProcessEngineConfiguration` builds a `CdiJtaProcessEngineConfiguration` on WildFly's `java:/TransactionManager`. Each timer job runs in one JTA transaction. The JMS send is released only on commit, and a failure rolls back the send together with every Activiti row.
+- **Java 25:** the engine comes from the platform library `activiti-embedded-rest` (`ActivitiEngineConfiguration`; no change in that module from 25.104.4 to 25.104.5). It uses `NoOpPlatformTransactionManager` with `transactionsExternallyManaged=true`.
+  - The async executor thread has no JTA transaction, so the JMS send goes out at once and each SQL statement commits on its own.
+  - When a later statement fails, the no-op manager reports a rollback although nothing was undone. Activiti then runs the job again.
+  - The comment in `ActivitiEngineConfiguration` says the manager is "never called for commit/rollback". That is not accurate: Activiti's `SpringTransactionInterceptor` calls it for every command.
+- `CPPMessage.sendMessageForRetry` checks only `submitRequest != null && sendTries < retryLimit`. It does not check whether a submission has already succeeded, so a second timer-finished command makes another CJSE submission.
+
+### How the test works
+
+- **Before each test,** it waits until no `timer_flow` job with retries left is still pending, because another timer could consume the fault. It then records baselines: the number of `timer_flow` executions and of unfinished `timer_flow` rows in `act_hi_procinst`. The assertions use deltas, so rows left by earlier runs don't count.
+- **Fault injection:** it installs a plpgsql `BEFORE INSERT` or `BEFORE DELETE` trigger on `act_ru_job` or `act_ru_variable` in `stagingprosecutorsspiviewstore`. The Activiti tables live there (`java:/DS.stagingprosecutorsspi`).
+  - The trigger raises an exception for the first matching `timer_flow` row only.
+  - The one-shot flag is a sequence (`spi_m01_fault_once`), because `nextval()` survives a rollback. A flag kept in a table would roll back with the failed attempt.
+- **One real retry:** an SPI message goes in, then `public.results.police-result-generated` is posted on the topic. The CJSE WireMock stub (`CJSESoapServiceStubForRetry`) answers the first submission with a retry code and every later one with success.
+- **Waits:**
+  - up to 60 s for the fault to fire;
+  - up to 120 s for the second CJSE POST;
+  - up to 120 s for the timer jobs to finish;
+  - then 15 s more, so a late duplicate POST still gets counted.
+- **`tearDown`** drops the trigger, the function and the sequence.
+
+Activiti 5.22 writes inserts, then updates, then deletes, in `EntityDependencyOrder`:
+- On delete, the timer job row goes first, then the variables, then the execution.
+- On insert the order is reversed, so the timer job row is the last row a process start writes.
+
+That gives the four fault points:
+
+| Test | Fault | Asserts | Java 17 (expected, not yet run) | Java 25 (2026-10-29) |
+|---|---|---|---|---|
+| `spiM01_failedTimerJobDeleteShouldNotSendTheCjseRetryTwice` | first `timer_flow` delete on `act_ru_job` (timer thread) | 2 CJSE POSTs; no `timer_flow` job left; no execution or unfinished history added | pass | **fail:** `CJSE POSTs for this URN=3` |
+| `spiM01_failedTimerJobDeleteShouldRecordTheCjseRetryOnceInTheCppMessageStream` | same | the CPPMessage stream in `event_log` is exactly the 5 Java 17 events | pass | **fail:** 6 events; an extra `cppmessage-prepared-for-sending` after `cpp-message-sent-succeessfully-recorded` |
+| `spiM01_failedVariableDeleteShouldLeaveNoOrphanTimerFlowExecution` | first `timer_flow` delete on `act_ru_variable` (timer thread) | as the first test | pass | **fail:** `timer_flow executions added=1` (POSTs 2) |
+| `spiM01_failedTimerStartShouldLeaveNoPartialTimerFlowProcess` | first `timer_flow` insert on `act_ru_job` (processor thread, timer start) | as the first test | pass | pass |
+
+What the Java 25 results mean:
+- **Job delete fails:** the job row stays and Activiti runs the job again, but the first JMS send is already out. The command arrives twice, the aggregate has no guard, and CJSE gets a third submission: the same message, about 10 s after the second. The Activiti history shows 2 `processTimerFinished` runs for 1 timer.
+- **Variable delete fails:** the job delete before it has already committed, so nothing is left to retry. CJSE gets the normal 2 POSTs, but the execution and its variables stay orphaned for good. This test does **not** show that the double send is absent; the job-delete tests show the double send.
+- **Timer start fails:** passes on Java 25 too. The processor's JTA transaction includes the Activiti datasource, so the start rolls back as a unit, the event is redelivered and the retry completes. The problem is therefore limited to the async executor thread.
+- **Viewstore:** not affected. The listener subscribes to no CPPMessage event, so the event store is the only store where the duplicate lands.
+
+**Run details:**
+- **Java 25:** run on 2026-10-29 on `dev/java25-upgrade-java17-parity` (`5597f3f`), with WildFly 40.0.1 and JDK 25. The 4 tests take about 3 minutes.
+  - Between `5597f3f` and `team/25.104.x` (`7f19afb`), the only changes are version numbers (service parent and coredomain 25.104.4 → 25.104.5, the project version, the Azure Functions Java version), `ActivitiParityIT` and this report.
+  - The SPI production code is identical, and so is `activiti-embedded-rest` across 25.104.4 → 25.104.5, so the result still applies.
+- **Java 17:** not run yet, because the Java 17 stack was gone by the time the class was written. The class compiles on JDK 17 on `dev/CIMD-4111-parity-with-j25`.
+
+### How to run
+
+Prerequisites:
+- SPI is deployed and healthy (`./runIntegrationTests.sh`), with cpp-developers-docker on branch `java-25`, or `java-17` for the Java 17 baseline.
+- Postgres is reachable on `<INTEGRATION_HOST_KEY>:5432` with user and password `stagingprosecutorsspi`. The test creates a sequence, a function and a trigger in `stagingprosecutorsspiviewstore`; the context user owns the Activiti tables, so it has the rights.
+- No other test runs against the same stack at the same time (for example `SPIResultRetryIT`). Another retry timer could take the one-shot fault.
+
+```bash
+# Java 25, against the running WildFly 40 (whole class, about 3 minutes)
+JAVA_HOME=<jdk-25> mvn -B -o verify -pl stagingprosecutorsspi-integration-test -Pstagingprosecutorsspi-integration-test \
+  -DINTEGRATION_HOST_KEY=localhost -DARTEMIS_HOST_KEY=localhost -DINTEGRATION_HOST_URI=http://localhost:8080 \
+  -Denforcer.skip=true -Djacoco.skip=true -Dit.test=ActivitiTimerJobRollbackParityIT
+
+# a single test
+  ... -Dit.test='ActivitiTimerJobRollbackParityIT#spiM01_failedTimerJobDeleteShouldNotSendTheCjseRetryTwice'
+```
+
+Java 17 baseline: copy the class unchanged onto `dev/CIMD-4111-parity-with-j25`, deploy the Java 17 stack, and run the same command with JDK 17. All 4 tests are expected to pass.
+
+Every failure message lists everything the test observed, for example `observed: CJSE POSTs for this URN=3, timer_flow jobs left=[], timer_flow executions added=0, unfinished timer_flow history added=0, writes seen by the fault trigger=2`. "Writes seen by the fault trigger" counts the matching writes: the first one failed and the rest passed.
+
+### Checking by hand
+
+```sql
+-- stagingprosecutorsspiviewstore: timer jobs still pending or retrying
+select id_, retries_, duedate_, exception_msg_ from act_ru_job where proc_def_id_ like 'timer_flow:%';
+
+-- stagingprosecutorsspiviewstore: timer_flow executions (none expected once a retry has completed)
+select id_, proc_inst_id_ from act_ru_execution where proc_def_id_ like 'timer_flow:%';
+
+-- stagingprosecutorsspiviewstore, Java 25 only (Java 17 keeps no history): 2 rows for one process = the delegate ran twice
+select proc_inst_id_, count(*) from act_hi_actinst
+ where proc_def_id_ like 'timer_flow:%' and act_id_ = '_5' group by proc_inst_id_;
+
+-- stagingprosecutorsspieventstore: the CPPMessage stream for a URN
+select position_in_stream, name from event_log
+ where stream_id = (select stream_id from event_log
+                     where name = 'stagingprosecutorsspi.event.cppmessage-prepared-for-sending'
+                       and payload like '%<URN>%' limit 1)
+ order by position_in_stream;
+```
+
+If a run is killed before `tearDown`, the trigger stays and fails the next `timer_flow` write. To remove it:
+
+```sql
+drop trigger if exists spi_m01_fail_first_timer_flow_write on act_ru_job;
+drop trigger if exists spi_m01_fail_first_timer_flow_write on act_ru_variable;
+drop function if exists spi_m01_fail_first_timer_flow_write();
+drop sequence if exists spi_m01_fault_once;
+```
+
+### Pitfalls
+
+- **Column names differ:** the process instance column is `act_ru_job.process_instance_id_` but `act_ru_variable.proc_inst_id_`.
+  - A trigger that references a missing column errors on every write, so the sequence never advances.
+  - The test then times out waiting for the fault (`ConditionTimeoutException … expected a value equal to or greater than <1L> but <0L>`). This happened once while the class was written.
+- **That broken run also leaves a DLQ message:** its timer start failed on every redelivery, so its `cppmessage-retry-delay-required` message ended in the local DLQ. This only affects the local stack.
+- **The variable-delete test leaves one orphan `timer_flow` execution per Java 25 run.** That is the behaviour under test. The baselines keep later runs correct, and a fresh deploy drops the database.
+
+### What makes it pass on Java 25
+
+| Change | Expected effect on the 4 tests |
+|---|---|
+| Platform (`activiti-embedded-rest`): run each Activiti command in a real JTA transaction, using a `PlatformTransactionManager` over `jakarta.transaction.TransactionManager` instead of the no-op | all 4 pass: a failed attempt rolls back together with its JMS send |
+| SPI only: `CPPMessage.sendMessageForRetry` emits nothing once a success is recorded | 3 of 4 pass. Both job-delete tests pass; the variable-delete test still leaves the orphan. The duplicate JMS command is still sent but does nothing. This works only because the success is recorded before the duplicate arrives, about 10 s later. |
+
+Neither change has been tried yet. **Status:** on `team/25.104.x` this class fails 3 tests until a fix lands, so a full `runIntegrationTests.sh` run reports those failures. The team needs to decide whether to fix first or merge the test as a known failure. Pinning the Java 25 behaviour, as was done for SPI-M02/M04, would pin the duplicate CJSE submission.
