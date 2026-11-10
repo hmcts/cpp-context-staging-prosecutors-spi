@@ -31,9 +31,9 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.apache.commons.io.FileUtils.readFileToString;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
+import static org.hamcrest.Matchers.startsWith;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.JMSTopicHelper.postMessageToTopicAndVerify;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.EXTERNAL_MESSAGE_INDIVIDUAL_DEFENDANT_ALL_FIELDS_JSON;
 import static uk.gov.moj.cpp.staging.prosecutors.spi.helper.SPIInSoapHelper.INPUT_SPI_MESSAGE_INDIVIDUAL_DEFENDANT_ALL_FIELDS;
@@ -54,8 +54,9 @@ import static uk.gov.moj.cpp.staging.prosecutors.spi.utils.stub.ProsecutionCaseF
  * On J17 the event processor builds its own engine (ProgrammaticProcessEngineConfiguration): JTA transactions,
  * history level NONE, process deployed by activiti-cdi from processes/time_delay.bpmn, and no Activiti REST API.
  * The J25 upgrade replaces it with the platform activiti-embedded-rest library, which deploys processes/*.bpmn20.xml by
- * file name. That deployment change is accepted and pinned as J25 behaviour (SPI-M04); every other assertion encodes
- * the J17 result.
+ * file name. Two changes are accepted and pinned as J25 behaviour: that deployment (SPI-M04) and the Activiti REST API
+ * the library publishes (SPI-M03, its 3 Activiti resources only). Every other assertion encodes the J17 result; history
+ * level NONE (SPI-M02) needs cpp.activiti.historyLevel=none in the event processor's application.properties.
  *
  * The SPI-M01 failure path (a timer job that fails after its JMS send) is in ActivitiTimerJobRollbackParityIT.
  */
@@ -64,6 +65,7 @@ class ActivitiParityIT extends AbstractIT {
     private static final String VIEWSTORE_JDBC_URL = "jdbc:postgresql://" + HOST + ":5432/stagingprosecutorsspiviewstore";
     private static final String DB_USER_AND_PASSWORD = "stagingprosecutorsspi";
     private static final String ACTIVITI_REST_URL = BASE_URI + "/stagingprosecutorsspi-service/internal/activiti/service";
+    private static final String EMPTY_LIST = "{\"data\":[],\"total\":0}";
 
     private static final String TIMER_FLOW_JOBS = "from act_ru_job where proc_def_id_ like 'timer_flow:%'";
     private static final String TIMER_FLOW_EXECUTIONS = "from act_ru_execution where proc_def_id_ like 'timer_flow:%'";
@@ -121,43 +123,39 @@ class ActivitiParityIT extends AbstractIT {
         assertThat(observed, addedHistoricVariables, is(0L));
     }
 
-    // SPI-M03 (BC-10): J17 has no Activiti REST API, so every /internal/activiti/service request falls through to the
-    // servlet container's default servlet (see assertNotExposed). The J25 library resources need processDefinitionKey
-    // with businessKey, or processInstanceId; without them they answer 500, not 200.
+    // SPI-M03, accepted J25 behaviour (team decision, SPI PR #48): J17 SPI ran its own engine and had no Activiti REST
+    // API; on J25 the platform activiti-embedded-rest library publishes one under /internal/activiti/service. Its only
+    // callers are the sjp and prosecution-casefile IT ActivitiHelpers (and cpp-apitests, against sjp), which list
+    // process instances, historic process instances and timer jobs, then POST {"action":"execute"} to a job. The
+    // queries are pinned here with random ids, so they match nothing; the POST runs the job at once and is not exercised.
     @Test
-    void spiM03_activitiRuntimeApiShouldNotBeExposed() throws IOException, InterruptedException {
-        assertNotExposed(get(ACTIVITI_REST_URL + "/runtime/process-instances?processDefinitionKey=timer_flow&businessKey=" + randomUUID()));
+    void spiM03_activitiRuntimeApiShouldBeExposed() throws IOException, InterruptedException {
+        assertAnswered(get(ACTIVITI_REST_URL + "/runtime/process-instances?processDefinitionKey=timer_flow&businessKey=" + randomUUID()),
+                200, EMPTY_LIST);
     }
 
     @Test
-    void spiM03_activitiHistoryApiShouldNotBeExposed() throws IOException, InterruptedException {
-        assertNotExposed(get(ACTIVITI_REST_URL + "/history/historic-process-instances?processDefinitionKey=timer_flow&businessKey=" + randomUUID()));
+    void spiM03_activitiHistoryApiShouldBeExposed() throws IOException, InterruptedException {
+        assertAnswered(get(ACTIVITI_REST_URL + "/history/historic-process-instances?processDefinitionKey=timer_flow&businessKey=" + randomUUID()),
+                200, EMPTY_LIST);
     }
 
     @Test
-    void spiM03_activitiJobQueryApiShouldNotBeExposed() throws IOException, InterruptedException {
-        assertNotExposed(get(ACTIVITI_REST_URL + "/management/jobs?processInstanceId=" + randomUUID()));
+    void spiM03_activitiJobQueryApiShouldBeExposed() throws IOException, InterruptedException {
+        assertAnswered(get(ACTIVITI_REST_URL + "/management/jobs?timersOnly=true&processInstanceId=" + randomUUID()),
+                200, EMPTY_LIST);
     }
 
-    // On J25 POST management/jobs/{jobId} executes the job at once, which fires a pending CJSE retry. The request is
-    // sent as text/plain to a random id: if the resource exists it answers 415 and no job is looked up or executed.
+    // SPI-M03: only the Activiti resources are published under /internal/activiti/service. An empty JAX-RS Application
+    // gets every resource in the WAR, which republished SPI's command and query endpoints, the event-store event pages
+    // and the framework stream endpoints there. OPTIONS answers for any matched resource, so a 404 means "not published".
     @Test
-    void spiM03_activitiJobExecutionApiShouldNotBeExposed() throws IOException, InterruptedException {
-        assertNotExposed(send(HttpRequest.newBuilder(URI.create(ACTIVITI_REST_URL + "/management/jobs/" + randomUUID()))
-                .header("Content-Type", "text/plain")
-                .POST(HttpRequest.BodyPublishers.ofString("{}"))
-                .build()));
-    }
-
-    // ActivitiRestApplication declares no classes, and under the JAX-RS rules an Application without classes serves
-    // every root resource in the WAR, the SPI query resources included. DELETE is used because the query resource only
-    // has GET: if the resource is published under this path JAX-RS answers 405 itself, so no query and no access
-    // control runs. That 405 lacks the default servlet's "is not supported by this URL" body.
-    @Test
-    void spiM03_spiQueryResourceShouldNotBeRepublishedUnderTheActivitiPath() throws IOException, InterruptedException {
-        assertNotExposed(send(HttpRequest.newBuilder(URI.create(ACTIVITI_REST_URL + "/cpp-message/" + TEST_CONFIG_INSTANCE.getURN()))
-                .DELETE()
-                .build()));
+    void spiM03_spiAndFrameworkEndpointsShouldNotBeRepublishedUnderTheActivitiPath() throws IOException, InterruptedException {
+        for (final String path : List.of("/spi", "/cppmessages/" + randomUUID(), "/cpp-message/" + randomUUID(),
+                "/event-streams/1/BACKWARD/10", "/streams", "/stream-errors")) {
+            final HttpResponse<String> response = options(ACTIVITI_REST_URL + path);
+            assertThat(observed(response), response.statusCode(), is(404));
+        }
     }
 
     // SPI-M04: on J17 activiti-cdi deployed timer_flow from processes/time_delay.bpmn (via processes.xml). The J25
@@ -194,27 +192,22 @@ class ActivitiParityIT extends AbstractIT {
     }
 
     private static HttpResponse<String> get(final String url) throws IOException, InterruptedException {
-        return send(HttpRequest.newBuilder(URI.create(url)).GET().build());
+        return HttpClient.newHttpClient().send(HttpRequest.newBuilder(URI.create(url)).GET().build(), HttpResponse.BodyHandlers.ofString());
     }
 
-    // HTTP/1.1 is forced. The client's default h2c upgrade makes the default servlet answer an unsupported method with
-    // 400 instead of 405, and whether WildFly accepts the upgrade has nothing to do with Activiti.
-    private static HttpResponse<String> send(final HttpRequest request) throws IOException, InterruptedException {
-        return HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).build()
-                .send(request, HttpResponse.BodyHandlers.ofString());
+    private static HttpResponse<String> options(final String url) throws IOException, InterruptedException {
+        return HttpClient.newHttpClient().send(HttpRequest.newBuilder(URI.create(url)).method("OPTIONS", HttpRequest.BodyPublishers.noBody()).build(),
+                HttpResponse.BodyHandlers.ofString());
     }
 
-    // J17 result: no resource is mapped under the Activiti path, so the default servlet answers GET with 404 and any
-    // other method with 405 "HTTP method X is not supported by this URL". A JAX-RS resource answers GET with 200 or
-    // 500, a wrong media type with 415, and a wrong method with a 405 that has no such body.
-    private static void assertNotExposed(final HttpResponse<String> response) {
-        final String observed = format("%s %s answered %d: %s", response.request().method(), response.request().uri(), response.statusCode(), response.body());
-        if ("GET".equals(response.request().method())) {
-            assertThat(observed, response.statusCode(), is(404));
-        } else {
-            assertThat(observed, response.statusCode(), is(405));
-            assertThat(observed, response.body(), containsString("is not supported by this URL"));
-        }
+    private static void assertAnswered(final HttpResponse<String> response, final int status, final String body) {
+        assertThat(observed(response), response.statusCode(), is(status));
+        assertThat(observed(response), response.headers().firstValue("Content-Type").orElse(""), startsWith("application/json"));
+        assertThat(observed(response), response.body(), is(body));
+    }
+
+    private static String observed(final HttpResponse<String> response) {
+        return format("%s %s answered %d: %s", response.request().method(), response.request().uri(), response.statusCode(), response.body());
     }
 
     private static long count(final String sql) throws SQLException {
