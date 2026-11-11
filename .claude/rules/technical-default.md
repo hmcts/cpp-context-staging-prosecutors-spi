@@ -11,7 +11,7 @@
 | Component         | Value                                                                |
 |-------------------|----------------------------------------------------------------------|
 | Build tool        | Maven (multi-module reactor, 12 modules; root `pom.xml`)             |
-| Language          | Java 17 (CI demand `centos8-j17`); Azure Functions on Java 11+ runtime |
+| Language          | Java 17 (CI demand `ubuntu24-j17`); Azure Functions on Java 11+ runtime |
 | Framework         | Justice Services Framework / CPP `service-parent-pom:17.104.x` (CDI/Deltaspike) |
 | Packaging         | WAR → WildFly via Docker (composite `stagingprosecutorsspi-service`); `stagingprosecutors-azure-functions` as a separate Azure Functions ZIP |
 | Annotations       | `@ServiceComponent`, `@Handles`, `@ApplicationScoped`                 |
