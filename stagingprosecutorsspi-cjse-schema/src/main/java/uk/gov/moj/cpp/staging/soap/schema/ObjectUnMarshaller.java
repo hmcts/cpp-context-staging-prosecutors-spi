@@ -1,6 +1,6 @@
 package uk.gov.moj.cpp.staging.soap.schema;
 
-import static javax.xml.bind.JAXBContext.newInstance;
+import static jakarta.xml.bind.JAXBContext.newInstance;
 
 import uk.gov.cjse.schemas.common.operations.RouteDataRequestType;
 import uk.gov.dca.xmlschemas.libra.StdProsPoliceNewCaseStructure;
@@ -8,9 +8,9 @@ import uk.gov.dca.xmlschemas.libra.StdProsPoliceNewCaseStructure;
 import java.io.StringReader;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;

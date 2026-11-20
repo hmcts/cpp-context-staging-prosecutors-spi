@@ -1,7 +1,7 @@
 package uk.gov.moj.cpp.staging.soap.schema;
 
 import static java.math.BigInteger.valueOf;
-import static javax.xml.bind.JAXBContext.newInstance;
+import static jakarta.xml.bind.JAXBContext.newInstance;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import uk.gov.dca.xmlschemas.libra.BaseHearingStructure;
@@ -18,8 +18,8 @@ import uk.gov.dca.xmlschemas.libra.StdProsPoliceResultedCaseStructure;
 import java.io.StringWriter;
 import java.time.LocalDateTime;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 

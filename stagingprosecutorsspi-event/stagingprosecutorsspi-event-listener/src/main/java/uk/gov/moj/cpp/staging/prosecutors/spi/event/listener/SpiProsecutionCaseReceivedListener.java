@@ -9,7 +9,7 @@ import uk.gov.moj.cpp.staging.prosecutors.persistence.entity.CPPMessage;
 import uk.gov.moj.cpp.staging.prosecutors.persistence.repository.CPPMessageRepository;
 import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.SpiProsecutionCaseReceived;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 @ServiceComponent(EVENT_LISTENER)
 public class SpiProsecutionCaseReceivedListener {
