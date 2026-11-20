@@ -3,7 +3,7 @@ package uk.gov.moj.cpp.staging.prosecutors.spi.event.converter.results;
 import uk.gov.dca.xmlschemas.libra.StdProsPoliceResultedCaseStructure;
 import uk.gov.moj.cpp.staging.prosecutors.spi.event.helper.PublicPoliceResultGenerated;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.Map;
 
 public class ResultConverter {

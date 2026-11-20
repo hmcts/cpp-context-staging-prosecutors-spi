@@ -22,9 +22,9 @@ import uk.gov.moj.cpp.staging.soap.schema.OIDetails;
 import uk.gov.moj.cpp.staging.soap.schema.ObjectUnMarshaller;
 import uk.gov.moj.cpp.staging.soap.schema.converter.SpiCaseConverter;
 
-import javax.inject.Inject;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
+import jakarta.inject.Inject;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
 
 import org.xml.sax.SAXException;
 

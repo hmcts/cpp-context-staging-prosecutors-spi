@@ -18,7 +18,7 @@ import uk.gov.moj.cpp.staging.prosecutors.persistence.repository.SpiOutMessageRe
 import java.io.IOException;
 import java.time.ZonedDateTime;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

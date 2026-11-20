@@ -22,7 +22,7 @@ import uk.gov.moj.cpp.casefilter.azure.service.QueryMaterialAndSendNotificationS
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 import com.microsoft.azure.functions.ExecutionContext;
 import com.microsoft.azure.functions.HttpRequestMessage;
