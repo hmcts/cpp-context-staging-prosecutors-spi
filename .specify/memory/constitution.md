@@ -167,7 +167,7 @@ conflicting auto-fixes; preserves auditable, reproducible review output.
   assume the Maven reactor; a future migration to Gradle is allowed but is
   itself a constitution-amendment-scale change and MUST update this section, the
   rule files, the agent docs, and the CI pipeline in lockstep.
-- **Java**: 17 (CI demand `centos8-j17`). The Azure Functions module targets the
+- **Java**: 17 (CI demand `ubuntu24-j17`). The Azure Functions module targets the
   Azure Java runtime (Java 11+) and is packaged separately.
 - **Parent**: `uk.gov.moj.cpp.common:service-parent-pom:17.104.x` — pin updates
   require a coordinated cross-context check against the upstream pins in the root
