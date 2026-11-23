@@ -9,7 +9,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.validation.ValidationError;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 public class SourceIdValidationRule extends AbstractValidationRule implements MDIValidationRule {
 

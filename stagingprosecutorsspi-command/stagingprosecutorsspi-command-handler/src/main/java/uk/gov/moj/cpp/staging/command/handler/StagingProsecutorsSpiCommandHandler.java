@@ -26,7 +26,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.json.schemas.ResendMessage;
 import uk.gov.moj.cpp.staging.prosecutors.spi.validation.OIValidator;
 import uk.gov.moj.cpp.staging.soap.schema.OIDetails;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Stream;

@@ -9,7 +9,7 @@ import uk.gov.justice.services.common.converter.StringToJsonObjectConverter;
 import uk.gov.moj.cpp.casefilter.azure.exception.MissingFieldException;
 import uk.gov.moj.cpp.casefilter.azure.utils.DateTimeProvider;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

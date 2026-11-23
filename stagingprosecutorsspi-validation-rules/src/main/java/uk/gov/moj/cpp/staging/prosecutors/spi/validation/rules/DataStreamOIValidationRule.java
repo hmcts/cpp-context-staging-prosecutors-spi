@@ -11,8 +11,8 @@ import uk.gov.moj.cpp.staging.soap.schema.ObjectUnMarshaller;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-import javax.xml.bind.JAXBException;
+import jakarta.inject.Inject;
+import jakarta.xml.bind.JAXBException;
 
 import org.slf4j.Logger;
 import org.xml.sax.SAXException;
