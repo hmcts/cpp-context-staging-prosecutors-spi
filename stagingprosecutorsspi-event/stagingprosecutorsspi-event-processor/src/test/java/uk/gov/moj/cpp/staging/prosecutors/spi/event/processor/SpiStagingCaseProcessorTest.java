@@ -25,7 +25,7 @@ import java.nio.charset.Charset;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
-import jakarta.xml.bind.JAXBException;
+import javax.xml.bind.JAXBException;
 
 import com.google.common.io.Resources;
 import org.junit.jupiter.api.Test;

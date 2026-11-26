@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import jakarta.json.JsonObject;
+import javax.json.JsonObject;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;

@@ -6,12 +6,12 @@
     <parent>
         <groupId>uk.gov.moj.cpp.common</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>25.104.7</version>
+        <version>17.104.0</version>
     </parent>
 
     <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
     <artifactId>stagingprosecutorsspi</artifactId>
-    <version>25.104.61-SNAPSHOT</version>
+    <version>17.104.55-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>stagingprosecutorsspi</name>
 
@@ -23,15 +23,14 @@
         <cpp.system-users.version>6.4.0</cpp.system-users.version>
         <system.id-mapper.version>6.4.0</system.id-mapper.version>
         <referencedata.version>17.104.149</referencedata.version>
-        <coredomain.version>25.104.7</coredomain.version>
+        <coredomain.version>17.104.6</coredomain.version>
         <maven.cucumber.reporting.plugin.version>2.0.0</maven.cucumber.reporting.plugin.version>
         <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
-        <!-- TEMPORARY: the 25.104.x BOMs still manage the javax JAX-WS stack (jaxws-rt 2.3.4, codehaus jaxws-maven-plugin 2.5).
-             The CJSE SOAP endpoint and client need Jakarta XML Web Services 4 on WildFly 40. Remove these once the platform BOM manages them. -->
-        <jaxws.maven.plugin.version>4.0.5</jaxws.maven.plugin.version>
-        <jakarta.xml.ws-api.version>4.0.3</jakarta.xml.ws-api.version>
-        <jaxws-rt.version>4.0.5</jaxws-rt.version>
+        <jaxws.maven.plugin.version>2.6</jaxws.maven.plugin.version>
+        <streambuffer.version>2.0.2</streambuffer.version>
         <stream.transformation.tool.anonymise.version>7.0.0</stream.transformation.tool.anonymise.version>
+        <jsonassert.version>1.5.0</jsonassert.version>
+        <junit4.version>4.13.1</junit4.version>
         <jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
         <jgitflow.maven.developBranchName>main</jgitflow.maven.developBranchName>
     </properties>
@@ -52,21 +51,26 @@
     </modules>
     <dependencyManagement>
         <dependencies>
-            <!-- TEMPORARY: see jaxws properties above -->
             <dependency>
-                <groupId>jakarta.xml.ws</groupId>
-                <artifactId>jakarta.xml.ws-api</artifactId>
-                <version>${jakarta.xml.ws-api.version}</version>
+                <groupId>org.skyscreamer</groupId>
+                <artifactId>jsonassert</artifactId>
+                <version>${jsonassert.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>com.sun.xml.ws</groupId>
-                <artifactId>jaxws-rt</artifactId>
-                <version>${jaxws-rt.version}</version>
+                <groupId>com.sun.xml.stream.buffer</groupId>
+                <artifactId>streambuffer</artifactId>
+                <version>${streambuffer.version}</version>
             </dependency>
             <dependency>
                 <groupId>uk.gov.justice</groupId>
                 <artifactId>stream-transformation-tool-anonymise</artifactId>
                 <version>${stream.transformation.tool.anonymise.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit4.version}</version>
             </dependency>
             <dependency>
                 <groupId>uk.gov.moj.cpp.core.domain</groupId>
@@ -82,6 +86,12 @@
                 <groupId>uk.gov.moj.cpp.prosecution.casefile</groupId>
                 <artifactId>prosecutioncasefile-domain-value-schema</artifactId>
                 <version>${prosecutioncasefile.version}</version>
+            </dependency>
+            <!-- Maintained same version as in material context, it should be upgraded to latest version -->
+            <dependency>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-storage</artifactId>
+                <version>8.4.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

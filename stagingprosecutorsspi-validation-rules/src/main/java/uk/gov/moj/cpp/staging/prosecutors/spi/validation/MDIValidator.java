@@ -11,8 +11,8 @@ import java.util.Comparator;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import jakarta.enterprise.inject.Instance;
-import jakarta.inject.Inject;
+import javax.enterprise.inject.Instance;
+import javax.inject.Inject;
 
 public class MDIValidator {
 

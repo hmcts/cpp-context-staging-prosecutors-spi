@@ -13,7 +13,7 @@ import uk.gov.moj.cpp.systemidmapper.client.SystemIdMapping;
 import java.util.Optional;
 import java.util.UUID;
 
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 public class SystemMapperService {
 

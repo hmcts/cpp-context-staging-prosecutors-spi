@@ -5,7 +5,7 @@ import uk.gov.moj.cpp.staging.prosecutors.persistence.repository.CPPMessageRepos
 
 import java.util.List;
 
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 public class CPPMessageService {
     @Inject
