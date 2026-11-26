@@ -14,6 +14,7 @@
     <properties>
         <cpp.service-component>EVENT_PROCESSOR</cpp.service-component>
         <skip.schema.pojo.generation>false</skip.schema.pojo.generation>
+        <sonar.coverage.exclusions>**/ProgrammaticProcessEngineConfiguration.java</sonar.coverage.exclusions>
     </properties>
 
     <dependencies>
