@@ -9,7 +9,7 @@ import static uk.gov.moj.cpp.casefilter.azure.utils.FileUtil.getPathValue;
 
 import java.util.Optional;
 
-import jakarta.json.JsonObject;
+import javax.json.JsonObject;
 
 import org.junit.jupiter.api.Test;
 

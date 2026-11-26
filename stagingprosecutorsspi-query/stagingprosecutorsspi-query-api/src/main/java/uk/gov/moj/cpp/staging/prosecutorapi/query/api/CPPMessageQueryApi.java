@@ -9,7 +9,7 @@ import uk.gov.justice.services.core.enveloper.Enveloper;
 import uk.gov.justice.services.core.requester.Requester;
 import uk.gov.justice.services.messaging.JsonEnvelope;
 
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 @ServiceComponent(QUERY_API)
 public class CPPMessageQueryApi {

@@ -3,7 +3,7 @@
     <parent>
         <artifactId>stagingprosecutorsspi</artifactId>
         <groupId>uk.gov.moj.cpp.staging.prosecutors.spi</groupId>
-        <version>25.104.61-SNAPSHOT</version>
+        <version>17.104.55-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -12,8 +12,9 @@
     <properties>
         <azureEnv>STE</azureEnv>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>${compiler.source}</maven.compiler.source>
+        <maven.compiler.target>${compiler.target}</maven.compiler.target>
         <java.version>${java.se.version}</java.version>
-        <azure.functions.java.version>25.0</azure.functions.java.version>
         <functionAppName>fa-ste-casefilter</functionAppName>
         <functionAppRegion>uksouth</functionAppRegion>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}
@@ -35,8 +36,8 @@
             <artifactId>azure-storage</artifactId>
         </dependency>
         <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.microsoft.azure</groupId>
@@ -67,8 +68,8 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.parsson</groupId>
-            <artifactId>parsson</artifactId>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
         </dependency>
         <dependency>
             <groupId>uk.gov.justice.utils</groupId>
@@ -118,7 +119,8 @@
                         <arg>-Xlint:all,-options,-path</arg>
                         <arg>-verbose</arg>
                     </compilerArgs>
-                    <release>${java.version}</release>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -207,7 +209,7 @@
                     <region>${functionAppRegion}</region>
                     <runtime>
                         <os>windows</os>
-                        <javaVersion>${azure.functions.java.version}</javaVersion>
+                        <javaVersion>${java.version}</javaVersion>
                     </runtime>
                     <appSettings>
                         <!-- Run Azure Function from package file by default -->
@@ -225,7 +227,7 @@
                         </property>
                         <property>
                             <name>JAVA_VERSION</name>
-                            <value>${azure.functions.java.version}</value>
+                            <value>${java.version}</value>
                         </property>
                     </appSettings>
                 </configuration>

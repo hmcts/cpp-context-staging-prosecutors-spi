@@ -21,7 +21,7 @@ import java.time.ZonedDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-import jakarta.json.JsonObject;
+import javax.json.JsonObject;
 
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;

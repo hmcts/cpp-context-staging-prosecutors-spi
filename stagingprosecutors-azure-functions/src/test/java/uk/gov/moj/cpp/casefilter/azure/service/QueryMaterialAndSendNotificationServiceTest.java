@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-import jakarta.json.JsonObject;
+import javax.json.JsonObject;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;

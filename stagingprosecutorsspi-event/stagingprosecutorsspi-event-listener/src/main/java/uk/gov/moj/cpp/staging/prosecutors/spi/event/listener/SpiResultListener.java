@@ -13,7 +13,7 @@ import uk.gov.moj.cpp.staging.prosecutors.spi.events.SpiResultPreparedForSending
 
 import java.time.ZonedDateTime;
 
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 @ServiceComponent(EVENT_LISTENER)
 public class SpiResultListener {
